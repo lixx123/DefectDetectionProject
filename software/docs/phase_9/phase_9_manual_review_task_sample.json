@@ -1,0 +1,2358 @@
+{
+  "note": "At most 20 HIGH and 20 MEDIUM per sample in this report sample only; runtime queue retains every task.",
+  "tasks": [
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000933\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000933",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 369.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0007"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000962\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000962",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 3292.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0003"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001008\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001008",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 282.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0011"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001544\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001544",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 296.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0010"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001761\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001761",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 396.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0006"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B02:C0002871\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B02:C0002871",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 9.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B02:C0003989\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B02:C0003989",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 9.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B03:C0000309\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B03:C0000309",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 332.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0009"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B03:C0000968\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B03:C0000968",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 301.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0013"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B03:C0001382\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B03:C0001382",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 339.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0008"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B04:C0000456\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B04:C0000456",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 36.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B04:C0001361\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B04:C0001361",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 8.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B04:C0002561\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B04:C0002561",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 324.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0004"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"J5\",\"J5:F1:DEFECT_10131\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "J5:F1:DEFECT_10131",
+      "candidate_source": "J5",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 1.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "J5",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0022"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "J5_J5_WORK_SMALL",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"J5\",\"J5:F1:DEFECT_10252\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "J5:F1:DEFECT_10252",
+      "candidate_source": "J5",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 4.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "J5",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "J5_J5_WORK_SMALL",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000176\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000176",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 249.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0012"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000293\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000293",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 1.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0022"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000294\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000294",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 72.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0022"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000304\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000304",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 14.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0022"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000391\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000391",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 102.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0017"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000779\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000779",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 49.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000812\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000812",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 4.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000827\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000827",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 4.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000836\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000836",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 9.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0027"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000847\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000847",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000848\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000848",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 21.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000863\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000863",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 3.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0027"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0000865\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0000865",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 12.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001117\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001117",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 1.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0003"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001131\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001131",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0003"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001685\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001685",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 4.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0028"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001878\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001878",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 7.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0024"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_1",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F1:B01:C0001932\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F1:B01:C0001932",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 1.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F1_FINAL_0024"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000001\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000001",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 305.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0008"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000124\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000124",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 483.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0009"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000150\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000150",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 463.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0005"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000214\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000214",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 253.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0015"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000333\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000333",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 346.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0013"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000338\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000338",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 348.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0011"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000361\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000361",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 378.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0010"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B03:C0000163\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B03:C0000163",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 459.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0007"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B03:C0000235\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B03:C0000235",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 23.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B03:C0000427\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B03:C0000427",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 379.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0012"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B04:C0000246\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B04:C0000246",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 466.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0004"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B04:C0000329\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B04:C0000329",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2075.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0003"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B04:C0000345\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B04:C0000345",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "LARGE_CANDIDATE_GEOMETRY",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 294.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0014"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B04:C0000399\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B04:C0000399",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 14.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B04:C0000547\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B04:C0000547",
+      "candidate_source": "K8B",
+      "priority": "HIGH",
+      "reason_codes": [
+        "PROMISING_DARK_EVIDENCE",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 38.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_PROMISING_DARK_REVIEW_RAW_DARK_CONTRAST_MAD_AND_DOG_SUPPORTED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"J5\",\"J5:F2:DEFECT_01558\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "J5:F2:DEFECT_01558",
+      "candidate_source": "J5",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 6.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "J5",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0025"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "J5_J5_WORK_SMALL",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"J5\",\"J5:F2:DEFECT_01611\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "J5:F2:DEFECT_01611",
+      "candidate_source": "J5",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "J5",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0024"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "J5_J5_WORK_SMALL",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"J5\",\"J5:F2:DEFECT_01883\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "J5:F2:DEFECT_01883",
+      "candidate_source": "J5",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 17.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "J5",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0023"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "J5_J5_WORK_SMALL",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000051\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000051",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 50.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0027"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000067\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000067",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 53.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0025"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000071\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000071",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 6.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0025"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000074\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000074",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 12.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0025"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000081\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000081",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 105.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000089\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000089",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 202.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0006"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000090\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000090",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 16.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0022"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000091\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000091",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 55.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0022"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000095\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000095",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0020"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000107\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000107",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0022"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000126\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000126",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 118.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0024"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000138\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000138",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 10.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0024"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000144\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000144",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 2.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0024"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000237\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000237",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 156.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0018"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000460\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000460",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 198.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0017"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000491\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000491",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "CANDIDATE_SIZE_RISK",
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 109.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0023"
+        ],
+        "multi_source_coincidence": false,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "task_id": "CANDIDATE:[\"CANDIDATE\",\"\",\"K8B\",\"B:F2:B01:C0000500\"]",
+      "task_kind": "ORPHAN_CANDIDATE_REVIEW",
+      "object_kind": "CANDIDATE",
+      "object_id": "B:F2:B01:C0000500",
+      "candidate_source": "K8B",
+      "priority": "MEDIUM",
+      "reason_codes": [
+        "SPATIAL_FINAL_ASSOCIATION",
+        "UNRESOLVED_FINAL_SELECTION",
+        "WEAK_EVIDENCE_HIGH_RISK"
+      ],
+      "evidence": {
+        "area_px": 17.0,
+        "feret_px": null,
+        "size_grade": null,
+        "band": null,
+        "source": "K8B",
+        "current_stage": "FINAL_SELECTION",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "final_defect_id": null,
+        "lineage_issue_count": 0,
+        "spatial_final_ids": [
+          "F2_FINAL_0023"
+        ],
+        "multi_source_coincidence": true,
+        "independent_source_support": false,
+        "initial_geometry_available": true,
+        "reference_decision": "K8C_EXISTING_FIXED_H_SHARES_FIXED_170_230_H_SEED",
+        "reference_reason_category": "OTHER"
+      }
+    }
+  ]
+}

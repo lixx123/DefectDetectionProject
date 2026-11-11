@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "external_raw_required": false,
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "blocked_external_opens": 0,
+  "processes": 13
+}

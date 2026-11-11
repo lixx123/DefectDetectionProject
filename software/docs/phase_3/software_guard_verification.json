@@ -1,0 +1,56 @@
+{
+  "checks": [
+    {
+      "name": "all_software_tests",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_final_test_tmp"
+      ],
+      "exit_code": 0,
+      "seconds": 16.833
+    },
+    {
+      "name": "phase1_smoke",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "app.main",
+        "--smoke-test",
+        "--screenshot",
+        "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase_3\\phase1_smoke.png"
+      ],
+      "exit_code": 0,
+      "seconds": 1.828
+    },
+    {
+      "name": "pip_check",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.467
+    },
+    {
+      "name": "validation_cli_help",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "scripts.run_phase3_validation",
+        "--help"
+      ],
+      "exit_code": 0,
+      "seconds": 0.239
+    }
+  ],
+  "protected_files": 1317,
+  "changed_protected_files": [],
+  "frozen_protocol_and_phase1_git_diff": "",
+  "phase2_tests_preserved": 99
+}

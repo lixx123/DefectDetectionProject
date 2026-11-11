@@ -1,0 +1,20 @@
+{
+  "phase": "Phase10_Revision",
+  "status": "PRECOMMIT_ONLY",
+  "final_commit": null,
+  "tested_head": null,
+  "human_acceptance": "PENDING",
+  "real_records": 0,
+  "real_labels_generated": 0,
+  "algorithm_executions": 0,
+  "next_phase_started": false,
+  "final_evidence": "output/phase10_revision_final/phase_10_revision_verification.json",
+  "evidence_fix_only": true,
+  "evidence_duplicate_fixed": true,
+  "old_09_screenshot_sha256": "05679f3aa14a541000fc04747d94d259bc83715292173900d3fd7575cfa8c238",
+  "09_screenshot_sha256": "9f38db6c61221f61373593f3897b5424092fed7a93f3c6f232cf99beb3c19ed8",
+  "06_screenshot_sha256": "05679f3aa14a541000fc04747d94d259bc83715292173900d3fd7575cfa8c238",
+  "10_screenshot_sha256": "702e5f576f7638f988f7bb717d2b0ee96bf0d089669ee756cae467c1e0308abc",
+  "final_acceptance": "PENDING_POST_COMMIT",
+  "Phase11_started": false
+}

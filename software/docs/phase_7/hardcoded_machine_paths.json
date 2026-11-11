@@ -1,0 +1,19 @@
+{
+  "production_code_hits": [],
+  "permanent_test_hits": [],
+  "scanned_python_files": 53,
+  "scopes": [
+    "ui",
+    "tests",
+    "regression",
+    "scripts",
+    "application"
+  ],
+  "external_path_scripts": [
+    {
+      "script": "regression/reproduce_display_observation.py",
+      "path_source": "CLI_ARGUMENT"
+    }
+  ],
+  "status": "PASS"
+}

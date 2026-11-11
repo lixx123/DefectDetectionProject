@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "schema_version": "1.0",
+  "new_wire_enum_values": [],
+  "user_decision": "OTHER plus reference_reason_category for explicit unsupported size/geometry rejection",
+  "algorithm_executions": 0,
+  "physical_changes": 0,
+  "final_mask_diff_pixels": 0,
+  "source_membership_changes": 0,
+  "validate_final_pass_cases": 6,
+  "production_auto_policy": "roi-bh -> QA fail -> full",
+  "roi_j4_in_auto": false,
+  "config_status": "REFERENCE_ENGINE_CONNECTED",
+  "phase4_started": false,
+  "test_summary": "190 passed in 63.31s (0:01:03)",
+  "software_checks": {
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "all_software_tests",
+        "exit_code": 0,
+        "seconds": 64.111,
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "-q",
+          "--basetemp",
+          "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision_final_tests"
+        ]
+      },
+      {
+        "name": "phase1_smoke",
+        "exit_code": 0,
+        "seconds": 2.016,
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "app.main",
+          "--smoke-test",
+          "--screenshot",
+          "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase_3_revision\\phase1_smoke.png"
+        ]
+      },
+      {
+        "name": "pip_check",
+        "exit_code": 0,
+        "seconds": 0.547,
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "check"
+        ]
+      },
+      {
+        "name": "remap_cli_help",
+        "exit_code": 0,
+        "seconds": 0.24,
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "scripts.remap_phase3_results",
+          "--help"
+        ]
+      }
+    ],
+    "frozen_domain_and_prior_tests_and_execution_diff": ""
+  },
+  "protection": {
+    "status": "PASS",
+    "original_manifest_files_verified_before_and_after": 1317,
+    "existing_engine_files_verified_before_and_after": 15154,
+    "existing_engine_bytes": 1475961398,
+    "mismatches": [],
+    "subprocess_execution_forbidden_during_remap": true,
+    "algorithm_executions": 0
+  },
+  "comparison_file": "phase_3_revision_comparison.json",
+  "result_directories": [
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision\\remapped_results\\26_1_full",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision\\remapped_results\\26_2_full",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision\\remapped_results\\26_1_roi-bh",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision\\remapped_results\\26_2_roi-bh",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision\\remapped_results\\26_1_auto",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_revision\\remapped_results\\26_2_auto"
+  ],
+  "final_commit_receipt": "final_commit.txt"
+}

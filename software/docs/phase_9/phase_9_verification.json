@@ -1,0 +1,16 @@
+{
+  "report_stage": "PRECOMMIT_ONLY",
+  "final_verification": "output/phase9_final/phase_9_verification.json",
+  "phase9_tests": 78,
+  "expected_all_tests": 557,
+  "expected_fast": 522,
+  "expected_golden": 33,
+  "final_commit": null,
+  "tested_head": null,
+  "final_gate_status": "PENDING_POSTCOMMIT",
+  "algorithm_executions": 0,
+  "review_writeback_started": false,
+  "human_acceptance": "PENDING",
+  "real_preferred_target_all_met": false,
+  "policy_hash": "63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327"
+}

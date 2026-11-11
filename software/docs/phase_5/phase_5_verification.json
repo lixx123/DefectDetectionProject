@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "golden_set_version": "1.0",
+  "schema_version": "1.0",
+  "package_format_version": "1.0",
+  "fast_status": "PASS",
+  "fast_test_count": 295,
+  "golden_status": "PASS",
+  "golden_test_count": 23,
+  "release_gate_status": "PASS",
+  "golden_samples": [
+    {
+      "sample_id": "26_1",
+      "status": "PASS"
+    },
+    {
+      "sample_id": "26_2",
+      "status": "PASS"
+    }
+  ],
+  "defect_count_match": true,
+  "total_area_match": true,
+  "final_mask_hash_match": true,
+  "object_level_match": true,
+  "roi_band_match": true,
+  "audit_semantics_match": true,
+  "repository_match": true,
+  "AUTO_policy_status": "PASS",
+  "roi_j4_in_auto": false,
+  "fallback_fixture_count": 10,
+  "fallback_fixture_pass_count": 10,
+  "sentinel_gate_status": "PASS",
+  "existing_tests_preserved": 255,
+  "total_test_count": 320,
+  "algorithm_files_changed": [],
+  "algorithm_executions": 0,
+  "real_engine_required": false,
+  "real_engine_executed": false,
+  "real_profile_status": "NOT_RUN",
+  "blind_validation_available": false,
+  "phase6_started": false,
+  "software_checks": {
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "all_software_tests",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "-q",
+          "--strict-markers",
+          "--tb=short",
+          "--basetemp",
+          "D:\\疵病检测\\DefectInspectionSoftware\\output\\.p5_all",
+          "--junitxml",
+          "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase_5\\all_tests.xml"
+        ],
+        "exit_code": 0,
+        "seconds": 248.991
+      },
+      {
+        "name": "phase1_smoke",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "app.main",
+          "--smoke-test",
+          "--screenshot",
+          "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase_5\\phase1_smoke.png"
+        ],
+        "exit_code": 0,
+        "seconds": 2.032
+      },
+      {
+        "name": "pip_check",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "exit_code": 0,
+        "seconds": 0.631
+      }
+    ],
+    "existing_tests_preserved": 255,
+    "total_test_count": 320,
+    "old_test_files_unchanged": 8,
+    "frozen_application_domain_algorithm_repository_diff": "",
+    "protected_manifest_files_verified": 1317,
+    "algorithm_files_changed": [],
+    "original_algorithm_gate": {
+      "status": "PASS",
+      "protected_files_checked": 765,
+      "changed_files": []
+    },
+    "AUTO_policy": {
+      "status": "PASS",
+      "roi_j4_in_auto": false,
+      "errors": [],
+      "sentinel_consumed_guards": 2
+    },
+    "schema_contract_match": true,
+    "fallback_fixture_count": 10,
+    "fallback_fixture_pass_count": 10,
+    "sentinel_gate_status": "PASS",
+    "source_fingerprint": "8dc2ffb89a0933ba5cd4a22dbebd5bffc85caec4731919ce176a9680b9a2da26",
+    "release_source_fingerprint_matches_final": true,
+    "algorithm_executions": 0,
+    "phase6_started": false
+  },
+  "source_fingerprint": "8dc2ffb89a0933ba5cd4a22dbebd5bffc85caec4731919ce176a9680b9a2da26",
+  "golden_evidence_changed": [],
+  "final_commit_receipt": "final_commit.txt"
+}

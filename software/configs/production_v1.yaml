@@ -1,0 +1,20 @@
+config_name: production_v1
+config_version: "0.2.0"
+status: REFERENCE_ENGINE_CONNECTED
+pipeline_mode: auto
+advanced_debug: false
+auto_policy:
+  primary: roi-bh
+  fallback: full
+# ================= 用户输入变量区 =================
+# SPATIAL_SCALE_UM_PER_PX：空间尺度 μm/px。是配置值，不代表完成物面标定。
+calibration:
+  spatial_scale_um_per_px: 3.2
+  scale_source: DEFAULT
+  valid: true
+  reference_plane: USER_DECLARED
+  metrologically_calibrated: false
+intermediate_level: STANDARD
+# 本轮未改动、复制或覆盖原算法阈值。
+algorithm_parameters: {}
+algorithm_parameter_source: UNCHANGED_REFERENCE_ENGINE

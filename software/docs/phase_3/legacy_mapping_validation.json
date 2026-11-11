@@ -1,0 +1,16 @@
+[
+  {
+    "frame": 1,
+    "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\legacy\\2026-10-20T175826.603720_0800_26__1__047599c0",
+    "objects": 36,
+    "area": 20356.0,
+    "lineage": 32370
+  },
+  {
+    "frame": 2,
+    "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\legacy\\2026-10-20T175845.729453_0800_26__2__4ad79ded",
+    "objects": 35,
+    "area": 17709.0,
+    "lineage": 8332
+  }
+]

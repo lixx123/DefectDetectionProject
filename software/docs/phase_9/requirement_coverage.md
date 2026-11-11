@@ -1,0 +1,77 @@
+# 任务书69节逐项覆盖
+
+测试文件tests/test_phase9_admission.py；最终门禁见output/phase9_final。
+
+1. ReviewBucket四类 → test_four_buckets_and_documented_precedence / test_historical_review_is_not_manual_queue
+2. Audit REVIEW != Manual Review → test_four_buckets_and_documented_precedence / test_historical_review_is_not_manual_queue
+3. Defect只允许AUTO_ACCEPT/MANUAL_REVIEW → test_final_defect_bucket_protection_constructor / test_explicit_filtered_low_risk_reject / test_historical_review_is_not_manual_queue
+4. Candidate可AUTO_REJECT → test_final_defect_bucket_protection_constructor / test_explicit_filtered_low_risk_reject / test_historical_review_is_not_manual_queue
+5. Candidate可AUDIT_ONLY → test_final_defect_bucket_protection_constructor / test_explicit_filtered_low_risk_reject / test_historical_review_is_not_manual_queue
+6. historical archive默认AUDIT_ONLY → test_historical_outside_large_kept_as_audit_not_image_task / test_explicit_filtered_low_risk_reject
+7. outside work AUTO_REJECT → test_historical_outside_large_kept_as_audit_not_image_task / test_explicit_filtered_low_risk_reject
+8. background noise AUTO_REJECT → test_historical_outside_large_kept_as_audit_not_image_task / test_explicit_filtered_low_risk_reject
+9. LOW_EVIDENCE高风险可MANUAL_REVIEW → test_weak_evidence_high_risk_never_auto_rejected
+10. retained linked→AUDIT_ONLY → test_linked_retained_candidate_not_duplicate_task / test_normal_and_historical_merged_safe
+11. merged正常→AUDIT_ONLY → test_linked_retained_candidate_not_duplicate_task / test_normal_and_historical_merged_safe
+12. merged历史数据限制安全 → test_linked_retained_candidate_not_duplicate_task / test_normal_and_historical_merged_safe
+13. invalid final link→MANUAL_REVIEW → test_invalid_nonempty_link_consistency_task_high_preserves_original / test_orphan_task_semantics_distinct_from_consistency / test_unresolved_final_selection_low_priority
+14. final selection unresolved→MANUAL_REVIEW → test_invalid_nonempty_link_consistency_task_high_preserves_original / test_orphan_task_semantics_distinct_from_consistency / test_unresolved_final_selection_low_priority
+15. normal Defect→AUTO_ACCEPT → test_final_normal_and_photometry_optional / test_near_threshold_defect_manual / test_final_safety_rules_protect_all_defects / test_final_defect_bucket_protection_constructor
+16. near threshold Defect→MANUAL_REVIEW → test_final_normal_and_photometry_optional / test_near_threshold_defect_manual / test_final_safety_rules_protect_all_defects / test_final_defect_bucket_protection_constructor
+17. lineage issue Defect→MANUAL_REVIEW → test_final_normal_and_photometry_optional / test_near_threshold_defect_manual / test_final_safety_rules_protect_all_defects / test_final_defect_bucket_protection_constructor
+18. final Defect永不AUTO_REJECT → test_final_normal_and_photometry_optional / test_near_threshold_defect_manual / test_final_safety_rules_protect_all_defects / test_final_defect_bucket_protection_constructor
+19. final Defect永不AUDIT_ONLY → test_final_normal_and_photometry_optional / test_near_threshold_defect_manual / test_final_safety_rules_protect_all_defects / test_final_defect_bucket_protection_constructor
+20. linked Candidate不重复形成task → test_valid_link_candidate_conflict_aggregates_under_defect / test_orphan_task_semantics_distinct_from_consistency
+21. orphan Candidate可形成task → test_valid_link_candidate_conflict_aggregates_under_defect / test_orphan_task_semantics_distinct_from_consistency
+22. Defect task为主 → test_valid_link_candidate_conflict_aggregates_under_defect / test_orphan_task_semantics_distinct_from_consistency
+23. related candidates正确 → test_valid_link_candidate_conflict_aggregates_under_defect / test_orphan_task_semantics_distinct_from_consistency
+24. HIGH/MEDIUM/LOW → test_multiple_reasons_and_priorities
+25. reasons多值 → test_multiple_reasons_and_priorities
+26. deterministic → test_deterministic_input_order_and_zero_writeback / test_policy_hash_deterministic_and_configuration_sensitive / test_known_low_risk_review_kept_not_relabelled_noise
+27. policy hash稳定 → test_deterministic_input_order_and_zero_writeback / test_policy_hash_deterministic_and_configuration_sensitive / test_known_low_risk_review_kept_not_relabelled_noise
+28. config change改变hash → test_deterministic_input_order_and_zero_writeback / test_policy_hash_deterministic_and_configuration_sensitive / test_known_low_risk_review_kept_not_relabelled_noise
+29. InspectionResult零修改 → test_deterministic_input_order_and_zero_writeback / test_policy_hash_deterministic_and_configuration_sensitive / test_known_low_risk_review_kept_not_relabelled_noise
+30. Candidate零修改 → test_deterministic_input_order_and_zero_writeback / test_policy_hash_deterministic_and_configuration_sensitive / test_known_low_risk_review_kept_not_relabelled_noise
+31. Defect零修改 → test_deterministic_input_order_and_zero_writeback / test_policy_hash_deterministic_and_configuration_sensitive / test_known_low_risk_review_kept_not_relabelled_noise
+32. 0 candidate → test_zero_states
+33. 0 defect → test_zero_states
+34. 0 manual review → test_zero_states
+35. >preferred_max不截断 → test_preferred_target_is_advisory_never_truncates
+36. target warning → test_preferred_target_is_advisory_never_truncates
+37. 50000 candidate性能 → test_50000_no_images_or_domain_mutation / test_50000_worker_heartbeat_without_bulk_images
+38. no image reads → test_50000_no_images_or_domain_mutation / test_50000_worker_heartbeat_without_bulk_images
+39. 26_1真实评估 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+40. 26_2真实评估 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+41. 26_1所有Defect有决策 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+42. 26_2所有Defect有决策 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+43. 26_1 Candidate决策总数正确 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+44. 26_2 Candidate决策总数正确 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+45. 已知最终Defect不消失 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+46. manual queue无重复 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+47. Audit REVIEW压缩统计正确 → test_real_admission_all_objects_protected_and_no_mutation (26_1 / 26_2)
+48. 第5个Tab → test_fifth_tab_and_readonly_empty
+49. queue filter → test_queue_filters / test_global_queue_sort
+50. queue sort → test_queue_filters / test_global_queue_sort
+51. task selection → test_task_selection_consistency_and_jump_to_audit / test_task_jump_to_defect
+52. Defect task跳Phase7 → test_task_selection_consistency_and_jump_to_audit / test_task_jump_to_defect
+53. Candidate task跳Phase8 → test_task_selection_consistency_and_jump_to_audit / test_task_jump_to_defect
+54. audit only查看 → test_all_buckets_remain_browsable / test_manual_queue_and_dual_counts
+55. auto reject查看 → test_all_buckets_remain_browsable / test_manual_queue_and_dual_counts
+56. manual queue只显示MANUAL_REVIEW → test_all_buckets_remain_browsable / test_manual_queue_and_dual_counts
+57. Audit REVIEW与Manual数量同时显示 → test_manual_queue_and_dual_counts
+58. Phase8全部测试保持 → 全部原479项保留；最终pytest包含Phase8全部51项
+59. 全量pytest PASS → 最终commit上的pytest/FAST/GOLDEN/RELEASE/smoke/pip check
+60. FAST PASS → 最终commit上的pytest/FAST/GOLDEN/RELEASE/smoke/pip check
+61. GOLDEN PASS → 最终commit上的pytest/FAST/GOLDEN/RELEASE/smoke/pip check
+62. RELEASE PASS → 最终commit上的pytest/FAST/GOLDEN/RELEASE/smoke/pip check
+63. smoke PASS → 最终commit上的pytest/FAST/GOLDEN/RELEASE/smoke/pip check
+64. pip check PASS → 最终commit上的pytest/FAST/GOLDEN/RELEASE/smoke/pip check
+65. schema1.0不变 → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+66. AUTO不变 → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+67. Golden不变 → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+68. Repository不变 → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+69. 原算法零变化 → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+70. algorithm_executions=0 → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+71. machine path scan PASS → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+72. external RAW independence PASS → 最终RELEASE冻结门禁、64文件hash、765算法保护、machine_paths和外部RAW拒绝守卫
+73. 下一阶段人工审核写回未开始 → 只读UI/无ReviewInfo写回；final verification下一阶段未开始

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "real_raw_path_provided": false,
+  "external_raw_access_attempts": 0,
+  "fixture_raw_opens": 1724,
+  "audited_processes": 12,
+  "audited_pytest_runs": 5,
+  "coverage": [
+    "all_tests",
+    "FAST",
+    "GOLDEN",
+    "RELEASE FAST",
+    "RELEASE GOLDEN"
+  ],
+  "reports": "raw_access_guard/",
+  "guard_negative_control": "PASS; denied nonexistent external RAW before filesystem read"
+}

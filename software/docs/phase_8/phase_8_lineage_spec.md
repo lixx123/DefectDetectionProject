@@ -1,0 +1,10 @@
+# 双向lineage与局部图语义
+
+Candidate.final_defect_id必须存在于当前defects；异常草稿红色提示且禁用最终跳转。有效跳转调用既有SelectionController.defect_id，切换疵病详情；若目标被Phase7显示筛选遮挡，则明确清除显示筛选，结果不写回。
+最终疵病反查仅基于candidate.final_defect_id的反向索引；展示已存Defect.detection.candidate_ids。该列表仅有字符串id，只有跨全部source唯一时才能验证反向对应；重名明确“无法唯一反向匹配”，不误判成功或失败。缺失、单值不一致、未声明来源均显式记录。
+merged_into原始字符串仅在全体候选中恰好唯一、完整Key也唯一时允许跳候选。不按同source猜测。零匹配和多匹配均显示“目标候选无法唯一解析”；计数区分unresolved和ambiguous(多匹配)。
+
+现有正式包的数据限制：26_1的9条、26_2的5条MERGED，其merged_into是有效最终疵病ID而不是候选ID。候选目标不能解析；保留字符串、警告并禁用候选跳转。独立final_defect_id有效，最终跳转和所有71个最终对象的反向关联正常。此限制不修订冻结schema/Repository/台账，验收报告标为PASS_WITH_DATA_LIMITATIONS。
+
+局部位置只取initial_geometry.bbox，缺失即“无候选初始几何”，不借用最终bbox。RAW crop优先，之后original_preview、candidate_preview（明确候选预览资源、非RAW），否则中性底图加候选框。校验包内路径和SHA；面积/Feret/宽度/等效直径只读原值，不计算。
+候选青色实线显示框可GUI放大；关联最终框为红色虚线原测量框，独立图例。模式三仅有效final link可用。以候选局部区域为裁剪锚，关联最终框超出时只作为局部上下文，不扩展候选初始范围。

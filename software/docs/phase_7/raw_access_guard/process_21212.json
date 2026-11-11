@@ -1,0 +1,18 @@
+{
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "active": true,
+  "process_id": 21212,
+  "argv": [
+    "D:\\疵病检测\\DefectInspectionSoftware\\core\\runtime\\engine_worker.py",
+    "--reference-root",
+    "D:\\疵病检测\\DefectDetectionProject",
+    "--input",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\.p7_all\\test_worker_pins_reference_nam0\\bad.raw",
+    "--output",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\.p7_all\\test_worker_pins_reference_nam0\\worker_probe",
+    "--mode",
+    "roi-bh"
+  ],
+  "allowed_fixture_raw_opens": 1,
+  "blocked_external_raw_opens": 0
+}

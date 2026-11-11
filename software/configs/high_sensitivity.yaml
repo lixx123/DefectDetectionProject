@@ -1,0 +1,18 @@
+config_name: high_sensitivity
+config_version: "0.2.0"
+status: MODEL_ONLY_NOT_CONNECTED_TO_ENGINE
+pipeline_mode: auto
+advanced_debug: false
+auto_policy:
+  primary: roi-bh
+  fallback: full
+calibration:
+  spatial_scale_um_per_px: 3.2
+  scale_source: DEFAULT
+  valid: true
+  reference_plane: USER_DECLARED
+  metrologically_calibrated: false
+intermediate_level: STANDARD
+# 仅保留配置名称；没有擅自设定更高灵敏度算法阈值。
+algorithm_parameters: {}
+algorithm_parameter_source: UNCHANGED_REFERENCE_ENGINE

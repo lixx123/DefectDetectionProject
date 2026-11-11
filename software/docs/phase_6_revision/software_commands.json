@@ -1,0 +1,17 @@
+[
+  {
+    "check": "all_software_tests",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "check": "smoke",
+    "status": "PASS",
+    "exit_code": 0
+  },
+  {
+    "check": "pip_check",
+    "status": "PASS",
+    "exit_code": 0
+  }
+]

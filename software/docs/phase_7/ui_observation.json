@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "human_acceptance": "PENDING",
+  "algorithm_executions": 0,
+  "raw_required": false,
+  "samples": [
+    {
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "count": 36,
+      "area_px": 20356,
+      "visited_objects": 36,
+      "size_grade_count_sum": 36,
+      "band_count_sum": 36,
+      "type_count_sum": 36,
+      "large_filtered_count": 19,
+      "result_unchanged": true
+    },
+    {
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "count": 35,
+      "area_px": 17709,
+      "visited_objects": 35,
+      "size_grade_count_sum": 35,
+      "band_count_sum": 35,
+      "type_count_sum": 35,
+      "result_unchanged": true
+    }
+  ]
+}

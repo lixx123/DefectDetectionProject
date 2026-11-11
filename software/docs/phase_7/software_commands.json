@@ -1,0 +1,26 @@
+[
+  {
+    "check": "ui_tests",
+    "status": "PASS",
+    "exit_code": 0,
+    "external_raw_guard": true
+  },
+  {
+    "check": "all_software_tests",
+    "status": "PASS",
+    "exit_code": 0,
+    "external_raw_guard": true
+  },
+  {
+    "check": "smoke",
+    "status": "PASS",
+    "exit_code": 0,
+    "external_raw_guard": true
+  },
+  {
+    "check": "pip_check",
+    "status": "PASS",
+    "exit_code": 0,
+    "external_raw_guard": true
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "observer": "Calls original MainWindow._error, reads real labels; no text/image alteration",
+  "errors": [
+    {
+      "code": "RAW_READ_FAILED",
+      "displayed_message": "RAW_READ_FAILED：无法读取 RAW。 当前结果保留；检查文件存在且可读后重试。 详情见运行日志。",
+      "resource_log_hint_count": 1,
+      "status_log_hint_count": 1
+    },
+    {
+      "code": "RESULT_INTEGRITY_FAILED",
+      "displayed_message": "RESULT_INTEGRITY_FAILED：正式结果完整性校验失败。 拒绝加载或审核；请恢复完整原始结果包。 详情见运行日志。",
+      "resource_log_hint_count": 1,
+      "status_log_hint_count": 1
+    }
+  ],
+  "raw_error_screenshot_sha256": "52d39b7d60f359e01c7c7f625f0faee7ce0fb7f27434fff19edf97c93acee05b",
+  "duplicate_log_hint_fixed": true
+}

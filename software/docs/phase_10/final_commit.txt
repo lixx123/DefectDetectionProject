@@ -1,0 +1,1 @@
+PENDING_FINAL_COMMIT — 权威最终HEAD在提交后ignored output/phase10_final/final_commit.txt及交付镜像。

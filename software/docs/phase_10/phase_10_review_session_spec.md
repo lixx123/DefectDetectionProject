@@ -1,0 +1,13 @@
+# 会话与恢复
+
+会话元数据：protocol_version、session UUID、result ID、显式reviewer、started_at/updated_at（UTC带时区）、policy id/version/hash、source_result_digest、task_count、task_digest、冻结tasks、原final_ids。V1一个active session，历史可保留多个。
+
+固定Phase9策略review_admission_v1 / 1.0 / 63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327。create/submit核对固定hash；任务集合在开始时固定，策略变化不替换当前集合。将来新策略需新会话和独立阶段批准，V1不擅自开放任意新hash。
+
+恢复重新建立当前结果/任务摘要，与旧会话比较。RESULT_MISMATCH、POLICY_MISMATCH或STALE任务集合不一致时，历史可读，旧标签不计入当前有效完成量，禁止保存。提交前再核对内存原结果摘要、当前正式result.json字节哈希（如存在）和磁盘策略；读取校验在worker内执行。
+
+每条提交即时持久化；重启从第一个PENDING继续，旧revision全部显示。当前reviewer必须显式填写；显示已有审核者及结论，不自动复用其身份。record里的reviewer是本次操作者，会话reviewer保留创建者。
+
+事件CREATE_SESSION / SUBMIT_REVIEW / REVISE_REVIEW / COMPLETE_SESSION与state同事务保存。首次所有任务已有latest时记录COMPLETE_SESSION；UNCERTAIN算已处理，但必须显示仍有N条不确定。后续修改继续追加revision和REVISE_REVIEW。
+
+创建完整性guard时先加载当前正式result.json并核对内容摘要，避免把加载后已发生变化的文件当作旧内存结果的有效新文件哈希；正式校验失败同样阻止继续。

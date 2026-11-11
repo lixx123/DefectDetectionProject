@@ -1,0 +1,96 @@
+"""Stable wire values; enum member names are not the JSON protocol."""
+from enum import StrEnum
+
+
+class PipelineMode(StrEnum):
+    AUTO = "auto"
+    ROI_BH = "roi-bh"
+    ROI_J4 = "roi-j4"
+    FULL = "full"
+    LEGACY_REPLAY = "legacy-replay"
+
+
+class FallbackReason(StrEnum):
+    BAND_LOCATOR_FAILED = "BAND_LOCATOR_FAILED"
+    BAND_GEOMETRY_INVALID = "BAND_GEOMETRY_INVALID"
+    ROI_PLAN_FAILED = "ROI_PLAN_FAILED"
+    ROI_CONTEXT_INCOMPLETE = "ROI_CONTEXT_INCOMPLETE"
+    SENTINEL_CONSUMED = "SENTINEL_CONSUMED"
+    J4_EXECUTION_FAILED = "J4_EXECUTION_FAILED"
+    J5_EXECUTION_FAILED = "J5_EXECUTION_FAILED"
+    SOURCE_LINEAGE_INVALID = "SOURCE_LINEAGE_INVALID"
+    QA_FAILED = "QA_FAILED"
+    UNKNOWN_EXCEPTION = "UNKNOWN_EXCEPTION"
+
+
+class QAStatus(StrEnum):
+    NOT_RUN = "NOT_RUN"
+    PASS = "PASS"
+    FAIL = "FAIL"
+    INCOMPLETE = "INCOMPLETE"
+
+
+class ExecutionStatus(StrEnum):
+    NOT_STARTED = "NOT_STARTED"
+    RUNNING = "RUNNING"
+    SUCCEEDED = "SUCCEEDED"
+    FAILED = "FAILED"
+    CANCELLED = "CANCELLED"
+
+
+class GeometryStatus(StrEnum):
+    NOT_EVALUATED = "NOT_EVALUATED"
+    VALID = "VALID"
+    INVALID = "INVALID"
+    FAILED = "FAILED"
+
+
+class ScaleSource(StrEnum):
+    USER_CONFIG = "USER_CONFIG"
+    CALIBRATION = "CALIBRATION"
+    DEFAULT = "DEFAULT"
+    UNKNOWN = "UNKNOWN"
+
+
+class ReviewStatus(StrEnum):
+    UNREVIEWED = "UNREVIEWED"
+    CONFIRMED = "CONFIRMED"
+    FALSE_POSITIVE = "FALSE_POSITIVE"
+    UNCERTAIN = "UNCERTAIN"
+
+
+class SizeGrade(StrEnum):
+    SMALL = "SMALL"
+    MEDIUM = "MEDIUM"
+    LARGE = "LARGE"
+    UNKNOWN = "UNKNOWN"
+
+
+class SeverityGrade(StrEnum):
+    UNKNOWN = "UNKNOWN"
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+
+
+class IntermediateLevel(StrEnum):
+    NONE = "NONE"
+    STANDARD = "STANDARD"
+    DEBUG = "DEBUG"
+
+
+class CandidateDisposition(StrEnum):
+    PENDING = "PENDING"
+    RETAINED = "RETAINED"
+    FILTERED = "FILTERED"
+    MERGED = "MERGED"
+    REVIEW = "REVIEW"
+
+
+class FilterReason(StrEnum):
+    OUTSIDE_WORK_REGION = "OUTSIDE_WORK_REGION"
+    BACKGROUND_NOISE = "BACKGROUND_NOISE"
+    LOW_EVIDENCE = "LOW_EVIDENCE"
+    USER_REJECTED = "USER_REJECTED"
+    SAFETY_GATE_REJECTED = "SAFETY_GATE_REJECTED"
+    OTHER = "OTHER"

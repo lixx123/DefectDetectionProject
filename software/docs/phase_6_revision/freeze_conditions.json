@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "condition": "ORIGINAL高倍率真实RAW",
+    "status": "PASS",
+    "evidence": "test_detail_real_pixels_and_dn_in_both_modes[原图]"
+  },
+  {
+    "id": 2,
+    "condition": "FINAL高倍率真实RAW",
+    "status": "PASS",
+    "evidence": "test_detail_real_pixels_and_dn_in_both_modes[最终检测图] + test_frozen_real_raw_final_detail_only"
+  },
+  {
+    "id": 3,
+    "condition": "FINAL mask与detail共存",
+    "status": "PASS",
+    "evidence": "test_detail_real_pixels_and_dn_in_both_modes + screenshot03"
+  },
+  {
+    "id": 4,
+    "condition": "mask开关",
+    "status": "PASS",
+    "evidence": "test_mask_toggle_keeps_final_raw_detail"
+  },
+  {
+    "id": 5,
+    "condition": "历史无RAW行为",
+    "status": "PASS",
+    "evidence": "test_final_without_raw_is_still_displayable + old real history tests"
+  },
+  {
+    "id": 6,
+    "condition": "display/measurement bbox分离",
+    "status": "PASS",
+    "evidence": "test_overlay_interaction_leaves_full_measurements_unchanged"
+  },
+  {
+    "id": 7,
+    "condition": "1.5×",
+    "status": "PASS",
+    "evidence": "test_display_scale_one_point_five"
+  },
+  {
+    "id": 8,
+    "condition": "极小框最小6px",
+    "status": "PASS",
+    "evidence": "test_tiny_display_six_pixels_detail_retains_measurement[1,2]"
+  },
+  {
+    "id": 9,
+    "condition": "显示框不越界",
+    "status": "PASS",
+    "evidence": "test_display_clamped_to_image: four corners"
+  },
+  {
+    "id": 10,
+    "condition": "表格/详情测量不变",
+    "status": "PASS",
+    "evidence": "test_overlay_interaction_leaves_full_measurements_unchanged + center test"
+  },
+  {
+    "id": 11,
+    "condition": "窗口/应用正式名称",
+    "status": "PASS",
+    "evidence": "test_formal_window_and_application_names"
+  },
+  {
+    "id": 12,
+    "condition": "旧349项",
+    "status": "PASS",
+    "evidence": "all_tests.xml + old tests Git diff empty"
+  },
+  {
+    "id": 13,
+    "condition": "新增18项",
+    "status": "PASS",
+    "evidence": "test_phase6_revision.py: 18 cases"
+  },
+  {
+    "id": 14,
+    "condition": "FAST",
+    "status": "PASS",
+    "evidence": "gates/fast/fast_profile_report.json"
+  },
+  {
+    "id": 15,
+    "condition": "GOLDEN",
+    "status": "PASS",
+    "evidence": "gates/golden/golden_profile_report.json"
+  },
+  {
+    "id": 16,
+    "condition": "RELEASE",
+    "status": "PASS",
+    "evidence": "gates/release/release_gate_report.json"
+  },
+  {
+    "id": 17,
+    "condition": "schema1.0",
+    "status": "PASS",
+    "evidence": "release schema_status PASS + domain zero diff"
+  },
+  {
+    "id": 18,
+    "condition": "AUTO不变",
+    "status": "PASS",
+    "evidence": "release AUTO_policy PASS + frozen core/config zero diff"
+  },
+  {
+    "id": 19,
+    "condition": "原算法零变化",
+    "status": "PASS",
+    "evidence": "algorithm_protection: 765 checked, changed []"
+  },
+  {
+    "id": 20,
+    "condition": "algorithm_executions=0",
+    "status": "PASS",
+    "evidence": "release + display_observation; Detector/Popen forbidden in display acceptance"
+  },
+  {
+    "id": 21,
+    "condition": "Phase7未开始",
+    "status": "PASS",
+    "evidence": "scope review: three UI files, new tests and docs only"
+  }
+]

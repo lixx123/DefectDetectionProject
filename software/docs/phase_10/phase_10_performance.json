@@ -1,0 +1,20 @@
+{
+  "record_count": 1000,
+  "status": "PASS",
+  "load_ms": 188.62770003033802,
+  "latest_projection_ms": 0.5992999649606645,
+  "summary_ms": 4.02849999954924,
+  "append_revision_ms": 425.1225999905728,
+  "phase9_50000": {
+    "candidate_count": 50000,
+    "decision_count": 50001,
+    "task_count": 50001,
+    "evaluate_ms": 1751.0167000000365,
+    "truncation": false,
+    "domain_mutation": false,
+    "image_reads": 0,
+    "ui_evaluate_query_ms": 4107.460599974729,
+    "worker_heartbeat_count": 14,
+    "per_candidate_widgets": 0
+  }
+}

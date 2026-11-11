@@ -1,0 +1,17 @@
+config_name: debug
+config_version: "0.2.0"
+status: MODEL_ONLY_NOT_CONNECTED_TO_ENGINE
+pipeline_mode: roi-j4
+advanced_debug: true
+auto_policy:
+  primary: roi-bh
+  fallback: full
+calibration:
+  spatial_scale_um_per_px: 3.2
+  scale_source: DEFAULT
+  valid: true
+  reference_plane: USER_DECLARED
+  metrologically_calibrated: false
+intermediate_level: DEBUG
+algorithm_parameters: {}
+algorithm_parameter_source: UNCHANGED_REFERENCE_ENGINE

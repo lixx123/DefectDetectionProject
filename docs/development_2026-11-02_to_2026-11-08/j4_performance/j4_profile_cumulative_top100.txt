@@ -1,0 +1,108 @@
+         4107890 function calls (4033953 primitive calls) in 64.555 seconds
+
+   Ordered by: cumulative time
+   List reduced from 1078 to 100 due to restriction <100>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.017    0.017   64.559   64.559 D:\疵病检测\DefectDetectionProject\scripts\run_case03j4_fullscan.py:309(run)
+58098/11158    0.492    0.000   57.475    0.005 D:\疵病检测\DefectDetectionProject\scripts\j4_profile_tools\profiler.py:12(call)
+      720    0.136    0.000   57.388    0.080 D:\疵病检测\DefectDetectionProject\scripts\j4_profile_tools\profiler.py:42(tile)
+      720    0.070    0.000   57.251    0.080 D:\疵病检测\DefectDetectionProject\scripts\run_case03j4_fullscan.py:137(run_tile)
+      720    0.389    0.001   49.443    0.069 D:\疵病检测\DefectDetectionProject\scripts\run_case03t_threeway_comparison.py:116(process_one)
+      720    1.070    0.001   44.291    0.062 D:\疵病检测\DefectDetectionProject\src\detection\case03t_hseeded_variable.py:169(detect_window_H_seeded)
+     1440    0.305    0.000   37.451    0.026 D:\疵病检测\DefectDetectionProject\src\detection\local_boundary_refinement.py:58(compute_local_residual)
+     6480   26.398    0.004   26.398    0.004 {GaussianBlur}
+      720   13.015    0.018   13.015    0.018 {morphologyEx}
+        1    0.014    0.014    6.566    6.566 D:\疵病检测\DefectDetectionProject\scripts\run_case03j4_fullscan.py:255(finalize)
+     2412    5.882    0.002    5.889    0.002 {built-in method _io.open}
+     1474    0.002    0.000    4.585    0.003 D:\Program Files\Python314\Lib\pathlib\__init__.py:763(open)
+      721    0.005    0.000    4.478    0.006 D:\Program Files\Python314\Lib\pathlib\__init__.py:780(read_text)
+      720    0.006    0.000    3.634    0.005 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_npyio_impl.py:681(savez_compressed)
+      720    0.043    0.000    3.627    0.005 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_npyio_impl.py:756(_savez)
+     4320    0.062    0.000    2.524    0.001 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_format_impl.py:702(write_array)
+     8640    0.039    0.000    2.265    0.000 D:\Program Files\Python314\Lib\zipfile\__init__.py:1326(write)
+    10119    0.007    0.000    2.180    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2031(nonzero)
+    10777    0.011    0.000    2.179    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:48(_wrapfunc)
+    10119    2.160    0.000    2.160    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+     8640    2.113    0.000    2.113    0.000 {method 'compress' of 'zlib.Compress' objects}
+     3868    1.481    0.000    1.481    0.000 {connectedComponentsWithStats}
+      106    0.001    0.000    1.349    0.013 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\parsers\readers.py:349(read_csv)
+      106    0.002    0.000    1.346    0.013 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\parsers\readers.py:258(_read)
+    98769    1.293    0.000    1.293    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+     2990    0.023    0.000    1.220    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03e2_multicandidate.py:88(stats_mask)
+    11126    0.045    0.000    1.174    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3828(_ureduce)
+      214    0.005    0.000    1.126    0.005 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\common.py:701(get_handle)
+      106    0.001    0.000    1.113    0.010 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\parsers\readers.py:1598(__init__)
+     2900    0.024    0.000    1.108    0.000 D:\疵病检测\DefectDetectionProject\src\detection\local_boundary_refinement.py:42(max_hull_distance)
+      106    0.003    0.000    1.108    0.010 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\parsers\readers.py:1874(_make_engine)
+      720    0.109    0.000    1.074    0.001 D:\疵病检测\DefectDetectionProject\src\detection\case03j_fragment_association.py:124(associate_fragments)
+     1440    0.093    0.000    1.048    0.001 D:\疵病检测\DefectDetectionProject\src\detection\case03e2_multicandidate.py:98(_robust_thresholds)
+      720    0.126    0.000    1.009    0.001 D:\疵病检测\DefectDetectionProject\src\detection\case03j_continuous_contour.py:227(reconstruct_continuous_visual)
+    23314    0.977    0.000    0.977    0.000 {method 'astype' of 'numpy.ndarray' objects}
+     9221    0.013    0.000    0.920    0.000 {method 'sum' of 'numpy.ndarray' objects}
+     9221    0.006    0.000    0.908    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\_methods.py:47(_sum)
+      720    0.027    0.000    0.785    0.001 D:\疵病检测\DefectDetectionProject\src\detection\case03j_continuous_contour.py:65(extend_context_links)
+     9599    0.015    0.000    0.775    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:3915(median)
+     9599    0.094    0.000    0.721    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:4004(_median)
+      720    0.273    0.000    0.714    0.001 D:\疵病检测\DefectDetectionProject\src\detection\case03t_adaptive_hysteresis.py:119(hysteresis_window)
+     5799    0.108    0.000    0.601    0.000 {method '__exit__' of '_io._IOBase' objects}
+     2347    0.536    0.000    0.536    0.000 {dilate}
+     2900    0.039    0.000    0.515    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03t_hseeded_variable.py:73(_refinement_by_H_seed)
+      720    0.035    0.000    0.504    0.001 D:\疵病检测\DefectDetectionProject\src\detection\case03g_joint_gate.py:21(decide_gate)
+      751    0.009    0.000    0.498    0.001 D:\疵病检测\DefectDetectionProject\scripts\run_case03j4_fullscan.py:115(json_save)
+     4320    0.042    0.000    0.493    0.000 D:\Program Files\Python314\Lib\zipfile\__init__.py:1345(close)
+     1527    0.025    0.000    0.475    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:4065(percentile)
+      720    0.413    0.001    0.432    0.001 D:\疵病检测\DefectDetectionProject\src\detection\two_level_roi.py:18(require_computed_response)
+     1527    0.008    0.000    0.422    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:4513(_quantile_unchecked)
+    11126    0.407    0.000    0.407    0.000 {method 'partition' of 'numpy.ndarray' objects}
+      214    0.003    0.000    0.404    0.002 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\frame.py:702(__init__)
+      106    0.001    0.000    0.404    0.004 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\frame.py:2125(to_dict)
+      106    0.012    0.000    0.402    0.004 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\methods\to_dict.py:97(to_dict)
+     1527    0.006    0.000    0.400    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:4652(_quantile_ureduce_func)
+     1527    0.062    0.000    0.380    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_function_base_impl.py:4727(_quantile)
+      720    0.140    0.000    0.344    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03g_joint_gate.py:70(build_joint_maps)
+      720    0.064    0.000    0.343    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03i_size_grade.py:66(extract_regions)
+      106    0.002    0.000    0.337    0.003 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\frame.py:1591(itertuples)
+     9599    0.011    0.000    0.331    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:732(partition)
+     3924    0.011    0.000    0.330    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\indexing.py:1192(__getitem__)
+    14400    0.329    0.000    0.329    0.000 {method 'seek' of '_io.BufferedRandom' objects}
+      720    0.025    0.000    0.322    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03h_background_texture.py:31(extend_gate)
+     4720    0.003    0.000    0.322    0.000 {method 'extend' of 'list' objects}
+     3922    0.004    0.000    0.318    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\frame.py:1660(<genexpr>)
+      720    0.096    0.000    0.307    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03t_hseeded_variable.py:49(_H_component_catalog)
+     4502    0.015    0.000    0.291    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_arraysetops_impl.py:958(isin)
+     8904    0.130    0.000    0.290    0.000 {built-in method builtins.sum}
+     1450    0.080    0.000    0.287    0.000 D:\疵病检测\DefectDetectionProject\src\detection\candidate_local_noise.py:23(local_raw_statistics)
+      751    0.005    0.000    0.264    0.000 D:\Program Files\Python314\Lib\pathlib\__init__.py:799(write_text)
+     3816    0.008    0.000    0.259    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\indexing.py:1710(_getitem_tuple)
+     4502    0.164    0.000    0.255    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_arraysetops_impl.py:806(_isin)
+    18592    0.118    0.000    0.252    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\_methods.py:115(_mean)
+        1    0.001    0.001    0.251    0.251 D:\疵病检测\DefectDetectionProject\scripts\run_case03j4_fullscan.py:229(render_full_preview)
+      720    0.006    0.000    0.242    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_npyio_impl.py:100(zipfile_factory)
+      720    0.010    0.000    0.236    0.000 D:\Program Files\Python314\Lib\zipfile\__init__.py:1423(__init__)
+      214    0.002    0.000    0.231    0.001 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\internals\construction.py:96(arrays_to_mgr)
+      106    0.002    0.000    0.227    0.002 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\parsers\readers.py:1934(read)
+      108    0.002    0.000    0.226    0.002 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\generic.py:3783(to_csv)
+    41322    0.220    0.000    0.220    0.000 {built-in method numpy.asarray}
+      108    0.001    0.000    0.218    0.002 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\formats\format.py:976(to_csv)
+      108    0.001    0.000    0.198    0.002 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\io\formats\csvs.py:246(save)
+      751    0.185    0.000    0.187    0.000 {built-in method nt.replace}
+     3816    0.021    0.000    0.187    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\indexing.py:1058(_getitem_lowerdim)
+     4320    0.016    0.000    0.181    0.000 D:\Program Files\Python314\Lib\zipfile\__init__.py:1693(open)
+     7508    0.169    0.000    0.180    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\numeric.py:97(zeros_like)
+      720    0.170    0.000    0.178    0.000 D:\疵病检测\DefectDetectionProject\src\visualization\case03j_object_boxes.py:27(measure_visual_bbox)
+438650/437144    0.103    0.000    0.170    0.000 {built-in method builtins.isinstance}
+      826    0.043    0.000    0.168    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03j_fragment_association.py:51(_component_geometry)
+        1    0.000    0.000    0.160    0.160 D:\疵病检测\DefectDetectionProject\scripts\run_case03g_joint_noise_refinement.py:35(save_png)
+     3924    0.009    0.000    0.158    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\indexing.py:1740(_getitem_axis)
+     9600    0.021    0.000    0.156    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:3737(mean)
+      106    0.004    0.000    0.154    0.001 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\internals\construction.py:375(dict_to_mgr)
+    14201    0.028    0.000    0.151    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:2474(any)
+     2170    0.150    0.000    0.150    0.000 D:\疵病检测\DefectDetectionProject\src\detection\case03t_hseeded_variable.py:397(<genexpr>)
+     8219    0.046    0.000    0.144    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\construction.py:531(sanitize_array)
+    18723    0.060    0.000    0.144    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\_core\fromnumeric.py:86(_wrapreduction_any_all)
+     4320    0.021    0.000    0.143    0.000 D:\Program Files\Python314\Lib\zipfile\__init__.py:1804(_open_to_write)
+     4320    0.036    0.000    0.136    0.000 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\numpy\lib\_format_impl.py:445(_write_array_header)
+      214    0.012    0.000    0.136    0.001 D:\疵病检测\DefectInspectionSoftware\.venv\Lib\site-packages\pandas\core\internals\construction.py:553(_homogenize)
+
+

@@ -1,0 +1,11 @@
+{
+  "status": "PRECOMMIT_ONLY",
+  "human_acceptance": "PENDING",
+  "algorithm_executions": 0,
+  "next_phase_started": false,
+  "real_human_records": 0,
+  "real_pending": 132,
+  "final_evidence": "output/phase10_final/phase_10_verification.json",
+  "final_commit": null,
+  "tested_head": null
+}

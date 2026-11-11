@@ -1,0 +1,9 @@
+6a2f2219e9555d2eef1ba630b5031ca21311a988
+Checkpoint: 116b113
+Phase: 3
+Schema: 1.0 (unchanged)
+Tests: 145 passed (99 frozen Phase 2 included)
+Fresh runs: FULL/ROI_BH/AUTO x 2 frames
+Protected files unchanged: 1317
+Working tree: clean
+Phase 4: not started

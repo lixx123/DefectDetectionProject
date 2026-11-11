@@ -1,0 +1,26 @@
+[
+  {
+    "name": "dependency_check",
+    "command": [
+      "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "seconds": 0.39
+  },
+  {
+    "name": "gui_smoke",
+    "command": [
+      "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+      "-m",
+      "app.main",
+      "--smoke-test",
+      "--screenshot",
+      "D:\\疵病检测\\DefectInspectionSoftware\\docs\\main_window_phase1.png"
+    ],
+    "exit_code": 0,
+    "seconds": 1.89
+  }
+]

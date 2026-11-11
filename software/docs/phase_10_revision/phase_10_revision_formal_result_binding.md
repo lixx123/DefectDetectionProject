@@ -1,0 +1,11 @@
+# 正式结果绑定
+
+ResultViewModel默认无正式身份。FormalResultAuthority接收应用明确配置的正式repository及排除的staging根，不使用目录名猜测。load(verify=full)返回原结果和仅运行时的FormalResultBinding，包含result ID、source digest、正式package_dir、result/manifest文件摘要。
+
+Controller历史加载和正式保存重载是应用签发绑定的两个入口。Controller.save先保存，再从正式库完整重载，对比result_id和source_payload字典，创建新的ResultViewModel(package_dir=SaveRecord.result_dir,formal_binding=...)。不在旧VM上仅改一个路径。已有RAW仅在重新核对正式SHA256后提供给新VM。
+
+ReviewContext的access字段为仅运行时、不可序列化能力引用；HumanReviewRecord/session磁盘字段不变。Repository.create在任何目录写入前检查正式身份；submit在进入和持有事务锁后再次检查，缺少RAW同样拒绝。绑定核验source digest、内存结果摘要、磁盘result/manifest摘要，既有make_guard再核对正式内容及实际策略。
+
+资格分离：正式、完整性和固定policy通过即可创建PENDING会话/只读恢复；只有同result/source digest的verified RAW才能提交。临时结果即使已经打开RAW仍不能创建会话。归档的异常lineage低层协议单测仍保留，但不能以异常临时对象绕过新增正式身份门禁进入生产审核。
+
+本地Python对象不是用户认证机制；本绑定防止应用调用链误把staging当正式结果，不声称可抵御在同进程任意执行Python代码的攻击者。

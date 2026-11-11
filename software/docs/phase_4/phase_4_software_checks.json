@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "all_software_tests",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--tb=short",
+        "--basetemp",
+        "D:\\疵病检测\\DefectInspectionSoftware\\output\\p4_final_tests"
+      ],
+      "exit_code": 0,
+      "seconds": 85.013
+    },
+    {
+      "name": "phase1_smoke",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "app.main",
+        "--smoke-test",
+        "--screenshot",
+        "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase_4\\phase1_smoke.png"
+      ],
+      "exit_code": 0,
+      "seconds": 2.009
+    },
+    {
+      "name": "pip_check",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.593
+    },
+    {
+      "name": "independent_module_imports",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from infrastructure.storage.package import sha256; from infrastructure.repositories.verifier import ResultPackageVerifier; from infrastructure.repositories import JsonResultRepository; print(\"PASS\")"
+      ],
+      "exit_code": 0,
+      "seconds": 0.144
+    }
+  ],
+  "protected_files_verified": 1317,
+  "algorithm_files_changed": [],
+  "domain_schema_prior_tests_and_algorithm_adapter_diff": "",
+  "detector_change": "actual config snapshot only",
+  "prior_tests_preserved": 190,
+  "phase5_started": false
+}

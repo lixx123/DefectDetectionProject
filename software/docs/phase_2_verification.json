@@ -1,0 +1,58 @@
+{
+  "runs": [
+    {
+      "name": "unit_tests",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "tests/test_phase2_models.py",
+        "-q",
+        "--basetemp",
+        "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase2_release_test_tmp"
+      ],
+      "exit_code": 0,
+      "seconds": 0.906
+    },
+    {
+      "name": "pure_python_example",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-S",
+        "-m",
+        "examples.phase2_roundtrip",
+        "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase2_protocol_examples"
+      ],
+      "exit_code": 0,
+      "seconds": 0.111
+    },
+    {
+      "name": "phase1_smoke",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "app.main",
+        "--smoke-test",
+        "--screenshot",
+        "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase2_phase1_smoke.png"
+      ],
+      "exit_code": 0,
+      "seconds": 1.764
+    },
+    {
+      "name": "dependency_check",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.641
+    }
+  ],
+  "protected_files_checked": 765,
+  "changed_protected_files": [],
+  "reference_algorithm_executed": false,
+  "phase3_started": false
+}

@@ -1,0 +1,11 @@
+# ReviewTask 语义与去重
+
+ReviewObjectKey包含kind及Defect ID，或完整Candidate(source,id)。不得仅以候选id或bbox当身份。决策不可变，evidence只读，值保留None，priority与SizeGrade独立。
+
+- DEFECT_REVIEW：Defect为主任务，related_candidates来自已存final_defect_id反向关系。有效关联Candidate触发人工时提升对应Defect，并把全部原因合入Defect任务，不重复创建Candidate任务。
+- ORPHAN_CANDIDATE_REVIEW：仅原始final_defect_id is None且Candidate decision为MANUAL_REVIEW时创建普通孤立任务。
+- CANDIDATE_CONSISTENCY：按用户明确选择，非空final_defect_id指向不存在的最终对象时创建独立一致性任务，HIGH，至少INVALID_FINAL_LINK/LINEAGE_INCONSISTENT；保留原始无效ID，不改成None、不隐藏、不冒充普通孤立任务。此安全规则不可由策略关闭。
+
+合法最终关联不能仅凭空间邻近或同名猜测；普通Candidate任务不会被bbox重合自动吞并到Defect。任务以类型前缀+结构化对象键标识，只有同一身份合并，决不Top-N截断。
+UI详情与QA样本均显示task_kind、原始finalID、优先级、全部原因、中文解释、evidence、related_candidates。任务计数与MANUAL_REVIEW对象计数可以因有效关联聚合不同，分别展示。
+

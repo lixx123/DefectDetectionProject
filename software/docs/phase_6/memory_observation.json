@@ -1,0 +1,93 @@
+{
+  "observation_method": "OFFSCREEN_SCRIPTED_QT_INTERACTION_WITH_VISUAL_SCREENSHOT_REVIEW",
+  "human_acceptance": "PENDING",
+  "algorithm_executions": 0,
+  "before_load": {
+    "working_set_mib": 71.36,
+    "private_commit_mib": 525.47
+  },
+  "samples": [
+    {
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "displayed_defects": 36,
+      "bands": 4,
+      "load_seconds": 11.458,
+      "memory": {
+        "working_set_mib": 215.27,
+        "private_commit_mib": 810.39
+      }
+    },
+    {
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "displayed_defects": 35,
+      "bands": 4,
+      "load_seconds": 3.475,
+      "memory": {
+        "working_set_mib": 193.16,
+        "private_commit_mib": 663.78
+      }
+    }
+  ],
+  "cycles": [
+    {
+      "cycle": 1,
+      "view_seconds": [
+        4.941,
+        2.082,
+        0.799
+      ],
+      "working_set_mib": 264.23,
+      "private_commit_mib": 811.37
+    },
+    {
+      "cycle": 2,
+      "view_seconds": [
+        4.82,
+        2.11,
+        0.712
+      ],
+      "working_set_mib": 254.09,
+      "private_commit_mib": 811.37
+    },
+    {
+      "cycle": 3,
+      "view_seconds": [
+        4.787,
+        2.139,
+        0.707
+      ],
+      "working_set_mib": 254.37,
+      "private_commit_mib": 811.47
+    },
+    {
+      "cycle": 4,
+      "view_seconds": [
+        4.648,
+        2.01,
+        0.698
+      ],
+      "working_set_mib": 254.37,
+      "private_commit_mib": 811.47
+    },
+    {
+      "cycle": 5,
+      "view_seconds": [
+        4.654,
+        2.041,
+        0.701
+      ],
+      "working_set_mib": 254.39,
+      "private_commit_mib": 811.47
+    }
+  ],
+  "after_26_1_load": {
+    "working_set_mib": 215.64,
+    "private_commit_mib": 810.39
+  },
+  "selected_defects_per_cycle": 10,
+  "after_clear": {
+    "working_set_mib": 85.94,
+    "private_commit_mib": 556.33
+  },
+  "status": "PASS"
+}

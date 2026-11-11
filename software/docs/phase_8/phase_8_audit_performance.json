@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "candidate_count": 50000,
+  "model_build_ms": 749.8445000092033,
+  "filter_ms": 77.95589999295771,
+  "search_ms": 57.97539997729473,
+  "sort_ms": 169.13819999899715,
+  "page_switch_ms": 0.006999995093792677,
+  "selection_ms": 0.005999987479299307,
+  "page_size": 500,
+  "peak_memory_delta_bytes": 24136893,
+  "per_candidate_widget_count": 0,
+  "bulk_candidate_image_reads": 0,
+  "bulk_candidate_mask_decodes": 0,
+  "filtered_count": 12345,
+  "filtered_pages": 25,
+  "search_matches": 200,
+  "ui_worker_heartbeat_count": 8,
+  "widget_count_delta": 0
+}

@@ -1,0 +1,13 @@
+**/__pycache__/
+**/.venv/
+**/.pytest*/
+**/outputs/
+**/output/
+**/logs/
+*.raw
+*.RAW
+*.npy
+*.npz
+*.exe
+*.zip
+.env*

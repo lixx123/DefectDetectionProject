@@ -1,0 +1,24 @@
+"""Verification-only audit policy inherited by pytest subprocesses."""
+import os
+if os.environ.get('DEFECT_PORTABILITY_GUARD')=='1':
+    import sys,json,atexit
+    from pathlib import Path
+    root=Path(os.environ['DEFECT_PORTABILITY_ALLOWED_RAW_ROOT']).resolve()
+    destination=Path(os.environ['DEFECT_PORTABILITY_GUARD_REPORTS'])
+    counts={'allowed_fixture_raw_opens':0,'blocked_external_raw_opens':0}
+    def audit(event,args):
+        if event!='open' or not args or not isinstance(args[0],(str,bytes,os.PathLike)):
+            return
+        path=Path(os.fsdecode(args[0]))
+        if path.suffix.casefold()!='.raw': return
+        if not path.resolve().is_relative_to(root):
+            counts['blocked_external_raw_opens']+=1
+            raise PermissionError('Portability proof forbids external RAW access')
+        counts['allowed_fixture_raw_opens']+=1
+    sys.addaudithook(audit)
+    def finish():
+        destination.mkdir(parents=True,exist_ok=True)
+        value=dict(policy='DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT',active=True,
+                   process_id=os.getpid(),argv=sys.argv,**counts)
+        (destination/f'process_{os.getpid()}.json').write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8')
+    atexit.register(finish)

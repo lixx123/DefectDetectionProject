@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "freeze_status": "PHASE_6_FINAL_ENGINEERING_FROZEN",
+  "human_acceptance": "PENDING",
+  "generated_at": "2026-10-21T07:37:56.218140+00:00",
+  "baseline_commit": "4987f1bd54d781039121115b9767fe8ca4fac720",
+  "tested_head": "4987f1bd54d781039121115b9767fe8ca4fac720",
+  "tested_source_fingerprint": "1c444420df5a1c11ef345e3a366271bbbc9a3100d912b6ff752a5bdfdf8adce7",
+  "golden_no_longer_requires_real_raw": true,
+  "release_no_longer_requires_real_raw": true,
+  "fast_no_longer_requires_real_raw": true,
+  "hardcoded_machine_paths_in_production_code": 0,
+  "hardcoded_machine_paths_in_permanent_tests": 0,
+  "real_raw_display_validation_retained": true,
+  "real_raw_path_source": "CLI_ARGUMENT",
+  "real_raw_sha256_checked": true,
+  "sha256_streaming": true,
+  "real_display_status": "PASS",
+  "ordinary_gate_raw_independence": {
+    "status": "PASS",
+    "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+    "real_raw_path_provided": false,
+    "external_raw_access_attempts": 0,
+    "fixture_raw_opens": 1724,
+    "audited_processes": 12,
+    "audited_pytest_runs": 5,
+    "coverage": [
+      "all_tests",
+      "FAST",
+      "GOLDEN",
+      "RELEASE FAST",
+      "RELEASE GOLDEN"
+    ],
+    "reports": "raw_access_guard/",
+    "guard_negative_control": "PASS; denied nonexistent external RAW before filesystem read"
+  },
+  "all_software_tests": {
+    "tests": 388,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "fast_status": "PASS",
+  "fast_counts": {
+    "tests": 359,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "golden_status": "PASS",
+  "golden_counts": {
+    "tests": 27,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "release_status": "PASS",
+  "algorithm_executions": 0,
+  "real_engine_required": false,
+  "real_engine_executed": false,
+  "schema_version": "1.0",
+  "AUTO_status": "PASS",
+  "repository_status": "PASS",
+  "algorithm_protection": {
+    "status": "PASS",
+    "protected_files_checked": 765,
+    "changed_files": []
+  },
+  "algorithm_files_changed": [],
+  "GUI_changed": false,
+  "GUI_sha256": {
+    "ui/image_viewer.py": "d5e5e385fd132ad3a3db09bfcedfd9f5509855f1d6f16704c693942eca82580f",
+    "ui/main_window.py": "0dce327689dc4e32724364c69b0beabe9f61b65bf478c697aa38acb3d6e01c62",
+    "ui/models/result_view_model.py": "7678be2d7c0084d834ee2ebc42072128f0fd924a08012ec8cc7614f585302333"
+  },
+  "golden_baseline_changed": false,
+  "physical_baselines": {
+    "26_1": {
+      "defects": 36,
+      "area_px": 20356
+    },
+    "26_2": {
+      "defects": 35,
+      "area_px": 17709
+    }
+  },
+  "test_coverage_change": "One external RAW Golden replaced with two gradient synthetic Golden cases; 20 portability checks added",
+  "phase7_started": false,
+  "relocation_scope": "No external real RAW required. Frozen Golden packages and algorithm protection inputs still required; no whole-machine relocation claimed."
+}

@@ -1,0 +1,13 @@
+{
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "active": true,
+  "process_id": 22368,
+  "argv": [
+    "D:\\疵病检测\\DefectInspectionSoftware\\app\\main.py",
+    "--smoke-test",
+    "--screenshot",
+    "docs/phase_6_final_freeze/smoke.png"
+  ],
+  "allowed_fixture_raw_opens": 0,
+  "blocked_external_raw_opens": 0
+}

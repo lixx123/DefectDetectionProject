@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "raw_path_source": "CLI_ARGUMENT",
+  "sha256_streaming": true,
+  "algorithm_executions": 0,
+  "human_acceptance": "PENDING",
+  "no_disk_discovery": true,
+  "raw_unchanged": true,
+  "result_unchanged": true,
+  "expected_sha256": "30bbd09680e9bac1b918c10419528a7d42386829e7f6a8a9b690316f9ee1d339",
+  "raw_sha256": "30bbd09680e9bac1b918c10419528a7d42386829e7f6a8a9b690316f9ee1d339",
+  "sha256_match": true,
+  "selected_defect": {
+    "id": "F1_FINAL_0028",
+    "measurement_bbox": [
+      5100,
+      2940,
+      5111,
+      2945
+    ],
+    "area_px": 36.0
+  },
+  "zoom": 10.0,
+  "DN": 1693,
+  "DN_coordinate": [
+    5048,
+    2914
+  ],
+  "detail_item_count": 1,
+  "z_order": {
+    "thumbnail": -10,
+    "raw_detail": -9,
+    "mask": -8,
+    "bbox": 10,
+    "selected_bbox": 15,
+    "label": 20
+  },
+  "raw_pointer_text": "X：5105  Y：2942  DN：1631  Zoom：1000.0%"
+}

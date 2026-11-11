@@ -1,0 +1,232 @@
+{
+  "status": "EVALUATED_WITH_TARGET_NOT_MET",
+  "algorithm_executions": 0,
+  "samples": [
+    {
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "final_defect_count": 36,
+      "audit_candidate_count": 32370,
+      "audit_review_count": 32324,
+      "bucket_counts": {
+        "AUTO_ACCEPT": {
+          "DEFECT": 34,
+          "CANDIDATE": 0
+        },
+        "AUTO_REJECT": {
+          "DEFECT": 0,
+          "CANDIDATE": 4
+        },
+        "MANUAL_REVIEW": {
+          "DEFECT": 2,
+          "CANDIDATE": 81
+        },
+        "AUDIT_ONLY": {
+          "DEFECT": 0,
+          "CANDIDATE": 32285
+        }
+      },
+      "auto_accept_count": 34,
+      "auto_reject_count": 4,
+      "manual_review_object_count": 83,
+      "audit_only_count": 32285,
+      "manual_review_task_count": 83,
+      "manual_review_defect_tasks": 2,
+      "manual_review_candidate_tasks": 81,
+      "candidate_consistency_tasks": 0,
+      "manual_review_priority_counts": {
+        "HIGH": 13,
+        "MEDIUM": 70
+      },
+      "manual_review_reason_counts": {
+        "CANDIDATE_SIZE_RISK": 28,
+        "LARGE_CANDIDATE_GEOMETRY": 9,
+        "NEAR_SIZE_THRESHOLD": 2,
+        "PROMISING_DARK_EVIDENCE": 4,
+        "SPATIAL_FINAL_ASSOCIATION": 53,
+        "UNRESOLVED_FINAL_SELECTION": 81,
+        "WEAK_EVIDENCE_HIGH_RISK": 81,
+        "WORK_BOUNDARY_UNCERTAINTY": 20
+      },
+      "audit_review_to_manual_task_compression_ratio": 389.4457831325301,
+      "audit_review_to_manual_task_reduction_fraction": 0.9974322484840985,
+      "compression_definition": "audit REVIEW candidates / all manual tasks (including Defect tasks); zero tasks => ratio unavailable",
+      "preferred_max": 50,
+      "preferred_max_met": false,
+      "decision_count": 32406,
+      "unrepresented_invalid_links": [],
+      "data_limitations": 9,
+      "warnings": [
+        "TARGET_NOT_MET: 83 > preferred_max 50; 全部保留，无截断",
+        "DATA_LIMITATION: 9 merged_into values identify final defects; valid final links retained"
+      ],
+      "policy_id": "review_admission_v1",
+      "policy_version": "1.0",
+      "policy_hash": "63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327",
+      "sample_id": "26_1",
+      "protected_final_ids": [
+        "F1_FINAL_0001",
+        "F1_FINAL_0002",
+        "F1_FINAL_0003",
+        "F1_FINAL_0004",
+        "F1_FINAL_0005",
+        "F1_FINAL_0006",
+        "F1_FINAL_0007",
+        "F1_FINAL_0008",
+        "F1_FINAL_0009",
+        "F1_FINAL_0010",
+        "F1_FINAL_0011",
+        "F1_FINAL_0012",
+        "F1_FINAL_0013",
+        "F1_FINAL_0014",
+        "F1_FINAL_0015",
+        "F1_FINAL_0016",
+        "F1_FINAL_0017",
+        "F1_FINAL_0018",
+        "F1_FINAL_0019",
+        "F1_FINAL_0020",
+        "F1_FINAL_0021",
+        "F1_FINAL_0022",
+        "F1_FINAL_0023",
+        "F1_FINAL_0024",
+        "F1_FINAL_0025",
+        "F1_FINAL_0026",
+        "F1_FINAL_0027",
+        "F1_FINAL_0028",
+        "F1_FINAL_0029",
+        "F1_FINAL_0030",
+        "F1_FINAL_0031",
+        "F1_FINAL_0032",
+        "F1_FINAL_0033",
+        "F1_FINAL_0034",
+        "F1_FINAL_0035",
+        "F1_FINAL_0036"
+      ],
+      "confirmed_final_ids_preserved": [
+        "F1_FINAL_0001",
+        "F1_FINAL_0002"
+      ],
+      "high_risk_auto_reject_count": 0,
+      "specific_reason_counts": {
+        "CANDIDATE_SIZE_RISK": 28,
+        "LARGE_CANDIDATE_GEOMETRY": 9,
+        "NEAR_SIZE_THRESHOLD": 2,
+        "PROMISING_DARK_EVIDENCE": 4,
+        "SPATIAL_FINAL_ASSOCIATION": 53,
+        "WORK_BOUNDARY_UNCERTAINTY": 20
+      },
+      "largest_specific_rule": "SPATIAL_FINAL_ASSOCIATION",
+      "result_unchanged": true
+    },
+    {
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "final_defect_count": 35,
+      "audit_candidate_count": 8332,
+      "audit_review_count": 8294,
+      "bucket_counts": {
+        "AUTO_ACCEPT": {
+          "DEFECT": 35,
+          "CANDIDATE": 0
+        },
+        "AUTO_REJECT": {
+          "DEFECT": 0,
+          "CANDIDATE": 0
+        },
+        "MANUAL_REVIEW": {
+          "DEFECT": 0,
+          "CANDIDATE": 49
+        },
+        "AUDIT_ONLY": {
+          "DEFECT": 0,
+          "CANDIDATE": 8283
+        }
+      },
+      "auto_accept_count": 35,
+      "auto_reject_count": 0,
+      "manual_review_object_count": 49,
+      "audit_only_count": 8283,
+      "manual_review_task_count": 49,
+      "manual_review_defect_tasks": 0,
+      "manual_review_candidate_tasks": 49,
+      "candidate_consistency_tasks": 0,
+      "manual_review_priority_counts": {
+        "HIGH": 15,
+        "MEDIUM": 34
+      },
+      "manual_review_reason_counts": {
+        "CANDIDATE_SIZE_RISK": 27,
+        "LARGE_CANDIDATE_GEOMETRY": 12,
+        "PROMISING_DARK_EVIDENCE": 3,
+        "SPATIAL_FINAL_ASSOCIATION": 40,
+        "UNRESOLVED_FINAL_SELECTION": 49,
+        "WEAK_EVIDENCE_HIGH_RISK": 49,
+        "WORK_BOUNDARY_UNCERTAINTY": 6
+      },
+      "audit_review_to_manual_task_compression_ratio": 169.26530612244898,
+      "audit_review_to_manual_task_reduction_fraction": 0.99409211478177,
+      "compression_definition": "audit REVIEW candidates / all manual tasks (including Defect tasks); zero tasks => ratio unavailable",
+      "preferred_max": 50,
+      "preferred_max_met": true,
+      "decision_count": 8367,
+      "unrepresented_invalid_links": [],
+      "data_limitations": 5,
+      "warnings": [
+        "DATA_LIMITATION: 5 merged_into values identify final defects; valid final links retained"
+      ],
+      "policy_id": "review_admission_v1",
+      "policy_version": "1.0",
+      "policy_hash": "63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327",
+      "sample_id": "26_2",
+      "protected_final_ids": [
+        "F2_FINAL_0001",
+        "F2_FINAL_0002",
+        "F2_FINAL_0003",
+        "F2_FINAL_0004",
+        "F2_FINAL_0005",
+        "F2_FINAL_0006",
+        "F2_FINAL_0007",
+        "F2_FINAL_0008",
+        "F2_FINAL_0009",
+        "F2_FINAL_0010",
+        "F2_FINAL_0011",
+        "F2_FINAL_0012",
+        "F2_FINAL_0013",
+        "F2_FINAL_0014",
+        "F2_FINAL_0015",
+        "F2_FINAL_0016",
+        "F2_FINAL_0017",
+        "F2_FINAL_0018",
+        "F2_FINAL_0019",
+        "F2_FINAL_0020",
+        "F2_FINAL_0021",
+        "F2_FINAL_0022",
+        "F2_FINAL_0023",
+        "F2_FINAL_0024",
+        "F2_FINAL_0025",
+        "F2_FINAL_0026",
+        "F2_FINAL_0027",
+        "F2_FINAL_0028",
+        "F2_FINAL_0029",
+        "F2_FINAL_0030",
+        "F2_FINAL_0031",
+        "F2_FINAL_0032",
+        "F2_FINAL_0033",
+        "F2_FINAL_0034",
+        "F2_FINAL_0035"
+      ],
+      "confirmed_final_ids_preserved": [
+        "F2_FINAL_0001",
+        "F2_FINAL_0002"
+      ],
+      "high_risk_auto_reject_count": 0,
+      "specific_reason_counts": {
+        "CANDIDATE_SIZE_RISK": 27,
+        "LARGE_CANDIDATE_GEOMETRY": 12,
+        "PROMISING_DARK_EVIDENCE": 3,
+        "SPATIAL_FINAL_ASSOCIATION": 40,
+        "WORK_BOUNDARY_UNCERTAINTY": 6
+      },
+      "largest_specific_rule": "SPATIAL_FINAL_ASSOCIATION",
+      "result_unchanged": true
+    }
+  ]
+}

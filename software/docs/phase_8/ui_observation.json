@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "algorithm_executions": 0,
+  "raw_required": false,
+  "samples": [
+    {
+      "sample_id": "26_1",
+      "raw_loaded": false,
+      "result_unchanged": true,
+      "reverse_lineage_checked": 36
+    },
+    {
+      "sample_id": "26_2",
+      "raw_loaded": false,
+      "result_unchanged": true,
+      "reverse_lineage_checked": 35
+    }
+  ],
+  "screenshot_count": 10,
+  "human_acceptance": "PENDING"
+}

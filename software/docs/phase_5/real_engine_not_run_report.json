@@ -1,0 +1,10 @@
+{
+  "status": "NOT_RUN",
+  "real_engine_executed": false,
+  "algorithm_executions": 0,
+  "cases": [],
+  "errors": [
+    "REAL requires --raw-root; no engine launched"
+  ],
+  "simulation": false
+}

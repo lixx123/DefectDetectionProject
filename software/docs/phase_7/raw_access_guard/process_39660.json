@@ -1,0 +1,14 @@
+{
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "active": true,
+  "process_id": 39660,
+  "argv": [
+    "D:\\疵病检测\\DefectInspectionSoftware\\scripts\\run_regression_suite.py",
+    "--profile",
+    "fast",
+    "--output-dir",
+    "output/phase7_validation/fast"
+  ],
+  "allowed_fixture_raw_opens": 0,
+  "blocked_external_raw_opens": 0
+}

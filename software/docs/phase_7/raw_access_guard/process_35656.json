@@ -1,0 +1,15 @@
+{
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "active": true,
+  "process_id": 35656,
+  "argv": [
+    "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Lib\\site-packages\\pytest\\__main__.py",
+    "tests/test_phase7_ui.py",
+    "-q",
+    "--basetemp",
+    "output/.p7_ui_final",
+    "--junitxml=docs/phase_7/ui_tests.xml"
+  ],
+  "allowed_fixture_raw_opens": 6,
+  "blocked_external_raw_opens": 0
+}

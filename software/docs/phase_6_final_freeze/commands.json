@@ -1,0 +1,44 @@
+[
+  {
+    "check": "all_software_tests",
+    "status": "PASS",
+    "exit_code": 0,
+    "real_raw_path_supplied": false,
+    "external_raw_guard": true
+  },
+  {
+    "check": "fast",
+    "status": "PASS",
+    "exit_code": 0,
+    "real_raw_path_supplied": false,
+    "external_raw_guard": true
+  },
+  {
+    "check": "golden",
+    "status": "PASS",
+    "exit_code": 0,
+    "real_raw_path_supplied": false,
+    "external_raw_guard": true
+  },
+  {
+    "check": "release",
+    "status": "PASS",
+    "exit_code": 0,
+    "real_raw_path_supplied": false,
+    "external_raw_guard": true
+  },
+  {
+    "check": "smoke",
+    "status": "PASS",
+    "exit_code": 0,
+    "real_raw_path_supplied": false,
+    "external_raw_guard": true
+  },
+  {
+    "check": "pip_check",
+    "status": "PASS",
+    "exit_code": 0,
+    "real_raw_path_supplied": false,
+    "external_raw_guard": true
+  }
+]

@@ -1,0 +1,1462 @@
+{
+  "schema_version": "1.0",
+  "classes": {
+    "AlgorithmInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "software_version": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "algorithm_version": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "config_name": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "config_version": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "config_hash": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "run_timestamp": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "execution_time_seconds": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "runtime_environment": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,str]"
+      }
+    },
+    "ArtifactReference": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "path": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "sha256": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "media_type": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "coordinate_system": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      }
+    },
+    "AuditInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "candidates": {
+        "required": false,
+        "nullable": false,
+        "type": "list[CandidateAuditRecord]"
+      },
+      "events": {
+        "required": false,
+        "nullable": false,
+        "type": "list[dict]"
+      },
+      "source_candidate_count": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "lineage_complete": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      }
+    },
+    "AutoPolicy": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "primary": {
+        "required": false,
+        "nullable": false,
+        "type": "PipelineMode"
+      },
+      "fallback": {
+        "required": false,
+        "nullable": false,
+        "type": "PipelineMode"
+      }
+    },
+    "BandInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "band_id": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "name": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "bbox": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[BoundingBox,None]"
+      },
+      "contour_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "mask_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "mean_gray_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "min_gray_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "max_gray_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "pixel_count": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "valid": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      },
+      "review_status": {
+        "required": false,
+        "nullable": false,
+        "type": "ReviewStatus"
+      }
+    },
+    "BoundingBox": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "x0": {
+        "required": true,
+        "nullable": false,
+        "type": "int"
+      },
+      "y0": {
+        "required": true,
+        "nullable": false,
+        "type": "int"
+      },
+      "x1": {
+        "required": true,
+        "nullable": false,
+        "type": "int"
+      },
+      "y1": {
+        "required": true,
+        "nullable": false,
+        "type": "int"
+      }
+    },
+    "CalibrationInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "spatial_scale_um_per_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "scale_source": {
+        "required": false,
+        "nullable": false,
+        "type": "ScaleSource"
+      },
+      "calibration_id": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "calibration_time": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "valid": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      },
+      "reference_plane": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "metrologically_calibrated": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      }
+    },
+    "CandidateAuditRecord": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "candidate_id": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "source": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "initial_geometry": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[DefectGeometry,None]"
+      },
+      "current_stage": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "disposition": {
+        "required": false,
+        "nullable": false,
+        "type": "CandidateDisposition"
+      },
+      "filter_reason": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[FilterReason,None]"
+      },
+      "filter_message": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "merged_into": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "final_defect_id": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "Classification": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "defect_type": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "defect_subtype": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "size_grade": {
+        "required": false,
+        "nullable": false,
+        "type": "SizeGrade"
+      },
+      "severity_grade": {
+        "required": false,
+        "nullable": false,
+        "type": "SeverityGrade"
+      },
+      "confidence": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "classification_method": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "Defect": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "identity": {
+        "required": true,
+        "nullable": false,
+        "type": "DefectIdentity"
+      },
+      "geometry": {
+        "required": false,
+        "nullable": false,
+        "type": "DefectGeometry"
+      },
+      "morphology": {
+        "required": false,
+        "nullable": false,
+        "type": "Morphology"
+      },
+      "photometry": {
+        "required": false,
+        "nullable": false,
+        "type": "Photometry"
+      },
+      "classification": {
+        "required": false,
+        "nullable": false,
+        "type": "Classification"
+      },
+      "location": {
+        "required": false,
+        "nullable": false,
+        "type": "DefectLocation"
+      },
+      "detection": {
+        "required": false,
+        "nullable": false,
+        "type": "DetectionInfo"
+      },
+      "review": {
+        "required": false,
+        "nullable": false,
+        "type": "ReviewInfo"
+      }
+    },
+    "DefectGeometry": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "bbox": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[BoundingBox,None]"
+      },
+      "center": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[Point,None]"
+      },
+      "area_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "area_um2": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "length_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "length_um": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "width_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "width_um": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "equivalent_diameter_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "equivalent_diameter_um": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "contour_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "mask_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "area_method": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "length_method": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "DefectIdentity": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "defect_id": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      }
+    },
+    "DefectLocation": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "image_x": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "image_y": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "roi_id": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "band_id": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "physical_x": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "physical_y": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "physical_coordinate_unit": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "sensor_x": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "sensor_y": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      }
+    },
+    "DetectionInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "source_channels": {
+        "required": false,
+        "nullable": false,
+        "type": "list[str]"
+      },
+      "candidate_ids": {
+        "required": false,
+        "nullable": false,
+        "type": "list[str]"
+      },
+      "detection_stage": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "merge_history": {
+        "required": false,
+        "nullable": false,
+        "type": "list[dict]"
+      },
+      "algorithm_version": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "DetectionPlanInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "roi_geometry_status": {
+        "required": false,
+        "nullable": false,
+        "type": "GeometryStatus"
+      },
+      "band_geometry_status": {
+        "required": false,
+        "nullable": false,
+        "type": "GeometryStatus"
+      },
+      "planned_tiles": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "full_tiles": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "skipped_tiles": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "legal_source_pixels": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      }
+    },
+    "ExecutionAttempt": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "mode": {
+        "required": true,
+        "nullable": false,
+        "type": "PipelineMode"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "ExecutionStatus"
+      },
+      "plan": {
+        "required": false,
+        "nullable": false,
+        "type": "DetectionPlanInfo"
+      },
+      "qa_status": {
+        "required": false,
+        "nullable": false,
+        "type": "QAStatus"
+      },
+      "qa_checks": {
+        "required": false,
+        "nullable": false,
+        "type": "list[QACheck]"
+      },
+      "reason": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[FallbackReason,None]"
+      },
+      "message": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "started_at": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "finished_at": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "execution_time_seconds": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      }
+    },
+    "ExecutionInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "requested_mode": {
+        "required": false,
+        "nullable": false,
+        "type": "PipelineMode"
+      },
+      "attempted_mode": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[PipelineMode,None]"
+      },
+      "final_mode": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[PipelineMode,None]"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "ExecutionStatus"
+      },
+      "fallback_used": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      },
+      "fallback_reason": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[FallbackReason,None]"
+      },
+      "fallback_message": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "qa_status": {
+        "required": false,
+        "nullable": false,
+        "type": "QAStatus"
+      },
+      "qa_checks": {
+        "required": false,
+        "nullable": false,
+        "type": "list[QACheck]"
+      },
+      "attempts": {
+        "required": false,
+        "nullable": false,
+        "type": "list[ExecutionAttempt]"
+      }
+    },
+    "FrozenRecord": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      }
+    },
+    "ImageInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "file_name": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "image_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "sha256": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "width_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "height_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "container_bits": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "effective_bits": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "byte_order": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "input_format": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "sample_id": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "InspectionConfig": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "config_name": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "config_version": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "pipeline_mode": {
+        "required": false,
+        "nullable": false,
+        "type": "PipelineMode"
+      },
+      "advanced_debug": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      },
+      "auto_policy": {
+        "required": false,
+        "nullable": false,
+        "type": "AutoPolicy"
+      },
+      "calibration": {
+        "required": false,
+        "nullable": false,
+        "type": "CalibrationInfo"
+      },
+      "intermediate_level": {
+        "required": false,
+        "nullable": false,
+        "type": "IntermediateLevel"
+      },
+      "algorithm_parameters": {
+        "required": false,
+        "nullable": false,
+        "type": "dict"
+      },
+      "algorithm_parameter_source": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      }
+    },
+    "InspectionResult": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "task_id": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "result_id": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "schema_version": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "input_info": {
+        "required": false,
+        "nullable": false,
+        "type": "ImageInfo"
+      },
+      "algorithm_info": {
+        "required": false,
+        "nullable": false,
+        "type": "AlgorithmInfo"
+      },
+      "calibration_info": {
+        "required": false,
+        "nullable": false,
+        "type": "CalibrationInfo"
+      },
+      "execution_info": {
+        "required": false,
+        "nullable": false,
+        "type": "ExecutionInfo"
+      },
+      "roi_info": {
+        "required": false,
+        "nullable": false,
+        "type": "ROIInfo"
+      },
+      "defects": {
+        "required": false,
+        "nullable": false,
+        "type": "list[Defect]"
+      },
+      "statistics": {
+        "required": false,
+        "nullable": false,
+        "type": "InspectionStatistics"
+      },
+      "intermediate_results": {
+        "required": false,
+        "nullable": false,
+        "type": "IntermediateResults"
+      },
+      "quality_control": {
+        "required": false,
+        "nullable": false,
+        "type": "QualityControl"
+      },
+      "audit_log": {
+        "required": false,
+        "nullable": false,
+        "type": "AuditInfo"
+      }
+    },
+    "InspectionStatistics": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "total_defects": {
+        "required": false,
+        "nullable": false,
+        "type": "int"
+      },
+      "count_by_type": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,int]"
+      },
+      "count_by_size_grade": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,int]"
+      },
+      "count_by_severity_grade": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,int]"
+      },
+      "count_by_band": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,int]"
+      },
+      "count_by_roi": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,int]"
+      },
+      "total_defect_area_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "total_defect_area_um2": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "scratch_total_length_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "scratch_total_length_um": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "review_statistics": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,int]"
+      }
+    },
+    "InspectionTask": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "task_id": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "created_at": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "ExecutionStatus"
+      },
+      "inputs": {
+        "required": false,
+        "nullable": false,
+        "type": "list[ImageInfo]"
+      },
+      "result_ids": {
+        "required": false,
+        "nullable": false,
+        "type": "list[str]"
+      }
+    },
+    "IntermediateResults": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "level": {
+        "required": false,
+        "nullable": false,
+        "type": "IntermediateLevel"
+      },
+      "original_preview": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "work_mask": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "nonwork_mask": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "review_mask": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "band_masks": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,ArtifactReference]"
+      },
+      "blackhat_preview": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "candidate_preview": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "final_mask": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "annotated_image": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      }
+    },
+    "Morphology": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "aspect_ratio": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "circularity": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "elongation": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "orientation_deg": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "solidity": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "eccentricity": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "skeleton_length_px": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      }
+    },
+    "Photometry": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "mean_gray_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "min_gray_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "max_gray_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "background_mean_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "background_std_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "gray_difference_dn": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "gray_ratio": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "local_contrast": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      },
+      "blackhat_response": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[float,None]"
+      }
+    },
+    "Point": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "x": {
+        "required": true,
+        "nullable": false,
+        "type": "float"
+      },
+      "y": {
+        "required": true,
+        "nullable": false,
+        "type": "float"
+      }
+    },
+    "QACheck": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "name": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "QAStatus"
+      },
+      "message": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "stage": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "mandatory": {
+        "required": false,
+        "nullable": false,
+        "type": "bool"
+      }
+    },
+    "QualityControl": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "QAStatus"
+      },
+      "checks": {
+        "required": false,
+        "nullable": false,
+        "type": "list[QACheck]"
+      }
+    },
+    "ROIInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "status": {
+        "required": false,
+        "nullable": false,
+        "type": "GeometryStatus"
+      },
+      "work_region": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[RegionInfo,None]"
+      },
+      "nonwork_region": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[RegionInfo,None]"
+      },
+      "review_region": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[RegionInfo,None]"
+      },
+      "band_count": {
+        "required": false,
+        "nullable": false,
+        "type": "int"
+      },
+      "band_list": {
+        "required": false,
+        "nullable": false,
+        "type": "list[BandInfo]"
+      },
+      "mask_references": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,ArtifactReference]"
+      },
+      "geometry_source": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "Record": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      }
+    },
+    "RegionInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "region_id": {
+        "required": true,
+        "nullable": false,
+        "type": "str"
+      },
+      "bbox": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[BoundingBox,None]"
+      },
+      "pixel_count": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[int,None]"
+      },
+      "mask_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      },
+      "contour_reference": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[ArtifactReference,None]"
+      }
+    },
+    "ReviewEvent": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "review_status": {
+        "required": true,
+        "nullable": false,
+        "type": "ReviewStatus"
+      },
+      "reviewer_decision": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "reviewer": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "review_time": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "comment": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      }
+    },
+    "ReviewInfo": {
+      "extensions": {
+        "required": false,
+        "nullable": false,
+        "type": "dict[str,Any]"
+      },
+      "algorithm_decision": {
+        "required": false,
+        "nullable": false,
+        "type": "str"
+      },
+      "review_status": {
+        "required": false,
+        "nullable": false,
+        "type": "ReviewStatus"
+      },
+      "reviewer_decision": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "reviewer": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "review_time": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "comment": {
+        "required": false,
+        "nullable": true,
+        "type": "Union[str,None]"
+      },
+      "history": {
+        "required": false,
+        "nullable": false,
+        "type": "tuple[ReviewEvent,Ellipsis]"
+      }
+    }
+  },
+  "enum_wire_values": {
+    "CandidateDisposition": [
+      "PENDING",
+      "RETAINED",
+      "FILTERED",
+      "MERGED",
+      "REVIEW"
+    ],
+    "ExecutionStatus": [
+      "NOT_STARTED",
+      "RUNNING",
+      "SUCCEEDED",
+      "FAILED",
+      "CANCELLED"
+    ],
+    "FallbackReason": [
+      "BAND_LOCATOR_FAILED",
+      "BAND_GEOMETRY_INVALID",
+      "ROI_PLAN_FAILED",
+      "ROI_CONTEXT_INCOMPLETE",
+      "SENTINEL_CONSUMED",
+      "J4_EXECUTION_FAILED",
+      "J5_EXECUTION_FAILED",
+      "SOURCE_LINEAGE_INVALID",
+      "QA_FAILED",
+      "UNKNOWN_EXCEPTION"
+    ],
+    "FilterReason": [
+      "OUTSIDE_WORK_REGION",
+      "BACKGROUND_NOISE",
+      "LOW_EVIDENCE",
+      "USER_REJECTED",
+      "SAFETY_GATE_REJECTED",
+      "OTHER"
+    ],
+    "GeometryStatus": [
+      "NOT_EVALUATED",
+      "VALID",
+      "INVALID",
+      "FAILED"
+    ],
+    "IntermediateLevel": [
+      "NONE",
+      "STANDARD",
+      "DEBUG"
+    ],
+    "PipelineMode": [
+      "auto",
+      "roi-bh",
+      "roi-j4",
+      "full",
+      "legacy-replay"
+    ],
+    "QAStatus": [
+      "NOT_RUN",
+      "PASS",
+      "FAIL",
+      "INCOMPLETE"
+    ],
+    "ReviewStatus": [
+      "UNREVIEWED",
+      "CONFIRMED",
+      "FALSE_POSITIVE",
+      "UNCERTAIN"
+    ],
+    "ScaleSource": [
+      "USER_CONFIG",
+      "CALIBRATION",
+      "DEFAULT",
+      "UNKNOWN"
+    ],
+    "SeverityGrade": [
+      "UNKNOWN",
+      "LOW",
+      "MEDIUM",
+      "HIGH"
+    ],
+    "SizeGrade": [
+      "SMALL",
+      "MEDIUM",
+      "LARGE",
+      "UNKNOWN"
+    ]
+  }
+}

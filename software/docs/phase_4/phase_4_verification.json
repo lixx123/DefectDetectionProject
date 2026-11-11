@@ -1,0 +1,156 @@
+{
+  "status": "PASS",
+  "repository_type": "JsonResultRepository",
+  "repository_root": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase4_validation\\repository",
+  "saved_result_count": 2,
+  "index_entries": 2,
+  "rebuild_status": "PASS",
+  "schema_version": "1.0",
+  "phase3_tests_preserved": 190,
+  "algorithm_executions": 0,
+  "algorithm_files_changed": [],
+  "protected_files_verified_before_and_after": 1317,
+  "source_result_files_verified_before_and_after": 115,
+  "subprocess_forbidden": true,
+  "phase5_started": false,
+  "cases": [
+    {
+      "frame": 1,
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "verify": {
+        "status": "PASS",
+        "result_json_valid": true,
+        "validate_final": true,
+        "manifest_valid": true,
+        "missing_files": [],
+        "hash_mismatches": [],
+        "unsafe_paths": [],
+        "unexpected_files": [],
+        "errors": [],
+        "missing_logs": [],
+        "warnings": []
+      },
+      "inspection_result_exact_equal": true,
+      "result_json_byte_identical": false,
+      "result_json_values_equal": true,
+      "artifact_count": 57,
+      "artifact_total_bytes": 35859980,
+      "source_sha256": "30bbd09680e9bac1b918c10419528a7d42386829e7f6a8a9b690316f9ee1d339",
+      "schema_version": "1.0",
+      "config_hash": "1ddaa23cddeb0adbca24d1b0de2a5d5b094ca3631bb00d7d2284a30aabfb69c7",
+      "config_snapshot_origin": "HASH_VERIFIED_HISTORICAL_RECOVERY",
+      "defect_count": 36,
+      "total_area_px": 20356.0,
+      "calibration_um_per_px": 3.2,
+      "export": {
+        "path": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase4_validation\\26_1_auto_formal_package.zip",
+        "sha256": "a7aae2eb3fad8767208bfba1cfdff6cb3b69b506cad5e9a1be65137dc537f84a",
+        "bytes": 5928613,
+        "crc_status": "PASS"
+      }
+    },
+    {
+      "frame": 2,
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "verify": {
+        "status": "PASS",
+        "result_json_valid": true,
+        "validate_final": true,
+        "manifest_valid": true,
+        "missing_files": [],
+        "hash_mismatches": [],
+        "unsafe_paths": [],
+        "unexpected_files": [],
+        "errors": [],
+        "missing_logs": [],
+        "warnings": []
+      },
+      "inspection_result_exact_equal": true,
+      "result_json_byte_identical": false,
+      "result_json_values_equal": true,
+      "artifact_count": 56,
+      "artifact_total_bytes": 12013396,
+      "source_sha256": "8d382a5a34f0ee5d9eb06e7409b71c6142e58c45dfc6f934b7b0dcbeba5eedf1",
+      "schema_version": "1.0",
+      "config_hash": "1ddaa23cddeb0adbca24d1b0de2a5d5b094ca3631bb00d7d2284a30aabfb69c7",
+      "config_snapshot_origin": "HASH_VERIFIED_HISTORICAL_RECOVERY",
+      "defect_count": 35,
+      "total_area_px": 17709.0,
+      "calibration_um_per_px": 3.2,
+      "export": {
+        "path": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase4_validation\\26_2_auto_formal_package.zip",
+        "sha256": "2daab3335516a7d4cf2f37a57868f269d15a266d13c77b4281fe320835270a6a",
+        "bytes": 3541747,
+        "crc_status": "PASS"
+      }
+    }
+  ],
+  "software_checks": {
+    "status": "PASS",
+    "checks": [
+      {
+        "name": "all_software_tests",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "-q",
+          "--tb=short",
+          "--basetemp",
+          "D:\\疵病检测\\DefectInspectionSoftware\\output\\p4_final_tests"
+        ],
+        "exit_code": 0,
+        "seconds": 85.013
+      },
+      {
+        "name": "phase1_smoke",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "app.main",
+          "--smoke-test",
+          "--screenshot",
+          "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase_4\\phase1_smoke.png"
+        ],
+        "exit_code": 0,
+        "seconds": 2.009
+      },
+      {
+        "name": "pip_check",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "exit_code": 0,
+        "seconds": 0.593
+      },
+      {
+        "name": "independent_module_imports",
+        "command": [
+          "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+          "-c",
+          "from infrastructure.storage.package import sha256; from infrastructure.repositories.verifier import ResultPackageVerifier; from infrastructure.repositories import JsonResultRepository; print(\"PASS\")"
+        ],
+        "exit_code": 0,
+        "seconds": 0.144
+      }
+    ],
+    "protected_files_verified": 1317,
+    "algorithm_files_changed": [],
+    "domain_schema_prior_tests_and_algorithm_adapter_diff": "",
+    "detector_change": "actual config snapshot only",
+    "prior_tests_preserved": 190,
+    "phase5_started": false
+  },
+  "test_summary": "255 passed in 84.50s (0:01:24)",
+  "inspection_result_schema_changed": false,
+  "filter_reason_wire_changed": false,
+  "import_package": "DEFERRED_TO_PHASE_4_1",
+  "permanent_delete_available": false,
+  "python_default_status_policy": "FROZEN_DOMAIN_UNCHANGED; production service loads production_v1.yaml",
+  "historical_config_snapshot_policy": "HASH_VERIFIED_HISTORICAL_RECOVERY",
+  "result_json_byte_changes": "Frozen float decoder canonicalizes integer numeric text; model and parsed JSON values equal",
+  "final_commit_receipt": "final_commit.txt"
+}

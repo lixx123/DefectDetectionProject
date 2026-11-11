@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "frames": [
+    {
+      "frame": 1,
+      "roi_vs_full": {
+        "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+        "added_objects": [],
+        "disappeared_objects": [],
+        "position_changes": [],
+        "area_changes": [],
+        "Feret_changes": [],
+        "grade_changes": [],
+        "source_membership_changes": [],
+        "object_mask_changes": [],
+        "id_changes": [],
+        "final_binary_diff_pixels": 0,
+        "missing_reference_candidate_uids": [],
+        "additional_current_candidate_uids": [],
+        "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+        "status": "PASS"
+      },
+      "full_vs_frozen_baseline": {
+        "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+        "added_objects": [],
+        "disappeared_objects": [],
+        "position_changes": [],
+        "area_changes": [],
+        "Feret_changes": [],
+        "grade_changes": [],
+        "source_membership_changes": [],
+        "object_mask_changes": [],
+        "id_changes": [
+          {
+            "before_id": "F1_FINAL_0032",
+            "after_id": "F1_FINAL_0033",
+            "source_uids": [
+              "B:F1:B04:C0004577"
+            ],
+            "not_a_physical_measurement_change": true
+          },
+          {
+            "before_id": "F1_FINAL_0033",
+            "after_id": "F1_FINAL_0034",
+            "source_uids": [
+              "B:F1:B03:C0000739"
+            ],
+            "not_a_physical_measurement_change": true
+          },
+          {
+            "before_id": "F1_FINAL_0034",
+            "after_id": "F1_FINAL_0035",
+            "source_uids": [
+              "B:F1:B03:C0001837"
+            ],
+            "not_a_physical_measurement_change": true
+          },
+          {
+            "before_id": "F1_FINAL_0035",
+            "after_id": "F1_FINAL_0036",
+            "source_uids": [
+              "B:F1:B03:C0001908"
+            ],
+            "not_a_physical_measurement_change": true
+          },
+          {
+            "before_id": "F1_FINAL_0036",
+            "after_id": "F1_FINAL_0032",
+            "source_uids": [
+              "B:F1:B03:C0003615"
+            ],
+            "not_a_physical_measurement_change": true
+          }
+        ],
+        "final_binary_diff_pixels": 0,
+        "missing_reference_candidate_uids": [],
+        "additional_current_candidate_uids": [],
+        "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+        "status": "PASS"
+      },
+      "auto_vs_roi": {
+        "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+        "added_objects": [],
+        "disappeared_objects": [],
+        "position_changes": [],
+        "area_changes": [],
+        "Feret_changes": [],
+        "grade_changes": [],
+        "source_membership_changes": [],
+        "object_mask_changes": [],
+        "id_changes": [],
+        "final_binary_diff_pixels": 0,
+        "missing_reference_candidate_uids": [],
+        "additional_current_candidate_uids": [],
+        "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+        "status": "PASS"
+      }
+    },
+    {
+      "frame": 2,
+      "roi_vs_full": {
+        "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+        "added_objects": [],
+        "disappeared_objects": [],
+        "position_changes": [],
+        "area_changes": [],
+        "Feret_changes": [],
+        "grade_changes": [],
+        "source_membership_changes": [],
+        "object_mask_changes": [],
+        "id_changes": [],
+        "final_binary_diff_pixels": 0,
+        "missing_reference_candidate_uids": [],
+        "additional_current_candidate_uids": [],
+        "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+        "status": "PASS"
+      },
+      "full_vs_frozen_baseline": {
+        "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+        "added_objects": [],
+        "disappeared_objects": [],
+        "position_changes": [],
+        "area_changes": [],
+        "Feret_changes": [],
+        "grade_changes": [],
+        "source_membership_changes": [],
+        "object_mask_changes": [],
+        "id_changes": [],
+        "final_binary_diff_pixels": 0,
+        "missing_reference_candidate_uids": [],
+        "additional_current_candidate_uids": [],
+        "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+        "status": "PASS"
+      },
+      "auto_vs_roi": {
+        "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+        "added_objects": [],
+        "disappeared_objects": [],
+        "position_changes": [],
+        "area_changes": [],
+        "Feret_changes": [],
+        "grade_changes": [],
+        "source_membership_changes": [],
+        "object_mask_changes": [],
+        "id_changes": [],
+        "final_binary_diff_pixels": 0,
+        "missing_reference_candidate_uids": [],
+        "additional_current_candidate_uids": [],
+        "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+        "status": "PASS"
+      }
+    }
+  ]
+}

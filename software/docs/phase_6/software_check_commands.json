@@ -1,0 +1,22 @@
+[
+  {
+    "check": "ui_tests",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "check": "all_tests_final",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "check": "smoke",
+    "exit_code": 0,
+    "status": "PASS"
+  },
+  {
+    "check": "pip_check",
+    "exit_code": 0,
+    "status": "PASS"
+  }
+]

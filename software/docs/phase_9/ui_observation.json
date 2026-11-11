@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "algorithm_executions": 0,
+  "raw_required": false,
+  "samples": [
+    {
+      "sample_id": "26_1",
+      "zero_writeback": true,
+      "raw_required": false,
+      "final_objects_checked": 36
+    },
+    {
+      "sample_id": "26_2",
+      "zero_writeback": true,
+      "raw_required": false,
+      "final_objects_checked": 35
+    }
+  ],
+  "screenshot_count": 11,
+  "human_acceptance": "PENDING"
+}

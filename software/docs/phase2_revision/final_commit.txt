@@ -1,0 +1,7 @@
+139a6c9ca66061d44b1e9c4099a25e3b8797c9d7
+Checkpoint: 7060762
+Schema: 1.0 (pre-freeze revision)
+All software tests: 99 passed
+Protected files unchanged: 1298
+Working tree: clean
+Phase 3: not started

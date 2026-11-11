@@ -1,0 +1,1 @@
+PENDING_FINAL_COMMIT — 最终HEAD在提交后ignored output/phase10_revision_final和外部交付镜像。

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "frame": 2,
+  "reference": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181014.522122_0800_26__2__f5aa8f61\\engine\\full",
+  "BH_work_window_diff_pixels_with_repeats": 0,
+  "J4_grouped_source_diff_pixels": 0,
+  "verified_tiles": 765,
+  "WORK_EDGE_J5_required": 398,
+  "final_binary_diff_pixels": 0,
+  "final_objects": 35,
+  "approved_masks": [
+    {
+      "area": 348,
+      "pixel_exact_single_match": true
+    },
+    {
+      "area": 370,
+      "pixel_exact_single_match": true
+    }
+  ],
+  "negative_conflict_pixels": 0,
+  "historical_source_rows": 8332,
+  "historical_not_recomputed_rows": 4042,
+  "actual_tile_files": 765,
+  "actual_scheduled_complete": true
+}

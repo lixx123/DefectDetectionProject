@@ -1,0 +1,309 @@
+{
+  "extensions": {},
+  "task_id": "演示任务-仅数据协议",
+  "result_id": "894ad561-fe24-4fd0-aa79-3091adec2ffa",
+  "schema_version": "1.0",
+  "input_info": {
+    "extensions": {},
+    "file_name": null,
+    "image_reference": null,
+    "sha256": null,
+    "width_px": null,
+    "height_px": null,
+    "container_bits": null,
+    "effective_bits": null,
+    "byte_order": null,
+    "input_format": null,
+    "sample_id": null
+  },
+  "algorithm_info": {
+    "extensions": {},
+    "software_version": "0.2.0",
+    "algorithm_version": null,
+    "config_name": null,
+    "config_version": null,
+    "config_hash": null,
+    "run_timestamp": null,
+    "execution_time_seconds": null,
+    "runtime_environment": {}
+  },
+  "calibration_info": {
+    "extensions": {},
+    "spatial_scale_um_per_px": 3.2,
+    "scale_source": "DEFAULT",
+    "calibration_id": null,
+    "calibration_time": null,
+    "valid": true,
+    "reference_plane": "USER_DECLARED",
+    "metrologically_calibrated": false
+  },
+  "execution_info": {
+    "extensions": {},
+    "requested_mode": "auto",
+    "attempted_mode": "roi-bh",
+    "final_mode": "roi-bh",
+    "status": "SUCCEEDED",
+    "fallback_used": false,
+    "fallback_reason": null,
+    "fallback_message": null,
+    "qa_status": "PASS",
+    "qa_checks": [
+      {
+        "extensions": {},
+        "name": "源候选完整性",
+        "status": "PASS",
+        "message": null,
+        "stage": null,
+        "mandatory": true
+      }
+    ],
+    "attempts": [
+      {
+        "extensions": {},
+        "mode": "roi-bh",
+        "status": "SUCCEEDED",
+        "plan": {
+          "extensions": {},
+          "roi_geometry_status": "VALID",
+          "band_geometry_status": "VALID",
+          "planned_tiles": 12,
+          "full_tiles": 20,
+          "skipped_tiles": 8,
+          "legal_source_pixels": 50000
+        },
+        "qa_status": "PASS",
+        "qa_checks": [
+          {
+            "extensions": {},
+            "name": "源候选完整性",
+            "status": "PASS",
+            "message": null,
+            "stage": null,
+            "mandatory": true
+          }
+        ],
+        "reason": null,
+        "message": null,
+        "started_at": null,
+        "finished_at": null,
+        "execution_time_seconds": null
+      }
+    ]
+  },
+  "roi_info": {
+    "extensions": {},
+    "status": "VALID",
+    "work_region": null,
+    "nonwork_region": null,
+    "review_region": null,
+    "band_count": 1,
+    "band_list": [
+      {
+        "extensions": {},
+        "band_id": "B01",
+        "name": "工作波段一",
+        "bbox": {
+          "extensions": {},
+          "x0": 0,
+          "y0": 0,
+          "x1": 100,
+          "y1": 100
+        },
+        "contour_reference": null,
+        "mask_reference": {
+          "extensions": {},
+          "path": "masks/B01.png",
+          "sha256": null,
+          "media_type": null,
+          "coordinate_system": "ORIGINAL_IMAGE_PIXELS"
+        },
+        "mean_gray_dn": null,
+        "min_gray_dn": null,
+        "max_gray_dn": null,
+        "pixel_count": null,
+        "valid": true,
+        "review_status": "UNREVIEWED"
+      }
+    ],
+    "mask_references": {},
+    "geometry_source": "EXAMPLE_ONLY"
+  },
+  "defects": [
+    {
+      "extensions": {
+        "响应下降率": null,
+        "未来指标": {
+          "单位": "%",
+          "值": 1.5
+        }
+      },
+      "identity": {
+        "extensions": {},
+        "defect_id": "D001"
+      },
+      "geometry": {
+        "extensions": {},
+        "bbox": {
+          "extensions": {},
+          "x0": 10,
+          "y0": 20,
+          "x1": 15,
+          "y1": 25
+        },
+        "center": null,
+        "area_px": 9,
+        "area_um2": 92.16000000000003,
+        "length_px": 5,
+        "length_um": 16.0,
+        "width_px": 2,
+        "width_um": 6.4,
+        "equivalent_diameter_px": null,
+        "equivalent_diameter_um": null,
+        "contour_reference": null,
+        "mask_reference": {
+          "extensions": {},
+          "path": "masks/D001.npz",
+          "sha256": null,
+          "media_type": null,
+          "coordinate_system": "ORIGINAL_IMAGE_PIXELS"
+        },
+        "area_method": null,
+        "length_method": null
+      },
+      "morphology": {
+        "extensions": {},
+        "aspect_ratio": null,
+        "circularity": null,
+        "elongation": null,
+        "orientation_deg": null,
+        "solidity": null,
+        "eccentricity": null,
+        "skeleton_length_px": null
+      },
+      "photometry": {
+        "extensions": {},
+        "mean_gray_dn": null,
+        "min_gray_dn": null,
+        "max_gray_dn": null,
+        "background_mean_dn": null,
+        "background_std_dn": null,
+        "gray_difference_dn": null,
+        "gray_ratio": null,
+        "local_contrast": null,
+        "blackhat_response": null
+      },
+      "classification": {
+        "extensions": {},
+        "defect_type": null,
+        "defect_subtype": null,
+        "size_grade": "UNKNOWN",
+        "severity_grade": "UNKNOWN",
+        "confidence": null,
+        "classification_method": null
+      },
+      "location": {
+        "extensions": {},
+        "image_x": null,
+        "image_y": null,
+        "roi_id": null,
+        "band_id": null,
+        "physical_x": null,
+        "physical_y": null,
+        "physical_coordinate_unit": "um",
+        "sensor_x": null,
+        "sensor_y": null
+      },
+      "detection": {
+        "extensions": {},
+        "source_channels": [],
+        "candidate_ids": [],
+        "detection_stage": null,
+        "merge_history": [],
+        "algorithm_version": null
+      },
+      "review": {
+        "extensions": {},
+        "algorithm_decision": "UNSPECIFIED",
+        "review_status": "UNREVIEWED",
+        "reviewer_decision": null,
+        "reviewer": null,
+        "review_time": null,
+        "comment": null,
+        "history": []
+      }
+    }
+  ],
+  "statistics": {
+    "extensions": {},
+    "total_defects": 1,
+    "count_by_type": {},
+    "count_by_size_grade": {},
+    "count_by_severity_grade": {},
+    "count_by_band": {},
+    "count_by_roi": {},
+    "total_defect_area_px": 9,
+    "total_defect_area_um2": 92.16000000000003,
+    "scratch_total_length_px": null,
+    "scratch_total_length_um": null,
+    "review_statistics": {}
+  },
+  "intermediate_results": {
+    "extensions": {},
+    "level": "STANDARD",
+    "original_preview": null,
+    "work_mask": null,
+    "nonwork_mask": null,
+    "review_mask": null,
+    "band_masks": {},
+    "blackhat_preview": null,
+    "candidate_preview": null,
+    "final_mask": null,
+    "annotated_image": null
+  },
+  "quality_control": {
+    "extensions": {},
+    "status": "PASS",
+    "checks": [
+      {
+        "extensions": {},
+        "name": "结果字段与统计审计自洽（纯数据示例）",
+        "status": "PASS",
+        "message": null,
+        "stage": null,
+        "mandatory": true
+      }
+    ]
+  },
+  "audit_log": {
+    "extensions": {},
+    "candidates": [
+      {
+        "extensions": {},
+        "candidate_id": "C001",
+        "source": "示例通道",
+        "initial_geometry": null,
+        "current_stage": null,
+        "disposition": "RETAINED",
+        "filter_reason": null,
+        "filter_message": null,
+        "merged_into": null,
+        "final_defect_id": "D001"
+      },
+      {
+        "extensions": {},
+        "candidate_id": "C002",
+        "source": "示例通道",
+        "initial_geometry": null,
+        "current_stage": "人工待审",
+        "disposition": "REVIEW",
+        "filter_reason": null,
+        "filter_message": null,
+        "merged_into": null,
+        "final_defect_id": null
+      }
+    ],
+    "events": [],
+    "source_candidate_count": 2,
+    "lineage_complete": true
+  }
+}

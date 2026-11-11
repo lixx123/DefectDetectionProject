@@ -1,0 +1,502 @@
+{
+  "status": "PASS",
+  "phase": 3,
+  "schema_version": "1.0",
+  "checkpoint": "116b113",
+  "new_software_tests_passed": 145,
+  "frozen_phase2_tests_included": 99,
+  "fresh_engine_runs": 6,
+  "runtime_cases": [
+    {
+      "frame": 1,
+      "sample": "26",
+      "requested_mode": "full",
+      "attempted_mode": "full",
+      "final_mode": "full",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "defect_count": 36,
+      "total_area_px": 20356.0,
+      "grade_counts": {
+        "LARGE": 19,
+        "MEDIUM": 16,
+        "SMALL": 1
+      },
+      "roi_status": "VALID",
+      "band_count": 4,
+      "source_candidate_count": 32370,
+      "fresh_sources": 32370,
+      "historical_sources": 32370,
+      "lineage_complete": true,
+      "execution_qa": "PASS",
+      "result_qc": "PASS",
+      "validate_final": "PASS",
+      "roundtrip": "PASS",
+      "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T175923.105277_0800_26__1__5c8edd53",
+      "elapsed_seconds": 651.337,
+      "verified_resource_files": 57,
+      "verified_result_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T175923.105277_0800_26__1__5c8edd53\\verified_final_mapping",
+      "small_count": 1,
+      "medium_count": 16,
+      "large_count": 19,
+      "recovery_events": 8,
+      "approved_areas": [
+        297,
+        398
+      ],
+      "planned_tiles": 1620,
+      "full_tiles": 1620,
+      "skipped_tiles": 0,
+      "final_result_path": "output/phase3_validation/fresh/2026-10-20T175923.105277_0800_26__1__5c8edd53/verified_final_mapping/result.json",
+      "engine_elapsed_seconds": 618.8870575999899
+    },
+    {
+      "frame": 2,
+      "sample": "26",
+      "requested_mode": "full",
+      "attempted_mode": "full",
+      "final_mode": "full",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "defect_count": 35,
+      "total_area_px": 17709.0,
+      "grade_counts": {
+        "LARGE": 24,
+        "MEDIUM": 11
+      },
+      "roi_status": "VALID",
+      "band_count": 4,
+      "source_candidate_count": 8332,
+      "fresh_sources": 8332,
+      "historical_sources": 8332,
+      "lineage_complete": true,
+      "execution_qa": "PASS",
+      "result_qc": "PASS",
+      "validate_final": "PASS",
+      "roundtrip": "PASS",
+      "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181014.522122_0800_26__2__f5aa8f61",
+      "elapsed_seconds": 272.332,
+      "verified_resource_files": 56,
+      "verified_result_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181014.522122_0800_26__2__f5aa8f61\\verified_final_mapping",
+      "small_count": 0,
+      "medium_count": 11,
+      "large_count": 24,
+      "recovery_events": 7,
+      "approved_areas": [
+        348,
+        370
+      ],
+      "planned_tiles": 1620,
+      "full_tiles": 1620,
+      "skipped_tiles": 0,
+      "final_result_path": "output/phase3_validation/fresh/2026-10-20T181014.522122_0800_26__2__f5aa8f61/verified_final_mapping/result.json",
+      "engine_elapsed_seconds": 257.3040401999897
+    },
+    {
+      "frame": 1,
+      "sample": "26",
+      "requested_mode": "roi-bh",
+      "attempted_mode": "roi-bh",
+      "final_mode": "roi-bh",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "defect_count": 36,
+      "total_area_px": 20356.0,
+      "grade_counts": {
+        "LARGE": 19,
+        "MEDIUM": 16,
+        "SMALL": 1
+      },
+      "roi_status": "VALID",
+      "band_count": 4,
+      "source_candidate_count": 32370,
+      "fresh_sources": 17453,
+      "historical_sources": 32370,
+      "lineage_complete": true,
+      "execution_qa": "PASS",
+      "result_qc": "PASS",
+      "validate_final": "PASS",
+      "roundtrip": "PASS",
+      "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181446.846123_0800_26__1__200c21e6",
+      "elapsed_seconds": 112.608,
+      "verified_resource_files": 57,
+      "verified_result_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181446.846123_0800_26__1__200c21e6\\verified_final_mapping",
+      "small_count": 1,
+      "medium_count": 16,
+      "large_count": 19,
+      "recovery_events": 8,
+      "approved_areas": [
+        297,
+        398
+      ],
+      "planned_tiles": 765,
+      "full_tiles": 1620,
+      "skipped_tiles": 855,
+      "final_result_path": "output/phase3_validation/fresh/2026-10-20T181446.846123_0800_26__1__200c21e6/verified_final_mapping/result.json",
+      "engine_elapsed_seconds": 83.05950380000286
+    },
+    {
+      "frame": 2,
+      "sample": "26",
+      "requested_mode": "roi-bh",
+      "attempted_mode": "roi-bh",
+      "final_mode": "roi-bh",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "defect_count": 35,
+      "total_area_px": 17709.0,
+      "grade_counts": {
+        "LARGE": 24,
+        "MEDIUM": 11
+      },
+      "roi_status": "VALID",
+      "band_count": 4,
+      "source_candidate_count": 8332,
+      "fresh_sources": 4290,
+      "historical_sources": 8332,
+      "lineage_complete": true,
+      "execution_qa": "PASS",
+      "result_qc": "PASS",
+      "validate_final": "PASS",
+      "roundtrip": "PASS",
+      "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181918.838225_0800_26__2__55eb027e",
+      "elapsed_seconds": 79.645,
+      "verified_resource_files": 56,
+      "verified_result_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181918.838225_0800_26__2__55eb027e\\verified_final_mapping",
+      "small_count": 0,
+      "medium_count": 11,
+      "large_count": 24,
+      "recovery_events": 7,
+      "approved_areas": [
+        348,
+        370
+      ],
+      "planned_tiles": 765,
+      "full_tiles": 1620,
+      "skipped_tiles": 855,
+      "final_result_path": "output/phase3_validation/fresh/2026-10-20T181918.838225_0800_26__2__55eb027e/verified_final_mapping/result.json",
+      "engine_elapsed_seconds": 65.72949339999468
+    },
+    {
+      "frame": 1,
+      "sample": "26",
+      "requested_mode": "auto",
+      "attempted_mode": "roi-bh",
+      "final_mode": "roi-bh",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "defect_count": 36,
+      "total_area_px": 20356.0,
+      "grade_counts": {
+        "LARGE": 19,
+        "MEDIUM": 16,
+        "SMALL": 1
+      },
+      "roi_status": "VALID",
+      "band_count": 4,
+      "source_candidate_count": 32370,
+      "fresh_sources": 17453,
+      "historical_sources": 32370,
+      "lineage_complete": true,
+      "execution_qa": "PASS",
+      "result_qc": "PASS",
+      "validate_final": "PASS",
+      "roundtrip": "PASS",
+      "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T182038.566727_0800_26__1__5c56089d",
+      "elapsed_seconds": 111.346,
+      "verified_resource_files": 57,
+      "verified_result_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T182038.566727_0800_26__1__5c56089d\\verified_final_mapping",
+      "small_count": 1,
+      "medium_count": 16,
+      "large_count": 19,
+      "recovery_events": 8,
+      "approved_areas": [
+        297,
+        398
+      ],
+      "planned_tiles": 765,
+      "full_tiles": 1620,
+      "skipped_tiles": 855,
+      "final_result_path": "output/phase3_validation/fresh/2026-10-20T182038.566727_0800_26__1__5c56089d/verified_final_mapping/result.json",
+      "engine_elapsed_seconds": 82.27344550000271
+    },
+    {
+      "frame": 2,
+      "sample": "26",
+      "requested_mode": "auto",
+      "attempted_mode": "roi-bh",
+      "final_mode": "roi-bh",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "defect_count": 35,
+      "total_area_px": 17709.0,
+      "grade_counts": {
+        "LARGE": 24,
+        "MEDIUM": 11
+      },
+      "roi_status": "VALID",
+      "band_count": 4,
+      "source_candidate_count": 8332,
+      "fresh_sources": 4290,
+      "historical_sources": 8332,
+      "lineage_complete": true,
+      "execution_qa": "PASS",
+      "result_qc": "PASS",
+      "validate_final": "PASS",
+      "roundtrip": "PASS",
+      "run_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T182229.906871_0800_26__2__d157a4fe",
+      "elapsed_seconds": 77.789,
+      "verified_resource_files": 56,
+      "verified_result_directory": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T182229.906871_0800_26__2__d157a4fe\\verified_final_mapping",
+      "small_count": 0,
+      "medium_count": 11,
+      "large_count": 24,
+      "recovery_events": 7,
+      "approved_areas": [
+        348,
+        370
+      ],
+      "planned_tiles": 765,
+      "full_tiles": 1620,
+      "skipped_tiles": 855,
+      "final_result_path": "output/phase3_validation/fresh/2026-10-20T182229.906871_0800_26__2__d157a4fe/verified_final_mapping/result.json",
+      "engine_elapsed_seconds": 62.69651510001859
+    }
+  ],
+  "production_auto_modes": [
+    "roi-bh"
+  ],
+  "production_roi_j4_attempts": 0,
+  "comparison": {
+    "status": "PASS",
+    "frames": [
+      {
+        "frame": 1,
+        "roi_vs_full": {
+          "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+          "added_objects": [],
+          "disappeared_objects": [],
+          "position_changes": [],
+          "area_changes": [],
+          "Feret_changes": [],
+          "grade_changes": [],
+          "source_membership_changes": [],
+          "object_mask_changes": [],
+          "id_changes": [],
+          "final_binary_diff_pixels": 0,
+          "missing_reference_candidate_uids": [],
+          "additional_current_candidate_uids": [],
+          "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+          "status": "PASS"
+        },
+        "full_vs_frozen_baseline": {
+          "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+          "added_objects": [],
+          "disappeared_objects": [],
+          "position_changes": [],
+          "area_changes": [],
+          "Feret_changes": [],
+          "grade_changes": [],
+          "source_membership_changes": [],
+          "object_mask_changes": [],
+          "id_changes": [
+            {
+              "before_id": "F1_FINAL_0032",
+              "after_id": "F1_FINAL_0033",
+              "source_uids": [
+                "B:F1:B04:C0004577"
+              ],
+              "not_a_physical_measurement_change": true
+            },
+            {
+              "before_id": "F1_FINAL_0033",
+              "after_id": "F1_FINAL_0034",
+              "source_uids": [
+                "B:F1:B03:C0000739"
+              ],
+              "not_a_physical_measurement_change": true
+            },
+            {
+              "before_id": "F1_FINAL_0034",
+              "after_id": "F1_FINAL_0035",
+              "source_uids": [
+                "B:F1:B03:C0001837"
+              ],
+              "not_a_physical_measurement_change": true
+            },
+            {
+              "before_id": "F1_FINAL_0035",
+              "after_id": "F1_FINAL_0036",
+              "source_uids": [
+                "B:F1:B03:C0001908"
+              ],
+              "not_a_physical_measurement_change": true
+            },
+            {
+              "before_id": "F1_FINAL_0036",
+              "after_id": "F1_FINAL_0032",
+              "source_uids": [
+                "B:F1:B03:C0003615"
+              ],
+              "not_a_physical_measurement_change": true
+            }
+          ],
+          "final_binary_diff_pixels": 0,
+          "missing_reference_candidate_uids": [],
+          "additional_current_candidate_uids": [],
+          "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+          "status": "PASS"
+        },
+        "auto_vs_roi": {
+          "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+          "added_objects": [],
+          "disappeared_objects": [],
+          "position_changes": [],
+          "area_changes": [],
+          "Feret_changes": [],
+          "grade_changes": [],
+          "source_membership_changes": [],
+          "object_mask_changes": [],
+          "id_changes": [],
+          "final_binary_diff_pixels": 0,
+          "missing_reference_candidate_uids": [],
+          "additional_current_candidate_uids": [],
+          "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+          "status": "PASS"
+        }
+      },
+      {
+        "frame": 2,
+        "roi_vs_full": {
+          "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+          "added_objects": [],
+          "disappeared_objects": [],
+          "position_changes": [],
+          "area_changes": [],
+          "Feret_changes": [],
+          "grade_changes": [],
+          "source_membership_changes": [],
+          "object_mask_changes": [],
+          "id_changes": [],
+          "final_binary_diff_pixels": 0,
+          "missing_reference_candidate_uids": [],
+          "additional_current_candidate_uids": [],
+          "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+          "status": "PASS"
+        },
+        "full_vs_frozen_baseline": {
+          "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+          "added_objects": [],
+          "disappeared_objects": [],
+          "position_changes": [],
+          "area_changes": [],
+          "Feret_changes": [],
+          "grade_changes": [],
+          "source_membership_changes": [],
+          "object_mask_changes": [],
+          "id_changes": [],
+          "final_binary_diff_pixels": 0,
+          "missing_reference_candidate_uids": [],
+          "additional_current_candidate_uids": [],
+          "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+          "status": "PASS"
+        },
+        "auto_vs_roi": {
+          "matching_basis": "EXACT_SOURCE_SET_THEN_EXACT_GLOBAL_MASK",
+          "added_objects": [],
+          "disappeared_objects": [],
+          "position_changes": [],
+          "area_changes": [],
+          "Feret_changes": [],
+          "grade_changes": [],
+          "source_membership_changes": [],
+          "object_mask_changes": [],
+          "id_changes": [],
+          "final_binary_diff_pixels": 0,
+          "missing_reference_candidate_uids": [],
+          "additional_current_candidate_uids": [],
+          "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+          "status": "PASS"
+        }
+      }
+    ]
+  },
+  "independent_original_QA": [
+    {
+      "status": "PASS",
+      "errors": [],
+      "frame": 1,
+      "reference": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T175923.105277_0800_26__1__5c8edd53\\engine\\full",
+      "BH_work_window_diff_pixels_with_repeats": 0,
+      "J4_grouped_source_diff_pixels": 0,
+      "verified_tiles": 765,
+      "WORK_EDGE_J5_required": 687,
+      "final_binary_diff_pixels": 0,
+      "final_objects": 36,
+      "approved_masks": [
+        {
+          "area": 398,
+          "pixel_exact_single_match": true
+        },
+        {
+          "area": 297,
+          "pixel_exact_single_match": true
+        }
+      ],
+      "negative_conflict_pixels": 0,
+      "historical_source_rows": 32370,
+      "historical_not_recomputed_rows": 14917,
+      "actual_tile_files": 765,
+      "actual_scheduled_complete": true
+    },
+    {
+      "status": "PASS",
+      "errors": [],
+      "frame": 2,
+      "reference": "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase3_validation\\fresh\\2026-10-20T181014.522122_0800_26__2__f5aa8f61\\engine\\full",
+      "BH_work_window_diff_pixels_with_repeats": 0,
+      "J4_grouped_source_diff_pixels": 0,
+      "verified_tiles": 765,
+      "WORK_EDGE_J5_required": 398,
+      "final_binary_diff_pixels": 0,
+      "final_objects": 35,
+      "approved_masks": [
+        {
+          "area": 348,
+          "pixel_exact_single_match": true
+        },
+        {
+          "area": 370,
+          "pixel_exact_single_match": true
+        }
+      ],
+      "negative_conflict_pixels": 0,
+      "historical_source_rows": 8332,
+      "historical_not_recomputed_rows": 4042,
+      "actual_tile_files": 765,
+      "actual_scheduled_complete": true
+    }
+  ],
+  "protected_files_checked": 1317,
+  "changed_protected_files": [],
+  "frozen_domain_and_phase1_git_diff": "",
+  "phase4_started": false,
+  "gui_detection_implemented": false,
+  "repository_implemented": false,
+  "development_incidents": [
+    {
+      "kind": "scripts namespace collision",
+      "resolved": true,
+      "failed_start_kept_as_draft": true,
+      "fix": "Child process pins reference scripts namespace; regression tested"
+    },
+    {
+      "kind": "local sequential ID permutation",
+      "physical_change": false,
+      "frame": 1,
+      "changed_local_IDs": 5,
+      "resolution": "Exact source-set identity and mask equality; preserve engine IDs"
+    }
+  ],
+  "final_mapping_note": "All six fresh outputs were remapped with final audit enrichment to new verified directories; initial JSONs and startup-failure draft remain unchanged."
+}

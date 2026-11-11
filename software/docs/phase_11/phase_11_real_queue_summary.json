@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "samples": [
+    {
+      "sample_id": "26_1",
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "defect_count": 36,
+      "task_count": 83,
+      "pending": 83,
+      "records": 0,
+      "labels_generated": 0,
+      "source_digest": "16e9ea42ca9951d057a5c197ffdcb6c600e1156a679629c27a8d893b5a48a91f",
+      "original_result_unchanged": true,
+      "raw_validation": {
+        "sha256": "30bbd09680e9bac1b918c10419528a7d42386829e7f6a8a9b690316f9ee1d339",
+        "status": "PASS"
+      },
+      "pixel_lut_check": true
+    },
+    {
+      "sample_id": "26_2",
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "defect_count": 35,
+      "task_count": 49,
+      "pending": 49,
+      "records": 0,
+      "labels_generated": 0,
+      "source_digest": "d4e291eb177b2594ab54f584fed6e6ed0e48b4d0a2c8be863558e9a79e5957ae",
+      "original_result_unchanged": true,
+      "raw_validation": {
+        "sha256": "8d382a5a34f0ee5d9eb06e7409b71c6142e58c45dfc6f934b7b0dcbeba5eedf1",
+        "status": "PASS"
+      },
+      "pixel_lut_check": true
+    }
+  ],
+  "real_records": 0,
+  "real_labels_generated": 0,
+  "algorithm_executions": 0,
+  "real_pending": 132,
+  "formal_package_unchanged": true,
+  "production_reviews_existed": false,
+  "production_reviews_unchanged": true,
+  "raw_paths_persisted": false,
+  "access_audit": {
+    "real_raw_opens": 4,
+    "blocked_raw_opens": 0
+  },
+  "errors_observed": [
+    "RAW_READ_FAILED",
+    "RESULT_INTEGRITY_FAILED"
+  ],
+  "screenshot_sha256": {
+    "01_normal_operation_status.png": "e158b1ee03a4391f19a6674ccf3141ebfd4392fa28f50bcb80aaec9159dac442",
+    "02_background_task_busy.png": "831274dd72b94fa207ee4d046e5713531f2ea1d9b4c76902e70609e18fd51a27",
+    "03_raw_error_user_message.png": "52d39b7d60f359e01c7c7f625f0faee7ce0fb7f27434fff19edf97c93acee05b",
+    "04_history_integrity_error.png": "8cfa51635c8ad8f5c3f6c7de23b5f70464a3e2e72b6a4a88124f673c2f586615",
+    "05_operation_failed_recovered.png": "326c6cb9c54064829da2fddb06d0bca9dbe35528a17f83fc01d303b0ee7d5365",
+    "06_phase10_review_still_available.png": "ab864cb899a27729549846a43d62518d27f14fed358d42d1eb5a72134f482871",
+    "07_26_2_review_49_pending.png": "ff869302a3186d5bf608ae53bb29994a564efadaefa90d301182c99c2dbafb70"
+  },
+  "synthetic_busy_task": "Explicit QA hold; proves responsiveness/close guard, never a detection run"
+}

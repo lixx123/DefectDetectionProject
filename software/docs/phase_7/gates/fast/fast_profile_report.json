@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "command": [
+    "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "--strict-markers",
+    "--tb=short",
+    "-m",
+    "not golden and not real_engine and not reference_probe",
+    "--basetemp",
+    "D:\\疵病检测\\DefectInspectionSoftware\\output\\.pt_6eb7be79",
+    "--junitxml",
+    "output\\phase7_validation\\fast\\fast_junit.xml"
+  ],
+  "counts": {
+    "tests": 397,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "log": "output\\phase7_validation\\fast\\fast.log"
+}

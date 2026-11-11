@@ -1,0 +1,369 @@
+{
+  "status": "PASS",
+  "samples": [
+    {
+      "sample_id": "26_1",
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "task_count": 83,
+      "pending": 83,
+      "completed": 0,
+      "record_count": 0,
+      "real_labels_generated": 0,
+      "policy_hash": "63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327",
+      "source_result_digest": "16e9ea42ca9951d057a5c197ffdcb6c600e1156a679629c27a8d893b5a48a91f",
+      "task_digest": "b8e63234b5393bd9553dd516428eea97686ff74d8bd9833b57e637e5294cba0d",
+      "result_unchanged": true,
+      "original_final_defects": 36,
+      "summary": {
+        "CONFIRMED_DEFECT": 0,
+        "FALSE_POSITIVE": 0,
+        "DUPLICATE_OF_EXISTING_DEFECT": 0,
+        "NEW_MISSED_DEFECT": 0,
+        "UNCERTAIN": 0,
+        "total": 83,
+        "pending": 83,
+        "completed": 0,
+        "uncertain": 0,
+        "percent": 0.0,
+        "historical_record_count": 0,
+        "stale": null,
+        "by_dimension": {
+          "object_kind": {
+            "CANDIDATE": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 81,
+              "pending": 81
+            },
+            "DEFECT": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 2,
+              "pending": 2
+            }
+          },
+          "priority": {
+            "HIGH": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 13,
+              "pending": 13
+            },
+            "MEDIUM": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 70,
+              "pending": 70
+            }
+          },
+          "source": {
+            "J5": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 2,
+              "pending": 2
+            },
+            "K8B": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 79,
+              "pending": 79
+            },
+            "UNKNOWN": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 2,
+              "pending": 2
+            }
+          },
+          "reason": {
+            "CANDIDATE_SIZE_RISK": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 28,
+              "pending": 28
+            },
+            "LARGE_CANDIDATE_GEOMETRY": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 9,
+              "pending": 9
+            },
+            "NEAR_SIZE_THRESHOLD": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 2,
+              "pending": 2
+            },
+            "PROMISING_DARK_EVIDENCE": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 4,
+              "pending": 4
+            },
+            "SPATIAL_FINAL_ASSOCIATION": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 53,
+              "pending": 53
+            },
+            "UNRESOLVED_FINAL_SELECTION": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 81,
+              "pending": 81
+            },
+            "WEAK_EVIDENCE_HIGH_RISK": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 81,
+              "pending": 81
+            },
+            "WORK_BOUNDARY_UNCERTAINTY": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 20,
+              "pending": 20
+            }
+          },
+          "band": {
+            "1": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 2,
+              "pending": 2
+            },
+            "UNKNOWN": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 81,
+              "pending": 81
+            }
+          }
+        }
+      }
+    },
+    {
+      "sample_id": "26_2",
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "task_count": 49,
+      "pending": 49,
+      "completed": 0,
+      "record_count": 0,
+      "real_labels_generated": 0,
+      "policy_hash": "63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327",
+      "source_result_digest": "d4e291eb177b2594ab54f584fed6e6ed0e48b4d0a2c8be863558e9a79e5957ae",
+      "task_digest": "e04d23f52dd2963a4deb4f4ffa6bfba20413474b02ba6115c791fb71619fa673",
+      "result_unchanged": true,
+      "original_final_defects": 35,
+      "summary": {
+        "CONFIRMED_DEFECT": 0,
+        "FALSE_POSITIVE": 0,
+        "DUPLICATE_OF_EXISTING_DEFECT": 0,
+        "NEW_MISSED_DEFECT": 0,
+        "UNCERTAIN": 0,
+        "total": 49,
+        "pending": 49,
+        "completed": 0,
+        "uncertain": 0,
+        "percent": 0.0,
+        "historical_record_count": 0,
+        "stale": null,
+        "by_dimension": {
+          "object_kind": {
+            "CANDIDATE": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 49,
+              "pending": 49
+            }
+          },
+          "priority": {
+            "HIGH": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 15,
+              "pending": 15
+            },
+            "MEDIUM": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 34,
+              "pending": 34
+            }
+          },
+          "source": {
+            "J5": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 3,
+              "pending": 3
+            },
+            "K8B": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 46,
+              "pending": 46
+            }
+          },
+          "reason": {
+            "CANDIDATE_SIZE_RISK": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 27,
+              "pending": 27
+            },
+            "LARGE_CANDIDATE_GEOMETRY": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 12,
+              "pending": 12
+            },
+            "NEAR_SIZE_THRESHOLD": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 0,
+              "pending": 0
+            },
+            "PROMISING_DARK_EVIDENCE": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 3,
+              "pending": 3
+            },
+            "SPATIAL_FINAL_ASSOCIATION": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 40,
+              "pending": 40
+            },
+            "UNRESOLVED_FINAL_SELECTION": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 49,
+              "pending": 49
+            },
+            "WEAK_EVIDENCE_HIGH_RISK": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 49,
+              "pending": 49
+            },
+            "WORK_BOUNDARY_UNCERTAINTY": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 6,
+              "pending": 6
+            }
+          },
+          "band": {
+            "UNKNOWN": {
+              "CONFIRMED_DEFECT": 0,
+              "FALSE_POSITIVE": 0,
+              "DUPLICATE_OF_EXISTING_DEFECT": 0,
+              "NEW_MISSED_DEFECT": 0,
+              "UNCERTAIN": 0,
+              "total": 49,
+              "pending": 49
+            }
+          }
+        }
+      }
+    }
+  ],
+  "total_tasks": 132,
+  "pending": 132,
+  "record_count": 0,
+  "real_labels_generated": 0,
+  "algorithm_executions": 0
+}

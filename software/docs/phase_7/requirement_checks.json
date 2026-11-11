@@ -1,0 +1,338 @@
+[
+  {
+    "id": 1,
+    "requirement": "三个Tab",
+    "status": "PASS",
+    "evidence": "test_tabs_and_empty_states"
+  },
+  {
+    "id": 2,
+    "requirement": "检测原功能",
+    "status": "PASS",
+    "evidence": "old Phase6 tests unchanged and PASS"
+  },
+  {
+    "id": 3,
+    "requirement": "选择同步详情",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields"
+  },
+  {
+    "id": 4,
+    "requirement": "ID",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[Defect ID]"
+  },
+  {
+    "id": 5,
+    "requirement": "bbox",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[bbox]"
+  },
+  {
+    "id": 6,
+    "requirement": "area_px",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[面积 px²]"
+  },
+  {
+    "id": 7,
+    "requirement": "area_um2",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[面积 μm²]"
+  },
+  {
+    "id": 8,
+    "requirement": "Feret px",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[Max Feret px]"
+  },
+  {
+    "id": 9,
+    "requirement": "Feret um",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[Max Feret μm]"
+  },
+  {
+    "id": 10,
+    "requirement": "无效尺度",
+    "status": "PASS",
+    "evidence": "test_invalid_calibration_hides_detail_and_statistics_physical_values"
+  },
+  {
+    "id": 11,
+    "requirement": "空类型",
+    "status": "PASS",
+    "evidence": "test_none_type_missing_photometry_and_scale_explanation"
+  },
+  {
+    "id": 12,
+    "requirement": "空严重度",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields[严重度等级]"
+  },
+  {
+    "id": 13,
+    "requirement": "Band/ROI",
+    "status": "PASS",
+    "evidence": "test_selected_detail_fields"
+  },
+  {
+    "id": 14,
+    "requirement": "RAW局部",
+    "status": "PASS",
+    "evidence": "test_local_raw_pixels_mask_and_measurement_immutability"
+  },
+  {
+    "id": 15,
+    "requirement": "无RAW数值",
+    "status": "PASS",
+    "evidence": "test_real_history_detail_statistics_and_filters"
+  },
+  {
+    "id": 16,
+    "requirement": "mask",
+    "status": "PASS",
+    "evidence": "test_local_raw_pixels_mask_and_measurement_immutability[2]"
+  },
+  {
+    "id": 17,
+    "requirement": "上一条",
+    "status": "PASS",
+    "evidence": "test_sorting_selection_and_detail_navigation"
+  },
+  {
+    "id": 18,
+    "requirement": "下一条",
+    "status": "PASS",
+    "evidence": "test_sorting_selection_and_detail_navigation"
+  },
+  {
+    "id": 19,
+    "requirement": "单对象",
+    "status": "PASS",
+    "evidence": "test_single_object_navigation_and_zero_defects"
+  },
+  {
+    "id": 20,
+    "requirement": "0对象",
+    "status": "PASS",
+    "evidence": "test_single_object_navigation_and_zero_defects"
+  },
+  {
+    "id": 21,
+    "requirement": "总数",
+    "status": "PASS",
+    "evidence": "test_statistics_summary_groups_and_percentages"
+  },
+  {
+    "id": 22,
+    "requirement": "像素总面积",
+    "status": "PASS",
+    "evidence": "test_statistics_summary_groups_and_percentages"
+  },
+  {
+    "id": 23,
+    "requirement": "物理总面积",
+    "status": "PASS",
+    "evidence": "test_statistics_summary_groups_and_percentages"
+  },
+  {
+    "id": 24,
+    "requirement": "尺寸组计数和",
+    "status": "PASS",
+    "evidence": "test_statistics_summary_groups_and_percentages"
+  },
+  {
+    "id": 25,
+    "requirement": "Band计数和",
+    "status": "PASS",
+    "evidence": "test_statistics_summary_groups_and_percentages"
+  },
+  {
+    "id": 26,
+    "requirement": "类型计数和",
+    "status": "PASS",
+    "evidence": "test_statistics_summary_groups_and_percentages"
+  },
+  {
+    "id": 27,
+    "requirement": "未分类",
+    "status": "PASS",
+    "evidence": "test_all_none_types_are_one_unclassified_group"
+  },
+  {
+    "id": 28,
+    "requirement": "3Band",
+    "status": "PASS",
+    "evidence": "test_dynamic_band_statistics[3]"
+  },
+  {
+    "id": 29,
+    "requirement": "4Band",
+    "status": "PASS",
+    "evidence": "test_dynamic_band_statistics[4]"
+  },
+  {
+    "id": 30,
+    "requirement": "5Band",
+    "status": "PASS",
+    "evidence": "test_dynamic_band_statistics[5]"
+  },
+  {
+    "id": 31,
+    "requirement": "尺寸筛选",
+    "status": "PASS",
+    "evidence": "test_filter_table_overlay_and_clear[grade]"
+  },
+  {
+    "id": 32,
+    "requirement": "Band筛选",
+    "status": "PASS",
+    "evidence": "test_filter_table_overlay_and_clear[band]"
+  },
+  {
+    "id": 33,
+    "requirement": "类型筛选",
+    "status": "PASS",
+    "evidence": "test_filter_table_overlay_and_clear[defect_type]"
+  },
+  {
+    "id": 34,
+    "requirement": "清除筛选",
+    "status": "PASS",
+    "evidence": "test_filter_table_overlay_and_clear"
+  },
+  {
+    "id": 35,
+    "requirement": "筛选后联动",
+    "status": "PASS",
+    "evidence": "test_navigation_uses_filtered_order_and_retains_selection_across_tabs"
+  },
+  {
+    "id": 36,
+    "requirement": "排序后联动",
+    "status": "PASS",
+    "evidence": "test_sorting_selection_and_detail_navigation[0/2/5/7/9]"
+  },
+  {
+    "id": 37,
+    "requirement": "翻页顺序",
+    "status": "PASS",
+    "evidence": "test_navigation_uses_filtered_order_and_retains_selection_across_tabs"
+  },
+  {
+    "id": 38,
+    "requirement": "统计不受筛选影响",
+    "status": "PASS",
+    "evidence": "test_filter_table_overlay_and_clear"
+  },
+  {
+    "id": 39,
+    "requirement": "历史详情",
+    "status": "PASS",
+    "evidence": "test_real_history_detail_statistics_and_filters"
+  },
+  {
+    "id": 40,
+    "requirement": "历史统计",
+    "status": "PASS",
+    "evidence": "test_real_history_detail_statistics_and_filters"
+  },
+  {
+    "id": 41,
+    "requirement": "26_1=36",
+    "status": "PASS",
+    "evidence": "ui_observation.json"
+  },
+  {
+    "id": 42,
+    "requirement": "26_1=20356px²",
+    "status": "PASS",
+    "evidence": "ui_observation.json"
+  },
+  {
+    "id": 43,
+    "requirement": "26_2=35",
+    "status": "PASS",
+    "evidence": "ui_observation.json"
+  },
+  {
+    "id": 44,
+    "requirement": "26_2=17709px²",
+    "status": "PASS",
+    "evidence": "ui_observation.json"
+  },
+  {
+    "id": 45,
+    "requirement": "Phase6 tests",
+    "status": "PASS",
+    "evidence": "all_tests.xml: original388 unchanged"
+  },
+  {
+    "id": 46,
+    "requirement": "FAST",
+    "status": "PASS",
+    "evidence": "gates/fast/fast_profile_report.json"
+  },
+  {
+    "id": 47,
+    "requirement": "GOLDEN",
+    "status": "PASS",
+    "evidence": "gates/golden/golden_profile_report.json"
+  },
+  {
+    "id": 48,
+    "requirement": "RELEASE",
+    "status": "PASS",
+    "evidence": "gates/release/release_gate_report.json"
+  },
+  {
+    "id": 49,
+    "requirement": "smoke",
+    "status": "PASS",
+    "evidence": "software_commands.json"
+  },
+  {
+    "id": 50,
+    "requirement": "pip check",
+    "status": "PASS",
+    "evidence": "pip_check.log"
+  },
+  {
+    "id": 51,
+    "requirement": "schema1.0",
+    "status": "PASS",
+    "evidence": "release schema_status PASS"
+  },
+  {
+    "id": 52,
+    "requirement": "Golden不变",
+    "status": "PASS",
+    "evidence": "baseline Git diff empty + semantic comparison PASS"
+  },
+  {
+    "id": 53,
+    "requirement": "AUTO不变",
+    "status": "PASS",
+    "evidence": "release AUTO_policy PASS"
+  },
+  {
+    "id": 54,
+    "requirement": "算法不变",
+    "status": "PASS",
+    "evidence": "765 protection checks PASS"
+  },
+  {
+    "id": 55,
+    "requirement": "算法调用0",
+    "status": "PASS",
+    "evidence": "release + observation + external RAW deny audit"
+  },
+  {
+    "id": 56,
+    "requirement": "Phase8未开始",
+    "status": "PASS",
+    "evidence": "scope audit; no audit write/reports/database/package"
+  }
+]

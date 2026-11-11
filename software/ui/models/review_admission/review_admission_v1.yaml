@@ -1,0 +1,11 @@
+# Independent read-only admission policy, outside frozen detector configuration.
+policy_id: review_admission_v1
+policy_version: "1.0"
+area_grade_margin_px: 5
+feret_grade_margin_px: 2
+candidate_risk_area_px: 40
+candidate_risk_feret_px: 15
+candidate_high_area_px: 250
+candidate_high_feret_px: 45
+review_when_missing_photometry: false
+preferred_max_per_result: 50

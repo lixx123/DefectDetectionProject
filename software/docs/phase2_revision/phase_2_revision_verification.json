@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "protocol_status": "PRE_FREEZE_REVISION_IMPLEMENTED_PENDING_HUMAN_REVIEW",
+  "checkpoint": "7060762",
+  "runs": [
+    {
+      "name": "all_software_tests",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp",
+        "D:\\疵病检测\\DefectInspectionSoftware\\output\\phase2_revision_release_tests"
+      ],
+      "exit_code": 0,
+      "seconds": 0.562
+    },
+    {
+      "name": "pure_python_examples",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-S",
+        "-m",
+        "examples.phase2_roundtrip",
+        "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase2_revision"
+      ],
+      "exit_code": 0,
+      "seconds": 0.153
+    },
+    {
+      "name": "phase1_smoke",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "app.main",
+        "--smoke-test",
+        "--screenshot",
+        "D:\\疵病检测\\DefectInspectionSoftware\\docs\\phase2_revision\\phase1_smoke.png"
+      ],
+      "exit_code": 0,
+      "seconds": 1.834
+    },
+    {
+      "name": "pip_check",
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.59
+    }
+  ],
+  "examples": [
+    {
+      "name": "roi_success_result.json",
+      "schema_version": "1.0",
+      "final_validation": "PASS",
+      "roundtrip_equal": true,
+      "no_top_level_plan_fields": true,
+      "final_plan_is_attempt_plan": true
+    },
+    {
+      "name": "fallback_result.json",
+      "schema_version": "1.0",
+      "final_validation": "PASS",
+      "roundtrip_equal": true,
+      "no_top_level_plan_fields": true,
+      "final_plan_is_attempt_plan": true
+    }
+  ],
+  "protected_files_checked": 1298,
+  "changed_protected_files": [],
+  "reference_algorithm_executed": false,
+  "phase3_started": false,
+  "resource_io_in_validate_final": false,
+  "area_tolerance": {
+    "rel_tol": 1e-09,
+    "abs_tol": 1e-06
+  }
+}

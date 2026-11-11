@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "candidate_count": 50000,
+  "decision_count": 50000,
+  "task_count": 100,
+  "evaluate_ms": 8957.514700014144,
+  "peak_memory_delta_bytes": 56552029,
+  "image_reads": 0,
+  "domain_mutation": false,
+  "aggregation_truncated": false,
+  "policy_hash": "63edae3c40966768f907360a377ad7847ebbf477121afb54c1595b69c80f2327",
+  "ui_evaluate_and_query_ms": 1172.695500019472,
+  "ui_worker_heartbeat_count": 6,
+  "per_candidate_widgets": 0,
+  "ui_widget_count_delta": 0,
+  "tracemalloc_enabled_for_evaluate_ms": true
+}

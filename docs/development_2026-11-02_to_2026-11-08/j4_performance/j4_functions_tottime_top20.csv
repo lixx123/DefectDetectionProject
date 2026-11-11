@@ -1,0 +1,21 @@
+﻿function,primitive_calls,calls,self_seconds,cumulative_seconds
+~:0 <GaussianBlur>,6480,6480,26.3980591,26.3980591
+~:0 <morphologyEx>,720,720,13.014902200000002,13.014902200000002
+~:0 <built-in method _io.open>,2412,2412,5.8818869000000005,5.888990300000001
+~:0 <method 'nonzero' of 'numpy.ndarray' objects>,10119,10119,2.1595348000000003,2.1595348000000003
+~:0 <method 'compress' of 'zlib.Compress' objects>,8640,8640,2.1128831000000003,2.1128831000000003
+~:0 <connectedComponentsWithStats>,3868,3868,1.4811205,1.4811205
+~:0 <method 'reduce' of 'numpy.ufunc' objects>,98769,98769,1.2926345000000001,1.2926345000000001
+case03t_hseeded_variable.py:169 detect_window_H_seeded,720,720,1.0704585,44.291049400000006
+~:0 <method 'astype' of 'numpy.ndarray' objects>,23314,23314,0.9773592000000001,0.9773592000000001
+~:0 <dilate>,2347,2347,0.5361174000000001,0.5361174000000001
+profiler.py:12 call,11158,58098,0.4921997,57.475156000000005
+two_level_roi.py:18 require_computed_response,720,720,0.41299090000000005,0.4316401
+~:0 <method 'partition' of 'numpy.ndarray' objects>,11126,11126,0.4073295,0.4073295
+run_case03t_threeway_comparison.py:116 process_one,720,720,0.3886718,49.443205600000006
+~:0 <method 'seek' of '_io.BufferedRandom' objects>,14400,14400,0.32945670000000005,0.32945670000000005
+local_boundary_refinement.py:58 compute_local_residual,1440,1440,0.30482190000000003,37.450905500000005
+case03t_adaptive_hysteresis.py:119 hysteresis_window,720,720,0.272853,0.7144812
+~:0 <built-in method numpy.asarray>,41322,41322,0.21961250000000002,0.21961250000000002
+~:0 <built-in method nt.replace>,751,751,0.1848933,0.1870872
+case03j_object_boxes.py:27 measure_visual_bbox,720,720,0.1699628,0.1776809

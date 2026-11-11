@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case03-D｜10处RAW异常位置精确复核</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:"Microsoft YaHei",system-ui,Arial,sans-serif;background:#eff3f7;color:#21394c;margin:0}
+header{background:#173b53;color:white;padding:18px 25px}
+header h1{font-size:21px;margin:0 0 8px}header p{font-size:13px;margin:0;line-height:1.8;color:#dbecf4}
+main{max-width:1500px;margin:19px auto;padding:0 14px;display:grid;grid-template-columns:285px minmax(0,1fr);gap:16px}
+aside,article{padding:18px;background:white;border:1px solid #d9e2ec;border-radius:12px}
+h2{font-size:17px;margin:0 0 10px}
+p{line-height:1.7}
+.hint{font-size:12px;color:#637487}
+.warn{font-size:12px;color:#975c23}
+#cases{display:flex;flex-direction:column;gap:6px;margin-top:15px}
+button{background:#2a658f;color:white;border:0;border-radius:7px;font:inherit;padding:9px 13px;cursor:pointer}
+button.minor{background:#eaf1f6;color:#2b4c68}
+button.active{background:#147a69;color:white}
+button.danger{background:#a34f40}
+button:focus-visible{outline:3px solid #95c5e5}
+.case{background:#eff4f8;color:#263c52;border:1px solid #dae4ed;text-align:left}
+.case.selected{background:#e0f4fd;border-color:#3682bb}
+.case.marked:after{content:" ✓";color:#157b63}
+.info{background:#f0f6fa;border-radius:8px;padding:12px;font-size:13px;line-height:1.8;margin:9px 0 15px}
+.columns{display:flex;align-items:flex-start;gap:17px;flex-wrap:wrap}
+canvas{width:640px;max-width:100%;height:auto;aspect-ratio:1/1;image-rendering:pixelated;border:1px solid #b9c6d3;cursor:crosshair;touch-action:none}
+.controls{max-width:350px;flex:1;min-width:235px;font-size:13px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+textarea{font:inherit;width:100%;min-height:59px;border-radius:7px;padding:9px;border:1px solid #c6d2df}
+table{border-collapse:collapse;width:100%;font-size:12px}
+td,th{padding:8px;border-bottom:1px solid #e3e9ef;text-align:left}
+td button{font-size:12px;padding:4px 8px}
+#message{background:#eaf7f2;padding:9px;border-radius:7px;margin:12px 0;font-size:13px}
+@media(max-width:920px){main{grid-template-columns:1fr}#cases{max-height:200px;overflow-y:auto}canvas{width:100%}}
+</style>
+</head>
+<body>
+<header>
+<h1>10处RAW真实异常位置标注（无需区分疵病类型）</h1>
+<p>旧人工备注曾指向绿色候选之外的暗斑或线条。请在RAW原图上点击真正异常的中心，必要时框选或描绘边界。
+一个区域可以标多处；旧候选ID只是导航来源，不是新的疵病编号。</p>
+</header>
+<main>
+<aside>
+<h2>待确认的10个ROI</h2>
+<p class="hint" id="progress"></p>
+<div id="cases"></div>
+<p class="warn">只需要处理备注涉及的位置；不必重做100例人工分类。</p>
+</aside>
+<article>
+<h2 id="title"></h2>
+<div class="info" id="context"></div>
+<div class="toolbar">
+<button id="viewRaw" class="active" type="button">RAW图像</button>
+<button id="viewAlgorithm" class="minor" type="button">原算法状态辅助图</button>
+<button id="previous" class="minor" type="button">上一处</button>
+<button id="following" class="minor" type="button">下一处</button>
+</div>
+<div class="columns">
+<div>
+<canvas id="image" width="640" height="640" aria-label="点击真实RAW像素以定位疵病"></canvas>
+<p class="hint">RAW160×160原像素显示为640×640；鼠标坐标映射回真实RAW整像素。
+<span style="color:#0d9fc4">青色</span>为人工标注；<span style="color:#ec702b">橙框</span>仅显示旧候选位置。</p>
+</div>
+<div class="controls">
+<h2>人工标注模式</h2>
+<div class="toolbar">
+<button data-mode="point" class="active" type="button">单击定位中心</button>
+<button data-mode="rect" class="minor" type="button">双击两角框范围</button>
+<button data-mode="poly" class="minor" type="button">多边形描轮廓</button>
+</div>
+<button id="finishPolygon" class="minor" type="button">完成多边形</button>
+<button id="undoVertex" class="minor" type="button">撤销顶点</button>
+<p class="hint" id="instruction"></p>
+<p><b>位置与大小：</b>点选只确定中心坐标，不自动计算面积；框选和多边形给出人工近似范围。最终准确大小须从经过确认的疵病分割轮廓测量。</p>
+<p class="warn">探测器像元尺寸3.2μm尚不能直接等同物面测量精度；未确认标定比例及分级标准前，不预设微米尺寸和等级。</p>
+<label for="extraNote"><strong>本处补充备注</strong></label>
+<textarea id="extraNote" placeholder="例如：右侧有两个暗点，已逐个点选"></textarea>
+</div>
+</div>
+<p id="message">请点击RAW中实际疵病的位置，允许同一局部标注多个独立对象。</p>
+<h2>已经标出的目标</h2>
+<table><thead><tr><th>序号</th><th>标注方式</th><th>RAW坐标／范围</th><th>面积（近似）</th><th>操作</th></tr></thead><tbody id="marks"></tbody></table>
+<div class="toolbar">
+<button id="exportJson" type="button">导出JSON备份</button>
+<button id="exportCsv" type="button">导出RAW定位CSV</button>
+<button id="importJson" class="minor" type="button">恢复JSON备份</button>
+<input id="importFile" type="file" accept=".json" hidden>
+<button id="clearCurrent" class="danger" type="button">清空本ROI标注</button>
+</div>
+<p class="warn">本页面完全离线；数据暂存于打开的浏览器窗口中。请定期导出JSON，完成后导出CSV。
+旧人工标签和Case03-D自动判别结果均不会被修改。</p>
+</article>
+</main>
+<script id="reviewData" type="application/json">__DATA__</script>
+<script>
+"use strict";
+const R=JSON.parse(document.getElementById("reviewData").textContent);
+const size=160,scale=4;
+const stored={};
+const images={};
+const validModes=new Set(["point","rect","poly"]);
+let index=0,view="raw",mode="point",partial=[];
+const canvas=document.getElementById("image"),ctx=canvas.getContext("2d");
+const el=id=>document.getElementById(id);
+const escapeText=s=>String(s).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;");
+const current=()=>R[index];
+const record=()=>stored[current().candidate_id]||(stored[current().candidate_id]={targets:[],note:""});
+function imageAt(url){
+ if(images[url])return images[url];
+ const im=new Image();
+ images[url]=im;
+ im.onload=draw;
+ im.onerror=()=>el("message").textContent="无法加载图片："+url;
+ im.src=url;
+ return im;
+}
+function draw(){
+ const r=current(),url=view==="raw"?r.raw_image:r.status_image,im=imageAt(url);
+ ctx.fillStyle="#222";ctx.fillRect(0,0,640,640);
+ if(im.complete&&im.naturalWidth){
+  ctx.imageSmoothingEnabled=false;ctx.drawImage(im,0,0,640,640);
+ }
+ ctx.strokeStyle="#ff852e";ctx.lineWidth=1.4;
+ ctx.strokeRect((r.bbox_x-r.roi_x0)*scale,(r.bbox_y-r.roi_y0)*scale,r.bbox_w*scale,r.bbox_h*scale);
+ record().targets.forEach((target,i)=>{
+  const pts=target.points;
+  ctx.strokeStyle="#26d2ed";ctx.lineWidth=2;
+  if(target.kind==="point"){
+    const x=(pts[0][0]+.5)*scale,y=(pts[0][1]+.5)*scale;
+    ctx.beginPath();ctx.arc(x,y,6,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x-10,y);ctx.lineTo(x+10,y);
+    ctx.moveTo(x,y-10);ctx.lineTo(x,y+10);ctx.stroke();
+  }else if(target.kind==="rect"){
+    const a=pts[0],b=pts[1];
+    ctx.strokeRect(Math.min(a[0],b[0])*scale,Math.min(a[1],b[1])*scale,
+      (Math.abs(a[0]-b[0])+1)*scale,(Math.abs(a[1]-b[1])+1)*scale);
+  }else{
+    ctx.beginPath();ctx.moveTo((pts[0][0]+.5)*scale,(pts[0][1]+.5)*scale);
+    for(let j=1;j<pts.length;j++)
+      ctx.lineTo((pts[j][0]+.5)*scale,(pts[j][1]+.5)*scale);
+    ctx.closePath();ctx.stroke();
+  }
+  ctx.font="bold 14px Arial";
+  ctx.fillStyle="#075868";
+  const tx=Math.min(610,(pts[0][0]+2)*scale),ty=Math.max(16,pts[0][1]*scale-7);
+  ctx.fillRect(tx-2,ty-14,28,21);
+  ctx.fillStyle="white";ctx.fillText(String(i+1),tx+2,ty+1);
+ });
+ if(partial.length){
+  ctx.strokeStyle="#ffdc57";ctx.fillStyle="#ffdc57";ctx.lineWidth=2;
+  partial.forEach((p,i)=>{
+   const x=(p[0]+.5)*scale,y=(p[1]+.5)*scale;
+   ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();
+   if(i){
+     ctx.beginPath();ctx.moveTo((partial[i-1][0]+.5)*scale,(partial[i-1][1]+.5)*scale);
+     ctx.lineTo(x,y);ctx.stroke();
+   }
+  });
+ }
+}
+function pos(evt){
+ const rect=canvas.getBoundingClientRect();
+ return [
+  Math.max(0,Math.min(size-1,Math.floor((evt.clientX-rect.left)/rect.width*size))),
+  Math.max(0,Math.min(size-1,Math.floor((evt.clientY-rect.top)/rect.height*size)))
+ ];
+}
+function area(target){
+ if(target.kind==="point")return null;
+ const pts=target.points;
+ if(target.kind==="rect")
+   return (Math.abs(pts[0][0]-pts[1][0])+1)*(Math.abs(pts[0][1]-pts[1][1])+1);
+ let sum=0;
+ for(let i=0;i<pts.length;i++){
+  const a=pts[i],b=pts[(i+1)%pts.length];
+  sum+=a[0]*b[1]-b[0]*a[1];
+ }
+ return Math.abs(sum)/2;
+}
+function append(kind,points){
+ if(kind==="poly"&&(points.length<3||area({kind,points})===0)){
+    el("message").textContent="多边形至少需要三个不共线顶点";return;
+ }
+ record().targets.push({kind:kind,points:points});
+ partial=[];show();
+}
+canvas.onclick=e=>{
+ const p=pos(e);
+ if(mode==="point")append("point",[p]);
+ else if(mode==="rect"){
+    partial.push(p);if(partial.length===2)append("rect",[...partial]);else draw();
+ }else {partial.push(p);draw();}
+};
+function selectMode(value){
+ if(!validModes.has(value))return;
+ mode=value;partial=[];
+ document.querySelectorAll("[data-mode]").forEach(b=>
+    b.className=b.dataset.mode===mode?"active":"minor");
+ el("instruction").textContent=
+   mode==="point"?"单击疵病中心，可连续点击多处；点定位不等于完整面积":
+   mode==="rect"?"先点击一个边界角，再点击对角，得到近似包围框":
+   "依次点击边界顶点，再点击“完成多边形”；输出手工近似面积";
+ draw();
+}
+document.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>selectMode(b.dataset.mode));
+el("finishPolygon").onclick=()=>{
+ if(mode!=="poly"){el("message").textContent="请先选择多边形模式";return;}
+ append("poly",[...partial]);
+};
+el("undoVertex").onclick=()=>{partial.pop();draw();};
+function cases(){
+ const root=el("cases");root.replaceChildren();
+ R.forEach((r,i)=>{
+  const count=stored[r.candidate_id]?.targets?.length||0;
+  const b=document.createElement("button");b.type="button";
+  b.className="case"+(i===index?" selected":"")+(count?" marked":"");
+  b.textContent=String(i+1).padStart(2,"0")+"  "+r.candidate_id+"  ["+count+"]";
+  b.onclick=()=>change(i);root.appendChild(b);
+ });
+ el("progress").textContent="已定位 "+Object.values(stored).filter(v=>v.targets.length).length+
+ " / 10处；全部目标数："+Object.values(stored).reduce((a,v)=>a+v.targets.length,0);
+}
+function marks(){
+ const tr=el("marks");tr.replaceChildren();
+ const roi=current();
+ record().targets.forEach((t,i)=>{
+  const converted=t.points.map(p=>[roi.roi_x0+p[0],roi.roi_y0+p[1]]);
+  const pt=converted[0],last=converted[converted.length-1];
+  const coords=t.kind==="point"?
+    "("+pt[0]+", "+pt[1]+")":
+    t.kind==="rect"?
+    "("+pt[0]+","+pt[1]+") 至 ("+last[0]+","+last[1]+")":
+    converted.map(p=>"("+p[0]+","+p[1]+")").join(" ");
+  const a=area(t);
+  const row=document.createElement("tr");
+  [i+1,t.kind,coords,a===null?"—":a.toFixed(1)+" px²"].forEach(v=>{
+    const td=document.createElement("td");td.textContent=String(v);row.appendChild(td);
+  });
+  const td=document.createElement("td"),b=document.createElement("button");
+  b.className="danger";b.textContent="删除";b.onclick=()=>{
+   record().targets.splice(i,1);show();
+  };
+  td.appendChild(b);row.appendChild(td);tr.appendChild(row);
+ });
+}
+function show(){
+ const r=current();
+ el("title").textContent=String(index+1)+"/10  "+r.candidate_id;
+ el("context").innerHTML="原人工标签：<b>"+escapeText(r.original_label)+
+    "</b><br>原备注：<b>"+escapeText(r.human_note)+
+    "</b><br>RAW区域：x="+r.roi_x0+"～"+(r.roi_x0+159)+
+    "，y="+r.roi_y0+"～"+(r.roi_y0+159);
+ el("extraNote").value=record().note;
+ el("message").textContent="本ROI已有 "+record().targets.length+
+    " 处标注；点击RAW中实际异常（不是旧候选橙框）。";
+ draw();marks();cases();
+}
+function change(n){
+ record().note=el("extraNote").value;
+ index=(n+R.length)%R.length;
+ partial=[];show();
+}
+el("extraNote").oninput=()=>record().note=el("extraNote").value;
+el("previous").onclick=()=>change(index-1);
+el("following").onclick=()=>change(index+1);
+el("viewRaw").onclick=()=>{
+ view="raw";el("viewRaw").className="active";el("viewAlgorithm").className="minor";draw();
+};
+el("viewAlgorithm").onclick=()=>{
+ view="status";el("viewRaw").className="minor";el("viewAlgorithm").className="active";draw();
+};
+el("clearCurrent").onclick=()=>{
+ if(!confirm("确定清空本ROI的全部新增定位记录吗？"))return;
+ record().targets=[];partial=[];show();
+};
+function download(filename,content,mime){
+ const blob=new Blob([content],{type:mime}),url=URL.createObjectURL(blob);
+ const a=document.createElement("a");a.href=url;a.download=filename;
+ document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+function targets(){
+ record().note=el("extraNote").value;
+ const out=[];
+ for(const r of R){
+  const s=stored[r.candidate_id];if(!s)continue;
+  s.targets.forEach((t,i)=>{
+   const p=t.points.map(v=>[r.roi_x0+v[0],r.roi_y0+v[1]]);
+   const X=p.map(q=>q[0]),Y=p.map(q=>q[1]);
+   const x0=Math.min(...X),x1=Math.max(...X),y0=Math.min(...Y),y1=Math.max(...Y);
+   out.push({
+    source_parent_H_candidate_id:r.candidate_id,
+    target_index_in_roi:i+1,
+    annotation_kind:t.kind,
+    raw_x:t.kind==="point"?p[0][0]:Math.round((x0+x1)/2),
+    raw_y:t.kind==="point"?p[0][1]:Math.round((y0+y1)/2),
+    bbox_x:t.kind==="point"?"":x0,
+    bbox_y:t.kind==="point"?"":y0,
+    bbox_w:t.kind==="point"?"":x1-x0+1,
+    bbox_h:t.kind==="point"?"":y1-y0+1,
+    manual_approx_area_px2:area(t)===null?"":area(t),
+    vertices_RAW_global_xy_JSON:JSON.stringify(p),
+    source_h_manual_label:r.original_label,
+    source_h_manual_note:r.human_note,
+    new_roi_note:s.note,
+    target_is_independent_of_parent_H_ID:true,
+    size_grade:"NOT_ASSIGNED_PENDING_USER_THRESHOLDS"
+   });
+  });
+ }
+ return out;
+}
+el("exportJson").onclick=()=>{
+ record().note=el("extraNote").value;
+ const payload={
+  schema:1,source:"case03d_10roi_true_target_click_annotation",
+  raw_image_shape_wh:[11276,9200],source_ROI_size_px:160,
+  parent_H_ID_is_not_target_ID:true,annotations:stored
+ };
+ download("case03d_true_target_10roi_backup.json",JSON.stringify(payload,null,2),
+          "application/json;charset=utf-8");
+ el("message").textContent="JSON备份已导出到本机下载目录。";
+};
+el("exportCsv").onclick=()=>{
+ const entries=targets();
+ if(!entries.length){el("message").textContent="请至少点选一处实际疵病位置";return;}
+ const keys=Object.keys(entries[0]);
+ const cell=x=>'"'+String(x??"").replaceAll('"','""')+'"';
+ const rows=[keys.map(cell).join(",")];
+ entries.forEach(item=>rows.push(keys.map(k=>cell(item[k])).join(",")));
+ download("case03d_true_target_10roi_locations.csv","\ufeff"+rows.join("\r\n")+"\r\n",
+  "text/csv;charset=utf-8");
+ el("message").textContent="已导出 "+entries.length+" 个真实RAW目标定位记录。";
+};
+el("importJson").onclick=()=>el("importFile").click();
+el("importFile").onchange=async e=>{
+ const f=e.target.files[0];if(!f)return;
+ try{
+   const b=JSON.parse(await f.text());
+   if(b.schema!==1||b.source!=="case03d_10roi_true_target_click_annotation")
+     throw Error("备份格式不匹配");
+   const byId=new Set(R.map(r=>r.candidate_id));
+   const items=b.annotations||{};
+   for(const [key,obj] of Object.entries(items)){
+     if(!byId.has(key)||!Array.isArray(obj.targets))throw Error("包含未知候选ID");
+     for(const t of obj.targets){
+       if(!validModes.has(t.kind)||!Array.isArray(t.points))throw Error("标注类型无效");
+       if(t.points.some(p=>!Array.isArray(p)||p.length!==2||p.some(n=>
+          !Number.isInteger(n)||n<0||n>=size)))throw Error("标注像素坐标超界");
+     }
+   }
+   for(const key of Object.keys(stored))delete stored[key];
+   Object.assign(stored,items);partial=[];show();
+   el("message").textContent="已恢复 "+Object.values(stored).reduce((n,a)=>n+a.targets.length,0)+" 个标注。";
+ }catch(err){el("message").textContent="恢复失败："+err.message;}
+ e.target.value="";
+};
+selectMode("point");show();
+</script>
+</body>
+</html>

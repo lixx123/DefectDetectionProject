@@ -1,0 +1,90 @@
+{
+  "status": "PASS_WITH_DATA_LIMITATIONS",
+  "algorithm_executions": 0,
+  "samples": [
+    {
+      "result_id": "8a363da8-7a3b-4c77-84cf-d13a375c3b15",
+      "candidate_count": 32370,
+      "source_candidate_count": 32370,
+      "lineage_complete": true,
+      "disposition_counts": {
+        "PENDING": 0,
+        "RETAINED": 33,
+        "FILTERED": 4,
+        "MERGED": 9,
+        "REVIEW": 32324
+      },
+      "filter_reason_counts": {
+        "OUTSIDE_WORK_REGION": 4
+      },
+      "source_counts": {
+        "J5": 15604,
+        "K8B": 16766
+      },
+      "stage_counts": {
+        "HISTORICAL_ARCHIVE_NOT_RESCANNED": 14917,
+        "FINAL_SELECTION": 17453
+      },
+      "linked_to_final_count": 42,
+      "unlinked_count": 32328,
+      "final_defect_count": 36,
+      "reverse_lineage_defects_checked": 36,
+      "candidate_key_duplicate_count": 0,
+      "invalid_final_defect_links": 0,
+      "ambiguous_merged_targets": 0,
+      "unresolved_merged_targets": 9,
+      "consistency_issues": [
+        "目标候选无法唯一解析：('K8B', 'B:F1:B02:C0000614') → F1_FINAL_0029",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B02:C0001028') → F1_FINAL_0029",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B02:C0001273') → F1_FINAL_0029",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B02:C0001562') → F1_FINAL_0029",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B02:C0001787') → F1_FINAL_0002",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B02:C0001902') → F1_FINAL_0002",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B04:C0002424') → F1_FINAL_0001",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B04:C0002444') → F1_FINAL_0001",
+        "目标候选无法唯一解析：('K8B', 'B:F1:B04:C0002504') → F1_FINAL_0001"
+      ],
+      "sample_id": "26_1",
+      "result_unchanged": true
+    },
+    {
+      "result_id": "f15a42a0-c022-47eb-93d8-d0d191939589",
+      "candidate_count": 8332,
+      "source_candidate_count": 8332,
+      "lineage_complete": true,
+      "disposition_counts": {
+        "PENDING": 0,
+        "RETAINED": 33,
+        "FILTERED": 0,
+        "MERGED": 5,
+        "REVIEW": 8294
+      },
+      "filter_reason_counts": {},
+      "source_counts": {
+        "J5": 4440,
+        "K8B": 3892
+      },
+      "stage_counts": {
+        "HISTORICAL_ARCHIVE_NOT_RESCANNED": 4042,
+        "FINAL_SELECTION": 4290
+      },
+      "linked_to_final_count": 38,
+      "unlinked_count": 8294,
+      "final_defect_count": 35,
+      "reverse_lineage_defects_checked": 35,
+      "candidate_key_duplicate_count": 0,
+      "invalid_final_defect_links": 0,
+      "ambiguous_merged_targets": 0,
+      "unresolved_merged_targets": 5,
+      "consistency_issues": [
+        "目标候选无法唯一解析：('K8B', 'B:F2:B02:C0000626') → F2_FINAL_0002",
+        "目标候选无法唯一解析：('K8B', 'B:F2:B02:C0000658') → F2_FINAL_0002",
+        "目标候选无法唯一解析：('K8B', 'B:F2:B02:C0001148') → F2_FINAL_0001",
+        "目标候选无法唯一解析：('K8B', 'B:F2:B02:C0001161') → F2_FINAL_0001",
+        "目标候选无法唯一解析：('K8B', 'B:F2:B02:C0001186') → F2_FINAL_0001"
+      ],
+      "sample_id": "26_2",
+      "result_unchanged": true
+    }
+  ]
+}

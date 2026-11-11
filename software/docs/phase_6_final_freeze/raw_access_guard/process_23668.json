@@ -1,0 +1,10 @@
+{
+  "policy": "DENY_ALL_RAW_OUTSIDE_TEST_OUTPUT_ROOT",
+  "active": true,
+  "process_id": 23668,
+  "argv": [
+    "-c"
+  ],
+  "allowed_fixture_raw_opens": 0,
+  "blocked_external_raw_opens": 0
+}

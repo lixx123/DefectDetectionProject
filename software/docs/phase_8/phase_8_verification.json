@@ -1,0 +1,15 @@
+{
+  "report_stage": "PRECOMMIT_ONLY",
+  "authoritative_final_verification": "output/phase8_final/phase_8_verification.json",
+  "phase8_tests": 51,
+  "expected_final_all_tests": 479,
+  "expected_fast_tests": 446,
+  "expected_golden_tests": 31,
+  "algorithm_executions": 0,
+  "phase9_started": false,
+  "human_acceptance": "PENDING",
+  "final_commit": null,
+  "tested_head": null,
+  "final_gate_status": "PENDING_POSTCOMMIT",
+  "real_data_limitations": "14 merged_into strings identify final defects, not candidates"
+}

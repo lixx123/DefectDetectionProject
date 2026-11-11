@@ -1,0 +1,90 @@
+{
+  "status": "ENGINEERING_QA_PASS_HUMAN_ACCEPTANCE_PENDING",
+  "baseline_commit": "6f0fd69560a2155d477009ee792613acef371a2f",
+  "generated_at": "2026-10-21T08:49:50.836648+00:00",
+  "tested_head": "6f0fd69560a2155d477009ee792613acef371a2f",
+  "tested_source_fingerprint": "ecf2071a349752de4381bdddf9114a738a73ccc2d43848537573a61f8e2f8f56",
+  "human_acceptance": "PENDING",
+  "detail_page_status": "PASS",
+  "statistics_page_status": "PASS",
+  "filter_status": "PASS",
+  "sort_status": "PASS",
+  "selection_sync_status": "PASS",
+  "26_1_defect_count": 36,
+  "26_1_total_area_px": 20356,
+  "26_2_defect_count": 35,
+  "26_2_total_area_px": 17709,
+  "size_grade_count_sum": {
+    "26_1": 36,
+    "26_2": 35
+  },
+  "band_count_sum": {
+    "26_1": 36,
+    "26_2": 35
+  },
+  "type_count_sum": {
+    "26_1": 36,
+    "26_2": 35
+  },
+  "dynamic_band_status": "PASS: 3/4/5",
+  "zero_defect_status": "PASS",
+  "invalid_calibration_status": "PASS",
+  "all_tests": {
+    "tests": 428,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "phase7_ui_tests": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "old_388_tests_unchanged": true,
+  "fast_status": "PASS",
+  "fast_counts": {
+    "tests": 397,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "golden_status": "PASS",
+  "golden_counts": {
+    "tests": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "release_status": "PASS",
+  "real_engine_required": false,
+  "real_engine_executed": false,
+  "algorithm_executions": 0,
+  "schema_version": "1.0",
+  "AUTO_status": "PASS",
+  "Repository_status": "PASS",
+  "algorithm_protection": {
+    "status": "PASS",
+    "protected_files_checked": 765,
+    "changed_files": []
+  },
+  "algorithm_files_changed": [],
+  "frozen_modules_changed": [],
+  "raw_required_for_ordinary_gates": false,
+  "machine_path_scan": "PASS",
+  "phase7_started": true,
+  "phase8_started": false,
+  "screenshots": [
+    "docs/phase_7/screenshots/01_detection_tab.png",
+    "docs/phase_7/screenshots/02_defect_detail.png",
+    "docs/phase_7/screenshots/03_statistics.png",
+    "docs/phase_7/screenshots/04_filter_large.png",
+    "docs/phase_7/screenshots/05_band_statistics.png",
+    "docs/phase_7/screenshots/06_zero_defect_fixture.png",
+    "docs/phase_7/screenshots/07_26_2_statistics.png",
+    "docs/phase_7/screenshots/08_26_2_detail.png"
+  ],
+  "screenshot_review": "AGENT_VISUAL_REVIEW_COMPLETED; HUMAN_ACCEPTANCE_PENDING",
+  "raw_detail_test_data": "Synthetic RAW only; history screenshots require no original RAW",
+  "statistics_scope": "FULL InspectionResult; final Defect[] only; filters display-only"
+}

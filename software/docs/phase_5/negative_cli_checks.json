@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "scripts.update_golden_baseline"
+      ],
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "golden_unchanged": true
+    },
+    {
+      "command": [
+        "D:\\疵病检测\\DefectInspectionSoftware\\.venv\\Scripts\\python.exe",
+        "-m",
+        "scripts.update_golden_baseline",
+        "--approve",
+        "--reason",
+        "negative test: existing golden must not be overwritten without allow-update"
+      ],
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "golden_unchanged": true
+    }
+  ],
+  "missing_raw_real_status": "NOT_RUN",
+  "real_engine_executed": false
+}

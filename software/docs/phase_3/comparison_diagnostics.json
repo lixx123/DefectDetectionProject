@@ -1,0 +1,310 @@
+[
+  {
+    "frame": 1,
+    "comparison": "roi_vs_full",
+    "matching_basis": "FINAL_ID_WITH_INDEPENDENT_MASK_AND_SOURCE_CHECK",
+    "added_objects": [],
+    "disappeared_objects": [],
+    "position_changes": [],
+    "area_changes": [],
+    "Feret_changes": [],
+    "grade_changes": [],
+    "source_membership_changes": [],
+    "object_mask_changes": [],
+    "final_binary_diff_pixels": 0,
+    "missing_reference_candidate_uids": [],
+    "additional_current_candidate_uids": [],
+    "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+    "status": "PASS"
+  },
+  {
+    "frame": 1,
+    "comparison": "full_vs_baseline",
+    "matching_basis": "FINAL_ID_WITH_INDEPENDENT_MASK_AND_SOURCE_CHECK",
+    "added_objects": [],
+    "disappeared_objects": [],
+    "position_changes": [
+      {
+        "id": "F1_FINAL_0032",
+        "before": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 7541,
+          "y0": 6780,
+          "x1": 7557,
+          "y1": 6801
+        },
+        "after": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 10499,
+          "y0": 5873,
+          "x1": 10517,
+          "y1": 5892
+        }
+      },
+      {
+        "id": "F1_FINAL_0033",
+        "before": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 4236,
+          "y0": 5464,
+          "x1": 4250,
+          "y1": 5477
+        },
+        "after": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 7541,
+          "y0": 6780,
+          "x1": 7557,
+          "y1": 6801
+        }
+      },
+      {
+        "id": "F1_FINAL_0034",
+        "before": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 3890,
+          "y0": 5612,
+          "x1": 3905,
+          "y1": 5627
+        },
+        "after": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 4236,
+          "y0": 5464,
+          "x1": 4250,
+          "y1": 5477
+        }
+      },
+      {
+        "id": "F1_FINAL_0035",
+        "before": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 9886,
+          "y0": 5618,
+          "x1": 9898,
+          "y1": 5632
+        },
+        "after": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 3890,
+          "y0": 5612,
+          "x1": 3905,
+          "y1": 5627
+        }
+      },
+      {
+        "id": "F1_FINAL_0036",
+        "before": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 10499,
+          "y0": 5873,
+          "x1": 10517,
+          "y1": 5892
+        },
+        "after": {
+          "extensions": {},
+          "_unknown_fields": {},
+          "x0": 9886,
+          "y0": 5618,
+          "x1": 9898,
+          "y1": 5632
+        }
+      }
+    ],
+    "area_changes": [
+      {
+        "id": "F1_FINAL_0032",
+        "before": 112.0,
+        "after": 120.0
+      },
+      {
+        "id": "F1_FINAL_0033",
+        "before": 60.0,
+        "after": 112.0
+      },
+      {
+        "id": "F1_FINAL_0034",
+        "before": 59.0,
+        "after": 60.0
+      },
+      {
+        "id": "F1_FINAL_0035",
+        "before": 55.0,
+        "after": 59.0
+      },
+      {
+        "id": "F1_FINAL_0036",
+        "before": 120.0,
+        "after": 55.0
+      }
+    ],
+    "Feret_changes": [
+      {
+        "id": "F1_FINAL_0032",
+        "before": 20.2237,
+        "after": 18.24828759089466
+      },
+      {
+        "id": "F1_FINAL_0033",
+        "before": 13.1529,
+        "after": 20.223748416156685
+      },
+      {
+        "id": "F1_FINAL_0034",
+        "before": 16.4012,
+        "after": 13.152946437965905
+      },
+      {
+        "id": "F1_FINAL_0035",
+        "before": 13.8924,
+        "after": 16.401219466856727
+      },
+      {
+        "id": "F1_FINAL_0036",
+        "before": 18.2483,
+        "after": 13.892443989449804
+      }
+    ],
+    "grade_changes": [],
+    "source_membership_changes": [
+      {
+        "id": "F1_FINAL_0032",
+        "before": [
+          "B:F1:B04:C0004577"
+        ],
+        "after": [
+          "B:F1:B03:C0003615"
+        ]
+      },
+      {
+        "id": "F1_FINAL_0033",
+        "before": [
+          "B:F1:B03:C0000739"
+        ],
+        "after": [
+          "B:F1:B04:C0004577"
+        ]
+      },
+      {
+        "id": "F1_FINAL_0034",
+        "before": [
+          "B:F1:B03:C0001837"
+        ],
+        "after": [
+          "B:F1:B03:C0000739"
+        ]
+      },
+      {
+        "id": "F1_FINAL_0035",
+        "before": [
+          "B:F1:B03:C0001908"
+        ],
+        "after": [
+          "B:F1:B03:C0001837"
+        ]
+      },
+      {
+        "id": "F1_FINAL_0036",
+        "before": [
+          "B:F1:B03:C0003615"
+        ],
+        "after": [
+          "B:F1:B03:C0001908"
+        ]
+      }
+    ],
+    "object_mask_changes": [
+      "F1_FINAL_0032",
+      "F1_FINAL_0033",
+      "F1_FINAL_0034",
+      "F1_FINAL_0035",
+      "F1_FINAL_0036"
+    ],
+    "final_binary_diff_pixels": 0,
+    "missing_reference_candidate_uids": [],
+    "additional_current_candidate_uids": [],
+    "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+    "status": "FAIL"
+  },
+  {
+    "frame": 1,
+    "comparison": "auto_vs_roi",
+    "matching_basis": "FINAL_ID_WITH_INDEPENDENT_MASK_AND_SOURCE_CHECK",
+    "added_objects": [],
+    "disappeared_objects": [],
+    "position_changes": [],
+    "area_changes": [],
+    "Feret_changes": [],
+    "grade_changes": [],
+    "source_membership_changes": [],
+    "object_mask_changes": [],
+    "final_binary_diff_pixels": 0,
+    "missing_reference_candidate_uids": [],
+    "additional_current_candidate_uids": [],
+    "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+    "status": "PASS"
+  },
+  {
+    "frame": 2,
+    "comparison": "roi_vs_full",
+    "matching_basis": "FINAL_ID_WITH_INDEPENDENT_MASK_AND_SOURCE_CHECK",
+    "added_objects": [],
+    "disappeared_objects": [],
+    "position_changes": [],
+    "area_changes": [],
+    "Feret_changes": [],
+    "grade_changes": [],
+    "source_membership_changes": [],
+    "object_mask_changes": [],
+    "final_binary_diff_pixels": 0,
+    "missing_reference_candidate_uids": [],
+    "additional_current_candidate_uids": [],
+    "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+    "status": "PASS"
+  },
+  {
+    "frame": 2,
+    "comparison": "full_vs_baseline",
+    "matching_basis": "FINAL_ID_WITH_INDEPENDENT_MASK_AND_SOURCE_CHECK",
+    "added_objects": [],
+    "disappeared_objects": [],
+    "position_changes": [],
+    "area_changes": [],
+    "Feret_changes": [],
+    "grade_changes": [],
+    "source_membership_changes": [],
+    "object_mask_changes": [],
+    "final_binary_diff_pixels": 0,
+    "missing_reference_candidate_uids": [],
+    "additional_current_candidate_uids": [],
+    "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+    "status": "PASS"
+  },
+  {
+    "frame": 2,
+    "comparison": "auto_vs_roi",
+    "matching_basis": "FINAL_ID_WITH_INDEPENDENT_MASK_AND_SOURCE_CHECK",
+    "added_objects": [],
+    "disappeared_objects": [],
+    "position_changes": [],
+    "area_changes": [],
+    "Feret_changes": [],
+    "grade_changes": [],
+    "source_membership_changes": [],
+    "object_mask_changes": [],
+    "final_binary_diff_pixels": 0,
+    "missing_reference_candidate_uids": [],
+    "additional_current_candidate_uids": [],
+    "candidate_archive_semantics": "ROI may retain historical sources without recomputing them; extra boundary partial sources are explicit",
+    "status": "PASS"
+  }
+]

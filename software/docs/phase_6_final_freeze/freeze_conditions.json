@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "condition": "FAST不依赖真实RAW",
+    "status": "PASS"
+  },
+  {
+    "id": 2,
+    "condition": "GOLDEN不依赖真实RAW",
+    "status": "PASS"
+  },
+  {
+    "id": 3,
+    "condition": "RELEASE不依赖真实RAW",
+    "status": "PASS"
+  },
+  {
+    "id": 4,
+    "condition": "永久测试无本机路径",
+    "status": "PASS"
+  },
+  {
+    "id": 5,
+    "condition": "生产源码无本机路径",
+    "status": "PASS"
+  },
+  {
+    "id": 6,
+    "condition": "保留真实26_1显示验收",
+    "status": "PASS"
+  },
+  {
+    "id": 7,
+    "condition": "CLI显式RAW路径",
+    "status": "PASS"
+  },
+  {
+    "id": 8,
+    "condition": "流式SHA256",
+    "status": "PASS"
+  },
+  {
+    "id": 9,
+    "condition": "不扫描磁盘找RAW",
+    "status": "PASS"
+  },
+  {
+    "id": 10,
+    "condition": "GUI三个文件零变化",
+    "status": "PASS"
+  },
+  {
+    "id": 11,
+    "condition": "自动覆盖不下降",
+    "status": "PASS"
+  },
+  {
+    "id": 12,
+    "condition": "26_1/26_2 Golden零变化",
+    "status": "PASS"
+  },
+  {
+    "id": 13,
+    "condition": "schema1.0不变",
+    "status": "PASS"
+  },
+  {
+    "id": 14,
+    "condition": "AUTO不变",
+    "status": "PASS"
+  },
+  {
+    "id": 15,
+    "condition": "Repository不变",
+    "status": "PASS"
+  },
+  {
+    "id": 16,
+    "condition": "原算法不变",
+    "status": "PASS"
+  },
+  {
+    "id": 17,
+    "condition": "algorithm_executions=0",
+    "status": "PASS"
+  },
+  {
+    "id": 18,
+    "condition": "全部自动测试PASS",
+    "status": "PASS"
+  },
+  {
+    "id": 19,
+    "condition": "smoke PASS",
+    "status": "PASS"
+  },
+  {
+    "id": 20,
+    "condition": "pip check PASS",
+    "status": "PASS"
+  },
+  {
+    "id": 21,
+    "condition": "提交后Git clean",
+    "status": "CONFIRM_IN_DELIVERY_RECEIPT"
+  },
+  {
+    "id": 22,
+    "condition": "Phase7未开始",
+    "status": "PASS"
+  }
+]

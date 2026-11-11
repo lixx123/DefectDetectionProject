@@ -1,0 +1,290 @@
+[
+  {
+    "id": 1,
+    "requirement": "MainWindow创建",
+    "status": "PASS",
+    "evidence": "test_main_window_empty_smoke"
+  },
+  {
+    "id": 2,
+    "requirement": "空状态",
+    "status": "PASS",
+    "evidence": "test_main_window_empty_smoke"
+  },
+  {
+    "id": 3,
+    "requirement": "加载灰度图",
+    "status": "PASS",
+    "evidence": "test_viewer_coordinates_and_zoom"
+  },
+  {
+    "id": 4,
+    "requirement": "Fit",
+    "status": "PASS",
+    "evidence": "test_viewer_coordinates_and_zoom[fit]"
+  },
+  {
+    "id": 5,
+    "requirement": "100%",
+    "status": "PASS",
+    "evidence": "test_viewer_coordinates_and_zoom[actual_size]"
+  },
+  {
+    "id": 6,
+    "requirement": "Zoom",
+    "status": "PASS",
+    "evidence": "test_viewer_coordinates_and_zoom"
+  },
+  {
+    "id": 7,
+    "requirement": "坐标转换",
+    "status": "PASS",
+    "evidence": "test_viewer_coordinates_and_zoom[coordinate]"
+  },
+  {
+    "id": 8,
+    "requirement": "overlay添加",
+    "status": "PASS",
+    "evidence": "test_overlay_add_select_clear_and_measurement_immutable"
+  },
+  {
+    "id": 9,
+    "requirement": "overlay清除",
+    "status": "PASS",
+    "evidence": "test_overlay_add_select_clear_and_measurement_immutable"
+  },
+  {
+    "id": 10,
+    "requirement": "overlay选择",
+    "status": "PASS",
+    "evidence": "test_table_viewer_bidirectional_actual_click"
+  },
+  {
+    "id": 11,
+    "requirement": "表格行数",
+    "status": "PASS",
+    "evidence": "test_table_fields_none_numeric_sort_and_id"
+  },
+  {
+    "id": 12,
+    "requirement": "字段",
+    "status": "PASS",
+    "evidence": "test_table_fields_none_numeric_sort_and_id"
+  },
+  {
+    "id": 13,
+    "requirement": "None显示—",
+    "status": "PASS",
+    "evidence": "test_table_fields_none_numeric_sort_and_id"
+  },
+  {
+    "id": 14,
+    "requirement": "历史Calibration",
+    "status": "PASS",
+    "evidence": "test_historical_calibration_not_global_setting"
+  },
+  {
+    "id": 15,
+    "requirement": "无效Calibration",
+    "status": "PASS",
+    "evidence": "test_historical_calibration_not_global_setting[False]"
+  },
+  {
+    "id": 16,
+    "requirement": "表格到Viewer",
+    "status": "PASS",
+    "evidence": "test_table_viewer_bidirectional_actual_click"
+  },
+  {
+    "id": 17,
+    "requirement": "Viewer到表格",
+    "status": "PASS",
+    "evidence": "test_table_viewer_bidirectional_actual_click"
+  },
+  {
+    "id": 18,
+    "requirement": "详情同步",
+    "status": "PASS",
+    "evidence": "test_table_viewer_bidirectional_actual_click"
+  },
+  {
+    "id": 19,
+    "requirement": "原图视图",
+    "status": "PASS",
+    "evidence": "test_all_views_missing_resources_and_no_raw"
+  },
+  {
+    "id": 20,
+    "requirement": "最终图",
+    "status": "PASS",
+    "evidence": "test_final_mask_independent_layer_toggle_and_integrity"
+  },
+  {
+    "id": 21,
+    "requirement": "Band视图",
+    "status": "PASS",
+    "evidence": "test_real_history_repository_display_without_raw"
+  },
+  {
+    "id": 22,
+    "requirement": "ROI视图",
+    "status": "PASS",
+    "evidence": "test_real_history_repository_display_without_raw"
+  },
+  {
+    "id": 23,
+    "requirement": "Band动态数量",
+    "status": "PASS",
+    "evidence": "test_dynamic_band_count_and_labels[3/4/5]"
+  },
+  {
+    "id": 24,
+    "requirement": "WORK/NONWORK/REVIEW",
+    "status": "PASS",
+    "evidence": "test_dynamic_band_count_and_labels + screenshots/04_roi_view.png"
+  },
+  {
+    "id": 25,
+    "requirement": "框开关",
+    "status": "PASS",
+    "evidence": "test_overlay_add_select_clear_and_measurement_immutable"
+  },
+  {
+    "id": 26,
+    "requirement": "ID开关",
+    "status": "PASS",
+    "evidence": "test_overlay_add_select_clear_and_measurement_immutable"
+  },
+  {
+    "id": 27,
+    "requirement": "bbox不修改测量",
+    "status": "PASS",
+    "evidence": "test_overlay_add_select_clear_and_measurement_immutable"
+  },
+  {
+    "id": 28,
+    "requirement": "安全回退成功显示",
+    "status": "PASS",
+    "evidence": "test_fallback_is_success_ui"
+  },
+  {
+    "id": 29,
+    "requirement": "Repository加载",
+    "status": "PASS",
+    "evidence": "test_real_history_repository_display_without_raw"
+  },
+  {
+    "id": 30,
+    "requirement": "26_1显示36",
+    "status": "PASS",
+    "evidence": "test_real_history_repository_display_without_raw[36]"
+  },
+  {
+    "id": 31,
+    "requirement": "26_2显示35",
+    "status": "PASS",
+    "evidence": "test_real_history_repository_display_without_raw[35]"
+  },
+  {
+    "id": 32,
+    "requirement": "无RAW历史",
+    "status": "PASS",
+    "evidence": "test_real_history_repository_display_without_raw"
+  },
+  {
+    "id": 33,
+    "requirement": "DN不可用—",
+    "status": "PASS",
+    "evidence": "test_all_views_missing_resources_and_no_raw"
+  },
+  {
+    "id": 34,
+    "requirement": "worker线程",
+    "status": "PASS",
+    "evidence": "test_worker_signals_responsive_buttons_and_close_safety"
+  },
+  {
+    "id": 35,
+    "requirement": "成功信号",
+    "status": "PASS",
+    "evidence": "test_worker_signals_responsive_buttons_and_close_safety[False]"
+  },
+  {
+    "id": 36,
+    "requirement": "错误信号",
+    "status": "PASS",
+    "evidence": "test_worker_signals_responsive_buttons_and_close_safety[True]"
+  },
+  {
+    "id": 37,
+    "requirement": "异常恢复按钮",
+    "status": "PASS",
+    "evidence": "test_worker_signals_responsive_buttons_and_close_safety[True]"
+  },
+  {
+    "id": 38,
+    "requirement": "切换清理",
+    "status": "PASS",
+    "evidence": "test_switch_result_clears_selection_detail_and_cache"
+  },
+  {
+    "id": 39,
+    "requirement": "cache清理",
+    "status": "PASS",
+    "evidence": "test_switch_result_clears_selection_detail_and_cache"
+  },
+  {
+    "id": 40,
+    "requirement": "smoke",
+    "status": "PASS",
+    "evidence": "smoke.log"
+  },
+  {
+    "id": 41,
+    "requirement": "旧测试不退化",
+    "status": "PASS",
+    "evidence": "all_tests_final.xml: previous 320 + new 29"
+  },
+  {
+    "id": 42,
+    "requirement": "FAST",
+    "status": "PASS",
+    "evidence": "gates/fast/fast_profile_report.json"
+  },
+  {
+    "id": 43,
+    "requirement": "GOLDEN",
+    "status": "PASS",
+    "evidence": "gates/golden/golden_profile_report.json"
+  },
+  {
+    "id": 44,
+    "requirement": "RELEASE",
+    "status": "PASS",
+    "evidence": "gates/release/release_gate_report.json"
+  },
+  {
+    "id": 45,
+    "requirement": "schema1.0",
+    "status": "PASS",
+    "evidence": "release schema_status PASS + frozen domain diff empty"
+  },
+  {
+    "id": 46,
+    "requirement": "AUTO不变",
+    "status": "PASS",
+    "evidence": "release AUTO_policy PASS + frozen core diff empty"
+  },
+  {
+    "id": 47,
+    "requirement": "原算法零变化",
+    "status": "PASS",
+    "evidence": "release algorithm_protection: 765 checked, zero changes"
+  },
+  {
+    "id": 48,
+    "requirement": "Phase7未开始",
+    "status": "PASS",
+    "evidence": "scope audit: ui only; no review writes/new phase"
+  }
+]
