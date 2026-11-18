@@ -123,7 +123,7 @@ def _bridge_support(dog:np.ndarray,a:np.ndarray,b:np.ndarray,
 
 def associate_fragments(labels:np.ndarray,records:list[dict],raw:np.ndarray,
                         config:AssociationConfig=AssociationConfig(),
-                        grades:SizeGradeConfig=SizeGradeConfig()
+                        grades:SizeGradeConfig=SizeGradeConfig(), *,dog_map=None
                         )->tuple[list[dict],list[dict],list[dict],np.ndarray]:
     """Return physical-object hypotheses, accepted/rejected link audit, member map,
     and uint32 object-id raster (same nonzero support as source labels).
@@ -149,7 +149,9 @@ def associate_fragments(labels:np.ndarray,records:list[dict],raw:np.ndarray,
         explicit={(int(r["_global_x0"]),int(r["_global_y0"])) for r in records}
         if len(explicit)!=1:raise ValueError("inconsistent ROI origin")
     f=raw.astype(np.float32)
-    dog=cv2.GaussianBlur(f,(0,0),8.)-cv2.GaussianBlur(f,(0,0),2.)
+    dog=cv2.GaussianBlur(f,(0,0),8.)-cv2.GaussianBlur(f,(0,0),2.) if dog_map is None else dog_map
+    if dog.shape!=raw.shape or dog.dtype!=np.float32 or not np.isfinite(dog).all():
+        raise ValueError("invalid external DoG")
     geo=_component_geometry(labels,records,dog,config)
     keys=sorted(geo)
     parent={k:k for k in keys}

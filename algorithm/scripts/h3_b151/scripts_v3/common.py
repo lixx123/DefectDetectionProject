@@ -1,0 +1,35 @@
+"""公共I/O与冻结路径；不读取人工真值。"""
+from pathlib import Path
+import os,sys,json,csv,hashlib,time,logging,platform,ctypes
+import numpy as np,pandas as pd
+ROOT=Path(__file__).resolve().parents[1]
+BASE=ROOT/'outputs/WS2_B1_STEP5_FULL_PIPELINE_FAIR_COMPARE_20261117_103056'
+OUT=Path(os.environ["B151_RUN_OUTPUT"]).resolve()
+def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
+def dump(p,v):
+ p=OUT/p;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,ensure_ascii=False,indent=2,default=lambda x:x.item() if isinstance(x,np.generic) else str(x)),encoding='utf-8')
+def sha(p):
+ h=hashlib.sha256()
+ with Path(p).open('rb') as f:
+  for b in iter(lambda:f.read(4<<20),b''):h.update(b)
+ return h.hexdigest()
+def meta(p):
+ p=Path(p);s=p.stat();return dict(path=str(p),bytes=s.st_size,mtime_ns=s.st_mtime_ns,sha256=sha(p))
+def csvout(p,v,columns=None):
+ p=OUT/p;p.parent.mkdir(parents=True,exist_ok=True);df=v if isinstance(v,pd.DataFrame) else pd.DataFrame(v,columns=columns);df.to_csv(p,index=False,encoding='utf-8-sig',na_rep='NOT_VERIFIABLE');return df
+def frame(p):return pd.read_csv(p,float_precision='round_trip')
+def snapshot():
+ fs=[ROOT/'main.py',ROOT/'AGENTS.md']+list((ROOT/'config').rglob('*.py'))+list((ROOT/'src').rglob('*.py'))+list((ROOT/'scripts').rglob('*.py'))
+ return [meta(p) for p in sorted(fs) if '__pycache__' not in str(p)]
+def memory():
+ class M(ctypes.Structure):
+  _fields_=[('cb',ctypes.c_ulong),('PageFaultCount',ctypes.c_ulong),('PeakWorkingSetSize',ctypes.c_size_t),('WorkingSetSize',ctypes.c_size_t),('QuotaPeakPagedPoolUsage',ctypes.c_size_t),('QuotaPagedPoolUsage',ctypes.c_size_t),('QuotaPeakNonPagedPoolUsage',ctypes.c_size_t),('QuotaNonPagedPoolUsage',ctypes.c_size_t),('PagefileUsage',ctypes.c_size_t),('PeakPagefileUsage',ctypes.c_size_t)]
+ m=M();m.cb=ctypes.sizeof(m)
+ try:
+  k=ctypes.windll.kernel32;k.GetCurrentProcess.restype=ctypes.c_void_p
+  ok=ctypes.windll.psapi.GetProcessMemoryInfo(ctypes.c_void_p(k.GetCurrentProcess()),ctypes.byref(m),m.cb)
+  return {'rss_bytes':m.WorkingSetSize,'process_lifetime_peak_rss_bytes':m.PeakWorkingSetSize} if ok else {'rss_bytes':'NOT_VERIFIABLE'}
+ except Exception:return {'rss_bytes':'NOT_VERIFIABLE'}
+def save_png(p,a):
+ import cv2
+ ok,b=cv2.imencode('.png',a,[cv2.IMWRITE_PNG_COMPRESSION,3]);assert ok;Path(p).write_bytes(b.tobytes())

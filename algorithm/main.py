@@ -631,6 +631,23 @@ def main() -> int:
         run(args.run_id or "run_20261012_frame26_1_global_j5_main_v1",
             review_limit=20)
         return 0
+    elif args.case.lower() == "b151-h3":
+        import subprocess
+        import sys
+        from uuid import uuid4
+
+        if args.input is None:
+            raise SystemExit("--case b151-h3 requires --input RAW_PATH")
+        project = Path(__file__).resolve().parent
+        run_id = args.run_id or ("H3_" + uuid4().hex)
+        if Path(run_id).name != run_id or run_id in {".", ".."}:
+            raise SystemExit("Invalid run ID")
+        output = project / "outputs" / run_id
+        command = [
+            sys.executable, "-B", str(project / "scripts/h3_b151/staging_entry.py"),
+            "--input", str(args.input.resolve()), "--run-output", str(output),
+        ]
+        return subprocess.call(command)
     elif args.case.lower() in {"unified-final", "3-final", "3u"}:
         if args.sample not in (None, 26) or args.frame not in (None, 1, 2):
             raise SystemExit("当前统一终检已验证26号第1、2帧。其他样本请勿套用本帧人工审核记录。")

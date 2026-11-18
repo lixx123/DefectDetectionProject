@@ -1,0 +1,48 @@
+{
+  "grade": {
+    "medium_area_min_px2": 40,
+    "large_area_min_px2": 250,
+    "medium_length_min_px": 15.0,
+    "large_length_min_px": 45.0,
+    "connectivity": 8,
+    "max_per_window": 3000
+  },
+  "association": {
+    "max_gap_px": 18.0,
+    "min_core_area_px": 80,
+    "min_piece_area_px": 8,
+    "min_secondary_length_px": 5.0,
+    "strong_aspect_ratio": 1.35,
+    "angle_tolerance_deg": 38.0,
+    "min_bridge_dog_median_dn": 16.0,
+    "min_bridge_dog_positive_fraction": 0.7,
+    "small_bridge_gap_px": 4.0,
+    "min_piece_dog_median_dn": 12.0,
+    "min_core_length_px": 15.0,
+    "min_backdrop_samples": 2
+  },
+  "display_bridge": {
+    "context_max_gap_px": 18.0,
+    "main_stroke_min_length_px": 60.0,
+    "main_stroke_min_aspect": 3.0,
+    "piece_min_area_px": 40,
+    "piece_min_length_px": 12.0,
+    "max_perpendicular_offset_px": 20.0,
+    "context_angle_tolerance_deg": 35.0,
+    "bridge_half_width_px": 3,
+    "bridge_min_dog_dn": 12.0,
+    "max_context_links_per_group": 1,
+    "ambiguous_gap_margin_px": 2.0
+  },
+  "J5": {
+    "gap_max_px": 18.0,
+    "min_line_length_px": 12.0,
+    "min_piece_area_px": 5,
+    "min_line_aspect": 1.5,
+    "angle_tolerance_degrees": 30.0,
+    "min_bridge_dog_dn": 16.0,
+    "min_positive_bridge_fraction": 0.7,
+    "ambiguity_margin_px": 2.0,
+    "max_linked_components_per_seam": 5000
+  }
+}

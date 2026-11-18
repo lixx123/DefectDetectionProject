@@ -230,3 +230,13 @@ Case03-D自动检出图册默认采用3列：RAW / ALL S/H / ALL AUTO in ROI（�
 ## Case03-E2-H5：W005背景连接下有界划痕精修
 
 在现有`--case 3e2`中新增H原种子7px邻域有界轮廓扩展。局部Gaussian/Closing全图阈值区域触边时并不直接全部拒绝，可使用H周围受限且两方法共同支持的边缘像素，但仍标记`needs_review_bounded_extension`。结果：`outputs/case03e2/run_20261010_H_seeded_bounded_consensus_v5/CASE03E2_H_BOUNDED_W005_REPORT.md`；先看`figures/E2_W005_cross_scratch_before_after.png`。
+
+## B151 adaptive H3
+
+Run from the repository root with the algorithm dependencies installed.
+
+```powershell
+python -B algorithm/main.py --case b151-h3 --input <path-to-raw>
+```
+
+The entry rebuilds the working bands and Black-Hat response from a 11276 × 9200, big-endian, 12-bit RAW stored in uint16. It computes per-band P95/P99.9 over ALL_VALID_CORE and detects in EVAL. Results include medium and large candidates, measurements, source masks and a boxed preview. Each invocation writes a separate directory under algorithm/outputs.

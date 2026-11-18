@@ -1,0 +1,25 @@
+{
+  "stage": "B1-5.1",
+  "TRACK_A": "J4_J5_AUTONOMOUS",
+  "TRACK_B": "NOT_EXECUTED_APPROVAL_REFERENCE_ONLY_UNTIL_ISOLATION_PROVEN",
+  "TRACK_H": "HISTORICAL_V4_REFERENCE_ONLY",
+  "strategies": [
+    "A0",
+    "A1",
+    "A2"
+  ],
+  "halo": 64,
+  "filter_context": 93,
+  "processing_margin": 105,
+  "threshold_outside_EVAL": 65536.0,
+  "threshold_dtype": "float64_unrounded",
+  "nonthreshold_policy": "production current config identical all strategies",
+  "physical_pixel_pitch_detector_plane_um": 3.2,
+  "object_plane_calibration": "NOT_ESTABLISHED",
+  "production": "NOT_APPROVED",
+  "B16": "NOT_EXECUTED",
+  "output_policy": "MEDIUM_LARGE_ONLY",
+  "fast_mode": "MEDIUM_LARGE_FAST",
+  "early_exit": true,
+  "audit_level": "COUNTERS_ONLY"
+}

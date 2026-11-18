@@ -171,6 +171,7 @@ def detect_window_H_seeded(
     *,
     cfg:FusionConfig=FusionConfig(),
     policy:HSeedConfig=HSeedConfig(),
+    residuals:dict[str,np.ndarray]|None=None,
     h_low_threshold_dn:float=170.,
     h_high_threshold_dn:float=230.,
     h_low_threshold_map:np.ndarray|None=None,
@@ -211,7 +212,9 @@ def detect_window_H_seeded(
 
     methods={}
     for source in SOURCE_NAMES:
-        response=compute_local_residual(raw,source)
+        response=compute_local_residual(raw,source) if residuals is None else residuals[source]
+        if response.shape!=raw.shape or response.dtype!=np.float32 or not np.isfinite(response).all():
+            raise ValueError("invalid external residual")
         low,high,stats=_robust_thresholds(response,cfg)
         binary=np.uint8(response>=low)
         n,cc,CCstats,_=cv2.connectedComponentsWithStats(

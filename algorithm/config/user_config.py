@@ -444,3 +444,7 @@ UNIFIED_FINAL = {
     "display_stride": 4,
     "display_font_px": 18,
 }
+
+# B151 J4 external filter context.
+CASE03J4_EXTERNAL_CONTEXT_ENABLED = True
+CASE03J4_FILTER_CONTEXT_PX = 93

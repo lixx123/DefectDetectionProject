@@ -65,14 +65,18 @@ def _group_by_edges(ids:list[int],edges:list[dict])->dict[int,list[int]]:
 def extend_context_links(labels:np.ndarray,raw:np.ndarray,
                          rows:list[dict],edges:list[dict],
                          old_cfg:AssociationConfig=AssociationConfig(),
-                         cfg:ContinuousConfig=ContinuousConfig()
+                         cfg:ContinuousConfig=ContinuousConfig(), *,dog_map=None
                          )->tuple[list[dict],np.ndarray,dict]:
     cfg.validate()
     if labels.shape!=raw.shape or raw.dtype!=np.uint16:
         raise ValueError("source geometry mismatch")
-    f=raw.astype(np.float32)
-    dog=cv2.GaussianBlur(f,(0,0),old_cfg.dog_large_sigma_px) if hasattr(old_cfg,"dog_large_sigma_px") else cv2.GaussianBlur(f,(0,0),8.)
-    dog=dog-cv2.GaussianBlur(f,(0,0),2.)
+    if dog_map is None:
+        f=raw.astype(np.float32)
+        dog=cv2.GaussianBlur(f,(0,0),old_cfg.dog_large_sigma_px) if hasattr(old_cfg,"dog_large_sigma_px") else cv2.GaussianBlur(f,(0,0),8.)
+        dog=dog-cv2.GaussianBlur(f,(0,0),2.)
+    else:dog=dog_map
+    if dog.shape!=raw.shape or dog.dtype!=np.float32 or not np.isfinite(dog).all():
+        raise ValueError("invalid external DoG")
     if not rows:return [],dog,{}
     geo=_component_geometry(labels,rows,dog,old_cfg)
     ids=sorted(geo)
@@ -224,11 +228,11 @@ def _promote_microfragments_on_dark_bridge(
     return assignments
 
 
-def reconstruct_continuous_visual(
+def _reconstruct_continuous_visual_attempt(
     labels:np.ndarray,raw:np.ndarray,records:list[dict],
     pair_edges:list[dict],region_grade:SizeGradeConfig=SizeGradeConfig(),
     assoc_cfg:AssociationConfig=AssociationConfig(),
-    config:ContinuousConfig=ContinuousConfig()
+    config:ContinuousConfig=ContinuousConfig(), *,dog_map=None,blocked_pairs=frozenset()
 )->tuple[list[dict],np.ndarray,np.ndarray,np.ndarray,list[dict],list[dict]]:
     """Returns objects, original object label map, inferred bridge ID map,
     visually continuous ID map, all accepted edge audit and bridge pixel audit.
@@ -237,12 +241,14 @@ def reconstruct_continuous_visual(
     if labels.ndim!=2 or labels.shape!=raw.shape:
         raise ValueError("shape mismatch")
     new_edges,dog,geo=extend_context_links(labels,raw,records,
-                                            pair_edges,assoc_cfg,config)
+                                            pair_edges,assoc_cfg,config,dog_map=dog_map)
     all_edges=[dict(e) for e in pair_edges]+new_edges
+    _reject_blocked_links(all_edges,blocked_pairs)
     groups=_group_by_edges(sorted(geo),all_edges)
     micro_edges=_promote_microfragments_on_dark_bridge(
         labels,geo,groups,all_edges,config)
     all_edges.extend(micro_edges)
+    _reject_blocked_links(all_edges,blocked_pairs)
     groups=_group_by_edges(sorted(geo),all_edges)
     by_id={int(r["local_region_id"]):r for r in records}
     objmap=np.zeros_like(labels,dtype=np.int32)
@@ -301,6 +307,15 @@ def reconstruct_continuous_visual(
                 "bridge_is_inferred_not_detected":True,
                 "endpoint_a_xy":str(pa),"endpoint_b_xy":str(pb)
             })
+    # 冲突裁剪后仅保留含本组真实源像素的连通区域；绝不删除源像素。
+    for objnum,entry in enumerate(objects,1):
+        support=(objmap==objnum)|(bridgeids==objnum)
+        _,components=cv2.connectedComponents(np.uint8(support),connectivity=8)
+        anchored=np.unique(components[objmap==objnum]);anchored=anchored[anchored>0]
+        orphan=(bridgeids==objnum)&~np.isin(components,anchored)
+        removed=int(orphan.sum());bridgeids[orphan]=0
+        if removed:audit.append({'object_id':entry['object_id'],'action':'removed_unanchored_inferred_bridge',
+                                 'removed_inferred_pixels':removed,'source_mask_modified':False})
     combined=objmap.copy()
     free=(combined==0)&(bridgeids>0)
     combined[free]=bridgeids[free]
@@ -312,6 +327,7 @@ def reconstruct_continuous_visual(
         raise AssertionError("composite visual object mask mismatch")
     # Strong acceptance: each multi-piece object's display geometry is 8-
     # connected, hence the shared physical contour really looks continuous.
+    conflicts=set()
     for i,o in enumerate(objects,1):
         if o["member_count"]<2:continue
         cnt,_=cv2.connectedComponents(np.uint8(combined==i),connectivity=8)
@@ -319,11 +335,39 @@ def reconstruct_continuous_visual(
         o["display_support_pixels"]=int(np.count_nonzero(combined==i))
         o["continuous_display_components"]=int(cnt-1)
         if cnt!=2:
-            raise RuntimeError(
-                f"{o['object_id']}: still visually disconnected into {cnt-1} pieces")
+            members=set(map(int,o['members'].split(';')))
+            conflicts.update(tuple(sorted((int(e['a']),int(e['b'])))) for e in all_edges
+                             if e['accepted'] and int(e['a']) in members and int(e['b']) in members)
+    if conflicts:raise _BridgeConflict(conflicts)
     for i,o in enumerate(objects,1):
         if "inferred_bridge_pixels" not in o:
             o["inferred_bridge_pixels"]=0
             o["display_support_pixels"]=o["original_area_px2"]
             o["continuous_display_components"]=1
     return objects,objmap,bridgeids,combined,all_edges,audit
+
+
+class _BridgeConflict(Exception):
+    def __init__(self,pairs):self.pairs=pairs
+
+
+def _reject_blocked_links(edges,blocked):
+    for edge in edges:
+        if tuple(sorted((int(edge['a']),int(edge['b'])))) in blocked:
+            edge['accepted']=False
+            edge['reason']='rejected_bridge_conflict_preserve_independent_sources'
+
+
+def reconstruct_continuous_visual(labels,raw,records,pair_edges,
+    region_grade=SizeGradeConfig(),assoc_cfg=AssociationConfig(),
+    config=ContinuousConfig(),*,dog_map=None):
+    """保留全部检测源；孤立推断桥接移除，无法安全连接的关联显式拒绝。"""
+    blocked=set()
+    while True:
+        try:
+            return _reconstruct_continuous_visual_attempt(labels,raw,records,pair_edges,
+                region_grade,assoc_cfg,config,dog_map=dog_map,blocked_pairs=blocked)
+        except _BridgeConflict as conflict:
+            new=conflict.pairs-blocked
+            if not new:raise AssertionError('bridge conflict resolution made no progress')
+            blocked.update(new)
