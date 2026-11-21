@@ -27,6 +27,19 @@ def render(raw,records,dest):
         lines=(z['final_ID'],f"A={z['area']} px²  L={z['length']:.1f} px")
         labels.append(lines)
         sizes.append((max(int(draw.textlength(t,font=f)) for t in lines)+4,2*(cfg['display_font_px']+4)))
+    if len(records)>cfg['max_labeled_overview_objects']:
+        audit=[]
+        for z,b in zip(records,boxes):
+            color=(70,230,100) if z['approved'] else ((245,80,60) if z['grade']=='LARGE' else (245,210,30))
+            draw.rectangle(b,outline=color,width=1)
+            audit.append({'final_ID':z['final_ID'],'display_box':str(b),'label_box':'',
+                'label_area':z['area'],'label_length':z['length'],'box_overlap_pixels':0,
+                'label_overlap_pixels':0,'mask_contour_drawn':False,
+                'label_status':'OMITTED_DENSE_OVERVIEW_SEE_MEASUREMENT_TABLE'})
+        draw.rectangle((0,0,image.width,32),fill=(20,20,20))
+        draw.text((8,4),f"{len(records)} objects | Dense overview: boxes only; IDs and measurements in result table",font=f,fill='white')
+        image.save(dest)
+        return audit
     placement=arrange_labels(boxes,sizes,image.size,padding=5)
     audit=[]
     for i,(z,b,lines,p) in enumerate(zip(records,boxes,labels,placement)):

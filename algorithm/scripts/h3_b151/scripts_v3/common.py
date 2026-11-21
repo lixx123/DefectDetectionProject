@@ -13,14 +13,8 @@ def sha(p):
  with Path(p).open('rb') as f:
   for b in iter(lambda:f.read(4<<20),b''):h.update(b)
  return h.hexdigest()
-def meta(p):
- p=Path(p);s=p.stat();return dict(path=str(p),bytes=s.st_size,mtime_ns=s.st_mtime_ns,sha256=sha(p))
 def csvout(p,v,columns=None):
  p=OUT/p;p.parent.mkdir(parents=True,exist_ok=True);df=v if isinstance(v,pd.DataFrame) else pd.DataFrame(v,columns=columns);df.to_csv(p,index=False,encoding='utf-8-sig',na_rep='NOT_VERIFIABLE');return df
-def frame(p):return pd.read_csv(p,float_precision='round_trip')
-def snapshot():
- fs=[ROOT/'main.py',ROOT/'AGENTS.md']+list((ROOT/'config').rglob('*.py'))+list((ROOT/'src').rglob('*.py'))+list((ROOT/'scripts').rglob('*.py'))
- return [meta(p) for p in sorted(fs) if '__pycache__' not in str(p)]
 def memory():
  class M(ctypes.Structure):
   _fields_=[('cb',ctypes.c_ulong),('PageFaultCount',ctypes.c_ulong),('PeakWorkingSetSize',ctypes.c_size_t),('WorkingSetSize',ctypes.c_size_t),('QuotaPeakPagedPoolUsage',ctypes.c_size_t),('QuotaPagedPoolUsage',ctypes.c_size_t),('QuotaPeakNonPagedPoolUsage',ctypes.c_size_t),('QuotaNonPagedPoolUsage',ctypes.c_size_t),('PagefileUsage',ctypes.c_size_t),('PeakPagefileUsage',ctypes.c_size_t)]
@@ -30,6 +24,3 @@ def memory():
   ok=ctypes.windll.psapi.GetProcessMemoryInfo(ctypes.c_void_p(k.GetCurrentProcess()),ctypes.byref(m),m.cb)
   return {'rss_bytes':m.WorkingSetSize,'process_lifetime_peak_rss_bytes':m.PeakWorkingSetSize} if ok else {'rss_bytes':'NOT_VERIFIABLE'}
  except Exception:return {'rss_bytes':'NOT_VERIFIABLE'}
-def save_png(p,a):
- import cv2
- ok,b=cv2.imencode('.png',a,[cv2.IMWRITE_PNG_COMPRESSION,3]);assert ok;Path(p).write_bytes(b.tobytes())

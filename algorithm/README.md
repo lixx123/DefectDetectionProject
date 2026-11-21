@@ -240,3 +240,10 @@ python -B algorithm/main.py --case b151-h3 --input <path-to-raw>
 ```
 
 The entry rebuilds the working bands and Black-Hat response from a 11276 × 9200, big-endian, 12-bit RAW stored in uint16. It computes per-band P95/P99.9 over ALL_VALID_CORE and detects in EVAL. Results include medium and large candidates, measurements, source masks and a boxed preview. Each invocation writes a separate directory under algorithm/outputs.
+
+
+## Size review (2026-11-21)
+
+The `main.py --case b151-h3` export retains all original candidates and exact masks. It additionally writes `SIZE_REVIEW.html`, all/normal/review CSV tables, and two previews. Oversize means manual review, not rejection. Configure `H3_SIZE_REVIEW_ENABLED`, `H3_SIZE_REVIEW_LENGTH_RATIO` (0.25), and `H3_SIZE_REVIEW_THICKNESS_RATIO` (0.80) in `config/user_config.py`. Geometry is reused from preprocessing.
+
+Validation on the deployed Windows source: 181 = 61 normal + 5 review; 26-1 = 63 + 0; 26-2 = 71 + 0. All 200 source masks, bridges, key measurements and H3 thresholds matched the original H3 baseline. Classification took approximately 0.4 ms per frame; additional preview/report export took 0.9-1.2 s. These are single-run measurements, not a zero-overhead guarantee. Five classification unit tests pass. RAW inputs and generated validation assets are not included in Git.

@@ -445,6 +445,14 @@ UNIFIED_FINAL = {
     "display_font_px": 18,
 }
 
-# B151 J4 external filter context.
-CASE03J4_EXTERNAL_CONTEXT_ENABLED = True
+# J4 边界修复：判定窗口保持原 Halo；滤波额外读取真实上下文。
+CASE03J4_EXTERNAL_CONTEXT_ENABLED = True  # 2026-11-12 三帧边界回归通过
 CASE03J4_FILTER_CONTEXT_PX = 93
+
+# 高密度总览仅画全部框，完整ID和测量保留在结果表。
+UNIFIED_FINAL["max_labeled_overview_objects"] = 200
+
+# 尺寸分流：只标记待复核，不删除对象/Mask，不改变H3阈值。
+H3_SIZE_REVIEW_ENABLED = True
+H3_SIZE_REVIEW_LENGTH_RATIO = 0.25
+H3_SIZE_REVIEW_THICKNESS_RATIO = 0.80

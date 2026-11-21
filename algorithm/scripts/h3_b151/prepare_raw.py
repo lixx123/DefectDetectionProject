@@ -57,7 +57,7 @@ def prepare(path, out):
     np.save(out/'stats.npy',stats)
     def sha(p):
         with p.open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
-    inp=dict(sample_id=path.stem,raw=str(path),raw_sha256=sha(path),response=str(out/'fused.npy'),response_sha256=sha(out/'fused.npy'),ids=str(out/'detect.npy'),ids_sha256=sha(out/'detect.npy'),specs=specs)
+    inp=dict(sample_id=path.stem,raw=str(path),raw_sha256=sha(path),response=str(out/'fused.npy'),response_sha256=sha(out/'fused.npy'),ids=str(out/'detect.npy'),ids_sha256=sha(out/'detect.npy'),specs=specs,size_review_bands=geometry['bands'])
     (out/'inputs.json').write_text(json.dumps(dict(input=inp,plan=plan,counts=counts,timing=timing),ensure_ascii=False,indent=2),encoding='utf-8')
     return inp,plan
 

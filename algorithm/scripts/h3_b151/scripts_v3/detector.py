@@ -1,4 +1,5 @@
 """真正调用受控原J4/J5；正式运行不读历史对象/GT，不落盘SMALL明细。"""
+import math
 import sys
 sys.dont_write_bytecode=True
 import guard
@@ -48,12 +49,20 @@ def export(inp,a,folder,objects,mapping,localrows):
  for o in rows:
   x,y,xx,yy=json.loads(o['bbox_xyxy_exclusive']);color=(255,75,30) if o['grade']=='LARGE' else (255,200,20);d.rectangle((x//4,y//4,(xx-1)//4,(yy-1)//4),outline=color)
   d.text((min(x//4,im.width-180),max(0,y//4-12)),o['new_id']+' A'+str(o['baseline_source_area_px2'])+' L'+str(o['baseline_Feret_px']),fill=color)
- page=Image.new('RGB',(im.width,im.height+64),'white');page.paste(im,(0,64));draw=ImageDraw.Draw(page);draw.text((15,6),inp['sample_id']+' '+a+' MEDIUM_LARGE_FAST | AUTO_CANDIDATE',fill='black',font=ImageFont.load_default(size=24));draw.text((15,36),'full baseline source dimensions; EVAL-only metrics separately; no SMALL final output',fill='black',font=ImageFont.load_default(size=18));page.save(folder/'MEDIUM_LARGE_RAW_BOXES_AUTO_CANDIDATE.png')
+ page=Image.new('RGB',(im.width,im.height+64),'white');page.paste(im,(0,64));draw=ImageDraw.Draw(page);draw.text((15,6),inp['sample_id']+' '+a+' MEDIUM_LARGE_FAST | AUTO_CANDIDATE',fill='black',font=ImageFont.truetype(r'C:\Windows\Fonts\arial.ttf',24));draw.text((15,36),'full baseline source dimensions; EVAL-only metrics separately; no SMALL final output',fill='black',font=ImageFont.truetype(r'C:\Windows\Fonts\arial.ttf',18));page.save(folder/'MEDIUM_LARGE_RAW_BOXES_AUTO_CANDIDATE.png')
  # 仅中大对象contact sheet，不画Mask，不创建小对象图。
- cellw,cellh=240,210;sheet=Image.new('RGB',(cellw*6,cellh*math.ceil(len(rows)/6)),'white');dd=ImageDraw.Draw(sheet)
+ cellw,cellh=240,210;sheet=Image.new('RGB',(cellw*6,cellh*max(1,math.ceil(len(rows)/6))),'white');dd=ImageDraw.Draw(sheet)
  for k,o in enumerate(rows):
   x,y,xx,yy=json.loads(o['bbox_xyxy_exclusive']);rx,ry,re,rb=max(0,x-16),max(0,y-16),min(11276,xx+16),min(9200,yy+16);ar=np.asarray(raw[ry:rb,rx:re],np.float32);g=np.uint8(np.clip((ar-lo)/max(hi-lo,1)*255,0,255));thumb=Image.fromarray(g).convert('RGB');z=ImageDraw.Draw(thumb);z.rectangle((x-rx,y-ry,xx-1-rx,yy-1-ry),outline='red',width=1);thumb.thumbnail((230,170));px=(k%6)*cellw;py=(k//6)*cellh;sheet.paste(thumb,(px,py+35));dd.text((px+4,py+2),o['new_id']+' '+o['grade'],fill='black');dd.text((px+4,py+16),'A'+str(o['baseline_source_area_px2'])+' L'+str(o['baseline_Feret_px'])+'px',fill='black')
  sheet.save(folder/'MEDIUM_LARGE_CONTACT_SHEET_AUTO_CANDIDATE.png')
+ # 后处理仅分流展示，原总表、Mask、计量与检测调用保持不变。
+ from config import user_config as cfg
+ from src.detection.size_review import Settings
+ from src.visualization.size_review_report import write_reports
+ settings=Settings(cfg.H3_SIZE_REVIEW_LENGTH_RATIO,cfg.H3_SIZE_REVIEW_THICKNESS_RATIO)
+ bands={int(b['band_id']):b for b in inp.get('size_review_bands',[])}
+ receipt=write_reports(folder,rows,bands,settings,gray,enabled=cfg.H3_SIZE_REVIEW_ENABLED)
+ logging.info('Size review: total=%d normal=%d review=%d classify=%.6fs',receipt['total'],receipt['normal'],receipt['review'],receipt['classification_seconds'])
  return rows
 def _feret(m):
  import cv2
@@ -77,34 +86,10 @@ def one(inp,a,mode,plan,qa=False):
   te=time.perf_counter();export(inp,a,folder,objects,mapping,loc);exporttime=time.perf_counter()-te
  total=time.perf_counter()-allstart
  counters=dict(STATE.counts);counters.update(final_MEDIUM=sum(o['grade']=='MEDIUM' for o in objects),final_LARGE=sum(o['grade']=='LARGE' for o in objects),SMALL_final_rows=0 if not qa else sum(o['grade']=='SMALL' for o in objects),J5_SMALL_final_gate_rejected=meta['small_final_gate_rejected'],J4_initial_H_components=sum(st['candidate_pre_gate_H_in_work_area'] for st in statuses),J4_nonempty_tiles=sum(not st['early_exit_empty_H'] for st in statuses))
- stats={'sample_id':s,'strategy':a,'mode':mode,'J4_total':t4,'J5_total':t5,'J4_J5_total':t4+t5,'export_seconds':'NOT_APPLICABLE' if qa else exporttime,'total_runtime':total,'tiles':len(plan),'peak_memory_scope':'process lifetime, not stage-specific peak','memory':memory(),'disk_hardware_IO':'NOT_VERIFIABLE','cache':'shared frozen memmaps; G0 hash read warms input cache; no parallel experiment workers','function_timers_scope':'inclusive and exclusive wrapper timers; paired local comparisons use same wrappers','source_sha256':{name:sha(Path(__file__).resolve().parent/name) for name in ['stage_j4.py','stage_process.py','stage_refine.py','early_rules.py','memory_store.py','stage_j5.py','pixel_thresholds.py','timings.py','detector.py']},'legacy_baseline_timing_caveat':'B15 has a different full audit/sys-profile/I-O burden; whole-run speedup is observed pipeline change, not pure P1 effect'}
+ stats={'sample_id':s,'strategy':a,'mode':mode,'J4_total':t4,'J5_total':t5,'J4_J5_total':t4+t5,'export_seconds':'NOT_APPLICABLE' if qa else exporttime,'total_runtime':total,'tiles':len(plan),'peak_memory_scope':'process lifetime, not stage-specific peak','memory':memory(),'disk_hardware_IO':'NOT_VERIFIABLE','cache':'shared frozen memmaps; G0 hash read warms input cache; no parallel experiment workers','function_timers_scope':'inclusive and exclusive wrapper timers; paired local comparisons use same wrappers','source_sha256':{name:sha(Path(__file__).resolve().parent/name) for name in ['stage_j4.py','stage_process.py','stage_refine.py','early_rules.py','memory_store.py','stage_j5.py','timings.py','detector.py']},'legacy_baseline_timing_caveat':'B15 has a different full audit/sys-profile/I-O burden; whole-run speedup is observed pipeline change, not pure P1 effect'}
  dump(str((folder/'execution_times.json').relative_to(OUT)),stats);dump(str((folder/'candidate_stats.json').relative_to(OUT)),counters);dump(str((folder/'frozen_run_config.json').relative_to(OUT)),{'postprocess':pp,'threshold_spec':spec,'input_response_sha256':inp['response_sha256'],'early_exit':STATE.early,'early_exit_proof_parameters':dict(STATE.params),'output_policy':'LEGACY_FULL_QA' if qa else 'MEDIUM_LARGE_ONLY','halo':64,'external_filter_context':93})
  costs=timings.rows(s,a,mode);csvout(str((folder/'function_times.csv').relative_to(OUT)),costs)
  if qa:csvout(str((folder/'tile_counters.csv').relative_to(OUT)),statuses)
  files=[p for p in folder.rglob('*') if p.is_file()];stats.update(persisted_files=len(files),file_bytes_written=sum(p.stat().st_size for p in files));dump(str((folder/'execution_times.json').relative_to(OUT)),stats)
  logging.info('Actual %s %s %s DONE J4 %.3f J5 %.3f total %.3f; counts %s',s,a,mode,t4,t5,total,counters)
  return stats,counters,costs
-def local():
- assert read(OUT/'reports/G0_QA.json')['status']=='PASS';probes=frame(OUT/'tables/V3_G2_PROFILE_TILE_SELECTION.csv');stats=[];counters=[];costs=[]
- for n,inp in enumerate(read(ROOT/'config/inputs.json')):
-  for k,a in enumerate(['A1','A2']):
-   selected=set(probes[(probes.sample_id==inp['sample_id'])&(probes.strategy==a)].tile_id);plan=[t for t in read(OUT/f"config/{inp['sample_id']}_tile_plan.json") if t['tile_id'] in selected]
-   for mode in (['LEGACY_FULL','MEDIUM_LARGE_FAST'] if (n+k)%2==0 else ['MEDIUM_LARGE_FAST','LEGACY_FULL']):
-    s,c,r=one(inp,a,mode,plan,True);stats.append(s);counters.append({'sample_id':inp['sample_id'],'strategy':a,'mode':mode,**c});costs.extend(r)
- csvout('tables/V3_G2_PROFILE_RUN_TIMES.csv',stats);csvout('tables/V3_G2_COST_BREAKDOWN.csv',costs);csvout('tables/V3_G2_EARLY_EXIT_COUNTERS.csv',counters);dump('reports/V3_G2_PROFILE_EXECUTED.json',{'status':'EXECUTED_NOT_YET_REGRESSION_ACCEPTED','runs':len(stats)})
-def full():
- assert read(OUT/'reports/V3_G3_QA.json')['status']=='PASS','G3 gate must pass'
- assert read(ROOT/'config/accepted_D_evaluation_contract.json')['confirmed_in_current_chat']
- stats=[];counts=[];costs=[]
- for inp in read(ROOT/'config/formal_inputs.json'):
-  for a in ['A1','A2']:
-   s,c,r=one(inp,a,'MEDIUM_LARGE_FAST',read(OUT/f"config/{inp['sample_id']}_tile_plan.json"));stats.append(s);counts.append({'sample_id':inp['sample_id'],'strategy':a,**c});costs.extend(r)
-   csvout('tables/V3_G4_ACTUAL_RUNTIME.csv',stats);csvout('tables/V3_G4_EARLY_EXIT_COUNTERS.csv',counts);csvout('tables/V3_G4_FUNCTION_TIMES.csv',costs)
- dump('reports/V3_G4_EXECUTED.json',{'status':'PASS','actual_full_runs':len(stats),'GT_data_loaded':False,'SMALL_per_object_files_saved':False})
-if __name__=='__main__':
- import argparse,traceback,math
- logging.basicConfig(level=logging.INFO,format='%(asctime)s %(message)s',handlers=[logging.FileHandler(OUT/'logs/detector_V3.log',encoding='utf-8'),logging.StreamHandler()])
- p=argparse.ArgumentParser();p.add_argument('phase',choices=['local','full']);a=p.parse_args()
- try:globals()[a.phase]()
- except Exception:logging.exception('HOLD');dump(f'reports/detector_V3_{a.phase}_HOLD.json',{'status':'HOLD','traceback':traceback.format_exc()});raise
- finally:dump(f'logs/detector_V3_{a.phase}_access.json',guard.receipt('detector'))

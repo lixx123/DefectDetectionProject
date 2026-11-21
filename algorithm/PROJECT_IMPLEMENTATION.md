@@ -945,3 +945,20 @@ phase ends at human review; no later Case03, Case04, or Case05 phase was entered
 工程测试330 passed；双帧各1620块真实重算，最终36/35对象；完整审计/实际命令/风险见UNIFIED_FINAL_ACCEPTANCE_20261019.md。
 下文历史记录只读保留；本次不进入Case04/05，也不推广其余18帧。
 
+
+
+## 2026-11-12 J4 边界充分性修复（用户授权直接实施）
+
+- 生产开启 `CASE03J4_EXTERNAL_CONTEXT_ENABLED=True`。原 CORE=256 / 判定 Halo=64 不变；新增 `CASE03J4_FILTER_CONTEXT_PX=93` 为**判定窗口之外**的真实 RAW 滤波上下文，内部窗边不再反射合成上下文。水平方向向全局32像素边界外扩以保持SIMD算术路径一致，不改变输入DN。
+- J4 Gaussian22/Closing61 在扩展 RAW 上计算，再裁回固定判定窗口做原MAD、CC、面积比例及F/G/H。DoG同样提供外部上下文并给J1/J2复用，不再在CORE内重算。H阈值、所有滤波sigma/kernel、原候选规则及J5算法未改；P0保持，P0.5不合并。
+- 契约是**固定判定窗口下的滤波上下文充分性**；改变判定窗口仍会改变MAD与CC语义。本修复不宣称任意判定窗口尺寸等价，也不宣称物理轮廓已完成真值验收。
+- 主样本27-1及26_1/26_2，93/128完整流程结果逐数组/CSV一致；557非空Tile的93/128/256残差、DoG、候选形状与门控完全一致；全幅合成参考含真实图像边缘验证无容差放宽。
+- 最终对象仍38/36/35；面积19879→19925、20356→20355、17709→17686像素。完整差异、失败保护记录及真实RAW图册见 `outputs/J4_BOUNDARY_FIX_20261112_145407`。四处人工确认源mask逐像素保留。
+- 旧J5局部序号不能证明新像素身份。已知26的本修订J5使用独立 `BOUNDARY_V1_J5` 命名空间，历史台账保持归档。原始full入口沿用full调度并转到共同修订身份处理入口，显式roi入口保持原模式。
+- 已增加配置快照/状态字段、实际额外RAW逻辑读取计数、断点恢复及上下文变更拒绝；保持原tmp+replace机制。
+- 此为本地算法源码修复，未重新打包Engine/GUI、未上传GitHub。旧冻结SHA测试保留，不能把旧版源码清单当新修复验收凭证。
+
+
+## 2026-11-21 H3尺寸超限待复核部署
+
+main.py --case b151-h3 的结果导出追加尺寸分流。config/user_config.py集中配置开关、长度比例0.25、厚度比例0.80。源bbox按谱段平均方向投影，属于保守包络；未知几何进入待复核。复用prepare已有几何，不重算边缘。原总表、Mask、面积/Feret及全候选图保留；新增SIZE_ALL_CANDIDATES.csv、SIZE_NORMAL_CANDIDATES.csv、SIZE_REVIEW_CANDIDATES.csv、两张分类图、SIZE_REVIEW.html及size_review_receipt.json参数/计时快照。超限不是无疵病，禁止只查看正常图后放行。没有部署V3/V4边缘抑制、没有修改GUI。
