@@ -22,18 +22,29 @@ class NoiseTrialConfig:
 
 def local_raw_statistics(raw: np.ndarray, all_h: np.ndarray, candidate_mask: np.ndarray,
                          bbox_xywh: tuple[int, int, int, int],
-                         config: NoiseTrialConfig) -> dict:
+                         config: NoiseTrialConfig,
+                         mask_origin: tuple[int, int] | None = None) -> dict:
     """计算候选与矩形邻域环带的原始 DN 统计；背景排除所有H像素和内保护带。
     raw 为窗口内原始RAW DN，返回候选/参考背景中位数、MAD、C和Z。
     窗口边界导致采样不完整时标记无效，不从被裁断的邻域推断噪声。
+    mask_origin 非空时 candidate_mask 为 bbox 局部掩膜（shape=(h,w)），origin 为其
+    在 raw 中的左上角 (x,y)；否则 candidate_mask 与 raw 同形（全窗口）。
     """
-    if raw.shape != all_h.shape or raw.shape != candidate_mask.shape:
-        raise ValueError("raw, H and candidate mask must have identical shape")
+    if raw.shape != all_h.shape:
+        raise ValueError("raw and H must have identical shape")
     ysize, xsize = raw.shape
     x, y, w, h = (int(v) for v in bbox_xywh)
     if w < 1 or h < 1 or x < 0 or y < 0 or x+w > xsize or y+h > ysize:
         raise ValueError("invalid local bbox")
-    candidate_vals = raw[candidate_mask].astype(float)
+    if mask_origin is None:
+        if candidate_mask.shape != raw.shape:
+            raise ValueError("raw and candidate mask must have identical shape")
+        candidate_vals = raw[candidate_mask].astype(float)
+    else:
+        ox, oy = (int(mask_origin[0]), int(mask_origin[1]))
+        if candidate_mask.shape != (h, w):
+            raise ValueError("bbox-local candidate mask must match bbox_xywh")
+        candidate_vals = raw[oy:oy+h, ox:ox+w][candidate_mask].astype(float)
     if candidate_vals.size == 0:
         raise ValueError("candidate is empty")
     touches_roi_edge = (x == 0 or y == 0 or x+w == xsize or y+h == ysize)

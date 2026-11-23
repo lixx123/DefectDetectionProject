@@ -243,7 +243,9 @@ def detect_window_H_seeded(
         a=Haudit[j-1]
         x,y,w,h=(int(a[k]) for k in ("bbox_x","bbox_y","bbox_w","bbox_h"))
         rb=(max(0,x-r),max(0,y-r),min(W_img,x+w+r),min(H_img,y+h+r))
-        Hmask=(labels==j)
+        hmask_local=labels[y:y+h,x:x+w]==j
+        Hmask=np.zeros(labels.shape,dtype=bool)
+        Hmask[y:y+h,x:x+w]=hmask_local
         area=int(a["area_px"])
         edge=bool(x==0 or y==0 or x+w==raw.shape[1] or y+h==raw.shape[0])
         peak=float(a["fused_blackhat_peak_dn"])
@@ -255,8 +257,8 @@ def detect_window_H_seeded(
             response_peak_dn=peak,edge=edge,
             overgrown=bool(area>=cfg.max_mask_area_fraction*H.size),
             raw_h_overlap_px=area,
-            low_threshold_dn=float(np.median(h_low_threshold_map[Hmask])),
-            high_threshold_dn=float(np.median(h_high_threshold_map[Hmask])),
+            low_threshold_dn=float(np.median(h_low_threshold_map[y:y+h,x:x+w][hmask_local])),
+            high_threshold_dn=float(np.median(h_high_threshold_map[y:y+h,x:x+w][hmask_local])),
             excluded_from_safe_fusion=False,uid=Huid
         )
         hprops.append(hprop)
@@ -333,7 +335,7 @@ def detect_window_H_seeded(
             combined=np.logical_or.reduce(candidates)
         # Manual outline never participates. Preserve EVERY ORIGINAL H PIXEL,
         # regardless of how noisy local background methods may be.
-        if not np.all(combined[Hmask]):
+        if not np.all(combined[y:y+h,x:x+w][hmask_local]):
             raise AssertionError("H component lost during fusion")
         box,cx,cy,region_area,cropedge=stats_mask(combined,rb)
         flags=list(dict.fromkeys(rejected))

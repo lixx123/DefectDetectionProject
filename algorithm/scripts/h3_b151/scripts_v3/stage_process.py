@@ -142,7 +142,8 @@ def process_one(raw:np.ndarray,response:np.ndarray,
     fused_labels=np.zeros_like(labels,dtype=np.int32)
     for j,obj in enumerate(objects,1):
         if obj is None:
-            fused_labels[labels==j]=j
+            cx,cy,cw,ch,_=(int(v) for v in stats[j,:5])
+            fused_labels[cy:cy+ch,cx:cx+cw][labels[cy:cy+ch,cx:cx+cw]==j]=j
             continue
         if np.any(fused_labels[obj.mask]!=0):
             raise AssertionError("refined regions overlap")
@@ -161,9 +162,9 @@ def process_one(raw:np.ndarray,response:np.ndarray,
         x,y,bw,bh,area=(int(v) for v in stats[j,:5])
         if j in skip_ids:
             old_status.append("suggest_hide");features.append({"area_px":area});continue
-        hmask=labels==j
-        fm=local_raw_statistics(raw,H,hmask,(x,y,bw,bh),f)
-        protected=bool(np.any(near[hmask]))
+        hmask_local=labels[y:y+bh,x:x+bw]==j
+        fm=local_raw_statistics(raw,H,hmask_local,(x,y,bw,bh),f,mask_origin=(x,y))
+        protected=bool(np.any(near[y:y+bh,x:x+bw][hmask_local]))
         status,_=classify_candidate(area,bw,bh,fm,protected,f)
         fm.update(area_px=area,
                   fused_blackhat_peak_dn=detected["H_audit"][j-1]["fused_blackhat_peak_dn"])
@@ -177,7 +178,8 @@ def process_one(raw:np.ndarray,response:np.ndarray,
         raise ValueError("invalid external DoG")
     for j in range(1,n):
         if j in skip_ids:continue
-        features[j-1]["dog_median_dn"]=float(np.median(dog[labels==j]))
+        x,y,bw,bh,_=(int(v) for v in stats[j,:5])
+        features[j-1]["dog_median_dn"]=float(np.median(dog[y:y+bh,x:x+bw][labels[y:y+bh,x:x+bw]==j]))
     hstatus,hreasons=extend_gate(labels,stats,gstatus,greasons,features,h)
     maps=build_joint_maps(labels,fused_labels,hstatus)
     audit=[dict(local_H_id=j,area_px=int(stats[j,4]),bbox_x=int(stats[j,0]),bbox_y=int(stats[j,1]),bbox_w=int(stats[j,2]),bbox_h=int(stats[j,3]),F_status=old_status[j-1],G_status=gstatus[j-1],G_reason=greasons[j-1],H_status=hstatus[j-1],H_reason=hreasons[j-1],sources=list(sources[j-1]),features=features[j-1]) for j in range(1,n) if j not in skip_ids]
