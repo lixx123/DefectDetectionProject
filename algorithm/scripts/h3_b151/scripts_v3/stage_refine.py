@@ -241,12 +241,21 @@ def detect_window_H_seeded(
             output.append(None)
             continue
         a=Haudit[j-1]
+        area=int(a["area_px"])
+        # 1-2px below the refinement threshold can never be refined: the slow
+        # path always returns H_too_small_to_refine for both sources and yields a
+        # deterministic H-only micro. Skip per-source refinement / hull / stats
+        # and let process_one re-label these H pixels via its None-object path,
+        # so the final fused mask is unchanged (audit-only micro objects are not
+        # constructed, which changes num_review_objects / all_proposal_masks).
+        if area<policy.min_h_pixels_for_refinement:
+            output.append(None)
+            continue
         x,y,w,h=(int(a[k]) for k in ("bbox_x","bbox_y","bbox_w","bbox_h"))
         rb=(max(0,x-r),max(0,y-r),min(W_img,x+w+r),min(H_img,y+h+r))
         hmask_local=labels[y:y+h,x:x+w]==j
         Hmask=np.zeros(labels.shape,dtype=bool)
         Hmask[y:y+h,x:x+w]=hmask_local
-        area=int(a["area_px"])
         edge=bool(x==0 or y==0 or x+w==raw.shape[1] or y+h==raw.shape[0])
         peak=float(a["fused_blackhat_peak_dn"])
         Huid=a["local_H_id"]
@@ -428,7 +437,8 @@ def detect_window_H_seeded(
         obj.max_span_px=max_hull_distance(obj.mask,rb)
         obj.eq_diameter_px=float(2*np.sqrt(area/np.pi))
 
-    kept_H=H & ~np.isin(labels,list(skip_ids))
+    full_skip=skip_ids|{j for j in range(1,count+1) if Haudit[j-1]["area_px"]<policy.min_h_pixels_for_refinement}
+    kept_H=H & ~np.isin(labels,list(full_skip))
     kept=[o.mask for o in output if o is not None]
     if not np.array_equal(np.logical_or.reduce(kept)&H,kept_H) if kept else bool(kept_H.any()):
         raise AssertionError("all H pixels must be exactly preserved")
