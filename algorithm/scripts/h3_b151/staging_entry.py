@@ -27,6 +27,11 @@ def main():
     import detector
     logging.basicConfig(level=logging.INFO)
     detector.one(inp,'A1','MEDIUM_LARGE_FAST',plan)
+    # 大内存中间残差层(Gaussian22/Closing61/DoG, 约1.2GB)可由 RAW 重算，
+    # 检测完成后删除，只保留必要结果(最终对象CSV/精确mask/图/指标)。
+    for _name in ('residual_gaussian22.npy','residual_closing61.npy','dog.npy'):
+        _p=output/'input'/_name
+        if _p.exists():_p.unlink()
     detector.dump('access.json',detector.guard.receipt('detector'))
 
 
