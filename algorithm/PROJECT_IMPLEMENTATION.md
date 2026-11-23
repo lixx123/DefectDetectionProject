@@ -991,7 +991,7 @@ main.py --case b151-h3 的结果导出追加尺寸分流。config/user_config.py
 
 ## 2026-11-23 J4 运行时间优化（opt1~opt4，分支 perf/j4-bbox-stats-mask）
 
-在独立分支 `perf/j4-bbox-stats-mask`（基于 283ce12）完成四轮 J4 运行时间优化，最终检测结果（疵病个数、像素面积、精确 mask 字节）与基线逐项一致。详见 `algorithm/J4_PERF_OPTIMIZATION_20261123.md`。
+在独立分支 `perf/j4-bbox-stats-mask`（基于 283ce12）完成四轮 J4 运行时间优化，最终检测结果（疵病个数、像素面积、精确 mask 字节）与基线逐项一致。详见 `J4_PERF_OPTIMIZATION_20261123.md`。
 
 - opt1：stats_mask/max_hull_distance bbox 局部扫描；opt2：Gaussian22/Closing61/DoG 全帧预计算 + 检测后删除残差层；opt3：逐候选循环 labels==j 等 bbox 化；opt4：1~2px 候选跳过 ObjectRegion 构造。
 - 同机实测：26(1) J4 234.98s→57.85s（4.06×）；181 J4 46.57s→15.37s（3.03×）。逐疵病个数/像素面积/精确 mask 字节与基线一致（26(1) 63 缺陷/28665px²，181 66 缺陷/321007px²）。
