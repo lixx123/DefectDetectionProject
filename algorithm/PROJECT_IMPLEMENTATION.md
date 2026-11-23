@@ -988,3 +988,11 @@ main.py --case b151-h3 的结果导出追加尺寸分流。config/user_config.py
 
 ## 2026-11-23 检测链审查修复
 计时器按实际项目src及scripts_v3解析路径匹配；stage_j4内联PNG/显示工具，移除人工审核脚本依赖；仅接受b15_pixel显式spec，候选来源标签统一为单一常量`H3_PER_BAND`（原草稿的H_PER_BAND_SPEC字面量已并入该常量），逐对象CSV新增threshold_mode/strategy/low/high溯源字段。巨框继续分流及暗斑分离，V4源头阻断因既往像素损失风险未启用。
+
+## 2026-11-23 J4 运行时间优化（opt1~opt4，分支 perf/j4-bbox-stats-mask）
+
+在独立分支 `perf/j4-bbox-stats-mask`（基于 283ce12）完成四轮 J4 运行时间优化，最终检测结果（疵病个数、像素面积、精确 mask 字节）与基线逐项一致。详见 `algorithm/J4_PERF_OPTIMIZATION_20261123.md`。
+
+- opt1：stats_mask/max_hull_distance bbox 局部扫描；opt2：Gaussian22/Closing61/DoG 全帧预计算 + 检测后删除残差层；opt3：逐候选循环 labels==j 等 bbox 化；opt4：1~2px 候选跳过 ObjectRegion 构造。
+- 同机实测：26(1) J4 234.98s→57.85s（4.06×）；181 J4 46.57s→15.37s（3.03×）。逐疵病个数/像素面积/精确 mask 字节与基线一致（26(1) 63 缺陷/28665px²，181 66 缺陷/321007px²）。
+- ⚠️ opt4 边界：1~2px 候选不再有独立对象/审计/复核标记（像素仍在源掩膜）。**若后续要单独识别或人工复核 ≤2px 更微小疵病，必须先回退/改造 opt4 快路径**，否则这些小候选不会进入独立复核队列。opt4 是可逆工程取舍，仅适用于当前“中大尺寸疵病”输出目标。
