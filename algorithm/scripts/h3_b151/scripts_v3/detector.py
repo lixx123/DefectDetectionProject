@@ -63,6 +63,11 @@ def export(inp,a,folder,objects,mapping,localrows):
  bands={int(b['band_id']):b for b in inp.get('size_review_bands',[])}
  receipt=write_reports(folder,rows,bands,settings,gray,enabled=cfg.H3_SIZE_REVIEW_ENABLED)
  logging.info('Size review: total=%d normal=%d review=%d classify=%.6fs',receipt['total'],receipt['normal'],receipt['review'],receipt['classification_seconds'])
+ if cfg.H3_SIZE_REVIEW_ENABLED and cfg.H3_EDGE_SPOTS_ENABLED:
+  from src.detection.edge_attached_spots import EdgeSpotSettings
+  from src.visualization.edge_spot_report import write_edge_spots
+  edge_receipt=write_edge_spots(folder,rows,bands,raw,gray,settings,EdgeSpotSettings(**cfg.H3_EDGE_SPOTS))
+  logging.info('Edge spots: children=%d total=%.3fs',edge_receipt['children'],edge_receipt['total_seconds'])
  return rows
 def _feret(m):
  import cv2

@@ -7,7 +7,12 @@ def main():
     p.add_argument('--input', required=True, type=Path)
     p.add_argument('--mode', choices=('adaptive_h3','fixed'), default='adaptive_h3')
     p.add_argument('--run-output', required=True, type=Path)
+    p.add_argument('--edge-spots', choices=('on','off'), default=None,
+                   help='Explicit A/B override; omission uses user_config')
     a=p.parse_args()
+    if a.edge_spots is not None:
+        from config import user_config
+        user_config.H3_EDGE_SPOTS_ENABLED = a.edge_spots == 'on'
     raw=a.input.resolve(strict=True)
     output=a.run_output.resolve()
     inp,plan=prepare(raw,output/'input')

@@ -456,3 +456,10 @@ UNIFIED_FINAL["max_labeled_overview_objects"] = 200
 H3_SIZE_REVIEW_ENABLED = True
 H3_SIZE_REVIEW_LENGTH_RATIO = 0.25
 H3_SIZE_REVIEW_THICKNESS_RATIO = 0.80
+
+# 超限父对象中的紧凑暗斑分离；原始Mask保留，残余显式待复核。
+H3_EDGE_SPOTS_ENABLED = True
+H3_EDGE_SPOTS = dict(inside_px=192, outside_px=16, background_block_px=512,
+    high_sigma=5.0, low_sigma=2.5, noise_floor_dn=5.0, min_seed_source_px=4,
+    max_width_fraction=0.25, min_child_area_px=40, min_source_fill=0.45,
+    max_child_aspect=2.0)
