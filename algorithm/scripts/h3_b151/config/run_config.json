@@ -4,16 +4,15 @@
   "TRACK_B": "NOT_EXECUTED_APPROVAL_REFERENCE_ONLY_UNTIL_ISOLATION_PROVEN",
   "TRACK_H": "HISTORICAL_V4_REFERENCE_ONLY",
   "strategies": [
-    "A0",
-    "A1",
-    "A2"
+    "A1"
   ],
+  "strategy_note": "A1 is the only constructible strategy: H3 P95/P99.9 per band frozen by prepare_raw. A0 fixed 170/230 and the never-built A2 were removed on 2026-11-23; run folders keep the A1 token for historical addressing.",
   "halo": 64,
   "filter_context": 93,
   "processing_margin": 105,
   "threshold_outside_EVAL": 65536.0,
   "threshold_dtype": "float64_unrounded",
-  "nonthreshold_policy": "production current config identical all strategies",
+  "nonthreshold_policy": "all non-threshold parameters come from config/postprocess.json and user_config; no per-strategy variant settings exist",
   "physical_pixel_pitch_detector_plane_um": 3.2,
   "object_plane_calibration": "NOT_ESTABLISHED",
   "production": "NOT_APPROVED",

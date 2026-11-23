@@ -1,9 +1,10 @@
-"""Case03-T1: fixed/global/local adaptive H on 26 (2).raw, same E2-H5/F/G/H postprocessor.
+"""J4 window post-processor for the official B151-H3 chain.
 
-Scope: 9 previously selected 256px windows + 9 deterministic spatial
-control windows. The coordinates are fixed before inspecting frame2 and
-are NOT independent frame2 defect annotations. Report candidate counts
-and coverage, not recall/FPR without frame2 ground truth.
+One core+halo work window in: per-pixel H3 threshold surfaces drive hysteresis,
+then Case03-E2 H-seeded refinement and the Case03-F/G/H gates run on that same
+window. Thresholds are always arrays supplied by stage_j4; there is no scalar
+fixed-threshold route here. Every decision is recomputed from the current RAW
+window, so no frame-specific manual label enters detection.
 """
 from __future__ import annotations
 import sys
@@ -17,7 +18,7 @@ from src.detection.case03t_adaptive_hysteresis import (
 )
 # Experimental adapter is separate; the production Case03E2 API stays frozen.
 from stage_refine import (
-    detect_window_H_seeded,HSeedConfig
+    detect_window_H_seeded,HSeedConfig,H_SOURCE
 )
 from src.detection.case03e2_multicandidate import FusionConfig
 from src.detection.candidate_local_noise import (
@@ -85,11 +86,17 @@ def policies():
 
 
 def process_one(raw:np.ndarray,response:np.ndarray,
-                low:np.ndarray|float,high:np.ndarray|float,
+                low:np.ndarray,high:np.ndarray,
                 refine:FusionConfig,seed:HSeedConfig,
                 f:NoiseTrialConfig,g:JointGateConfig,h:TextureTrialConfig,
                 *,context_provider=None
                 )->dict:
+    # Empty and all-filtered windows leave through early exits, so the
+    # mandatory per-pixel threshold contract is asserted before them.
+    if not (isinstance(low,np.ndarray) and isinstance(high,np.ndarray)):
+        raise TypeError('H3 per-pixel threshold maps are mandatory; no fixed scalar route exists')
+    if low.shape!=response.shape or high.shape!=response.shape:
+        raise ValueError('threshold maps must cover the whole work window')
     H,S,original_seeds=hysteresis_window(response,low,high)
     n,labels,stats,_=cv2.connectedComponentsWithStats(H.astype(np.uint8),8)
     if n-1>seed.max_output_regions_per_window:
@@ -127,10 +134,7 @@ def process_one(raw:np.ndarray,response:np.ndarray,
     external=None if context_provider is None else context_provider()
     kw={"cfg":refine,"policy":seed,"skip_ids":skip_ids}
     if external is not None:kw["residuals"]=external["residuals"]
-    if isinstance(low,np.ndarray):
-        kw.update(h_low_threshold_map=low,h_high_threshold_map=high)
-    else:
-        kw.update(h_low_threshold_dn=float(low),h_high_threshold_dn=float(high))
+    kw.update(h_low_threshold_map=low,h_high_threshold_map=high)
     detected=detect_window_H_seeded(raw,H,S,response,**kw)
     objects=detected["objects"]
     if len(objects)!=n-1:
@@ -164,7 +168,7 @@ def process_one(raw:np.ndarray,response:np.ndarray,
         fm.update(area_px=area,
                   fused_blackhat_peak_dn=detected["H_audit"][j-1]["fused_blackhat_peak_dn"])
         old_status.append(status);features.append(fm)
-    sources=[tuple(o.sources) if o is not None else ("H170_230",) for o in objects]
+    sources=[tuple(o.sources) if o is not None else (H_SOURCE,) for o in objects]
     gstatus,greasons=decide_gate(labels,stats,old_status,sources,g)
     afloat=raw.astype(np.float32)
     dog=(cv2.GaussianBlur(afloat,(0,0),h.dog_large_sigma_px)-

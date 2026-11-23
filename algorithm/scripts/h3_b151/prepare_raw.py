@@ -36,12 +36,11 @@ def prepare(path, out):
     detect=np.where((region==2)&(ids==stats),ids,0)
     out.mkdir(parents=True,exist_ok=False)
     bh,timing=compute_fused(raw,out/'fused.npy')
-    specs={'A0':[],'A1':[]};rects=[];counts=[]
+    specs={'A1':[]};rects=[];counts=[]
     for b in geometry['bands']:
         bid=b['band_id'];q=stats==bid;d=detect==bid
         low,high=np.quantile(bh[q],[.95,.999],method='linear')
         if not 0<=low<high<65535:raise ValueError(f'Invalid H3 thresholds in band {bid}')
-        specs['A0'].append(dict(band_id=bid,low_dn=170.,high_dn=230.))
         specs['A1'].append(dict(band_id=bid,low_dn=float(low),high_dn=float(high)))
         y,x=np.where(d)
         if not x.size:raise ValueError(f'Empty EVAL band {bid}')

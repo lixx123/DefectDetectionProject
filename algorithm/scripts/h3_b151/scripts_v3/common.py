@@ -3,7 +3,6 @@ from pathlib import Path
 import os,sys,json,csv,hashlib,time,logging,platform,ctypes
 import numpy as np,pandas as pd
 ROOT=Path(__file__).resolve().parents[1]
-BASE=ROOT/'outputs/WS2_B1_STEP5_FULL_PIPELINE_FAIR_COMPARE_20261117_103056'
 OUT=Path(os.environ["B151_RUN_OUTPUT"]).resolve()
 def read(p):return json.loads(Path(p).read_text(encoding='utf-8-sig'))
 def dump(p,v):

@@ -4,8 +4,12 @@ Case03-J5 (NOT implemented here) alone will merge across core boundaries
 and assign final physical-defect IDs. This file deliberately never calls
 a global union-find and never claims whole-object completeness at tile edges.
 
-Existing fixed 170/230 + Case03E2 anchored bounded refinements and the
-Case03-F/G/H gates are used unchanged via Case03-T fixed process_one.
+Thresholds: the only supported mode is b15_pixel, i.e. per-band H3 P95/P99.9
+values frozen by prepare_raw and expanded to a per-pixel float64 surface.
+There is no fixed 170/230 fallback and no scalar default: a missing or invalid
+spec fails before any detection work. Pixels outside EVAL keep the 65536
+disable pair so the uint16 response can never cross it.
+Case03E2 anchored bounded refinements and the Case03-F/G/H gates are unchanged.
 
 Memory: RAW is read-only big-endian memmap. The fused Black-Hat input may be
 either a legacy full-frame response or the current two-level ROI response.
@@ -32,7 +36,28 @@ from src.detection.two_level_roi import require_computed_response
 from src.visualization.case03j_object_boxes import (
     BoxStyle,measure_visual_bbox,render_grouped_box_comparison
 )
-from scripts.run_case03g_joint_noise_refinement import save_png,gray
+def save_png(path:Path,image:np.ndarray)->None:
+    """Encode a display PNG on Unicode Windows paths; detection data untouched.
+
+    Deliberately no minimum-file-size test: a legitimately small tile image is
+    still valid. Integrity is proven by decoding and comparing geometry.
+    """
+    path.parent.mkdir(parents=True,exist_ok=True)
+    ok,payload=cv2.imencode('.png',image,[cv2.IMWRITE_PNG_COMPRESSION,3])
+    if not ok:raise OSError('PNG encode failed: '+str(path))
+    path.write_bytes(payload.tobytes())
+    decoded=cv2.imdecode(np.frombuffer(path.read_bytes(),dtype=np.uint8),cv2.IMREAD_COLOR)
+    if decoded is None or decoded.shape[:2]!=image.shape[:2]:
+        raise OSError('PNG could not be decoded with matching geometry: '+str(path))
+
+
+def gray(raw:np.ndarray)->np.ndarray:
+    """Stretch RAW DN to BGR for display only; input array is never modified."""
+    f=raw.astype(np.float32);lo,hi=np.percentile(f,[1,99.5])
+    hi=max(float(hi),float(lo)+1.)
+    mono=np.uint8(np.rint(np.clip((f-lo)/(hi-lo),0,1)*255))
+    return cv2.cvtColor(mono,cv2.COLOR_GRAY2BGR)
+
 
 def halo_rect(rect:list[int],shape:tuple[int,int],halo:int,
               min_work_size:int=192)->tuple[int,int,int,int]:
@@ -60,23 +85,85 @@ def json_save(path,value):
 
 
 
+_DISABLE_DN=65536.
 _BAND_MAP_CACHE={}
+
+
+def clear_band_map_cache():
+    """Run init clears the band-raster cache so a recycled path cannot reuse it."""
+    _BAND_MAP_CACHE.clear()
+
+
+def validate_threshold_spec(spec):
+    """Reject anything that could silently turn H3 into another threshold."""
+    if not isinstance(spec,dict):raise ValueError('threshold spec must be a mapping')
+    for key in ('bands','fallback','pixel_band_ids'):
+        if key not in spec:raise ValueError(f'threshold spec missing {key}')
+    bands=spec['bands']
+    if not bands:raise ValueError('threshold spec has no bands')
+    seen=set()
+    for b in bands:
+        for key in ('band_id','low_dn','high_dn'):
+            if key not in b:raise ValueError(f'band spec missing {key}')
+        bid=int(b['band_id'])
+        if bid<=0 or bid in seen:raise ValueError(f'invalid or duplicated band_id {bid}')
+        seen.add(bid)
+        lo,hi=float(b['low_dn']),float(b['high_dn'])
+        if not (np.isfinite(lo) and np.isfinite(hi)):
+            raise ValueError(f'non-finite threshold in band {bid}')
+        if not 0.<=lo<hi<_DISABLE_DN-1:
+            raise ValueError(f'band {bid} breaks 0<=low<high<65535: {lo}/{hi}')
+    fb=[float(v) for v in spec['fallback']]
+    if len(fb)!=2 or not all(np.isfinite(v) for v in fb):
+        raise ValueError('fallback thresholds must be two finite values')
+    if fb[0]!=fb[1] or fb[0]<_DISABLE_DN:
+        raise ValueError('out-of-domain fallback must disable the uint16 response; a fixed threshold is not allowed')
+    if not Path(str(spec['pixel_band_ids'])).is_file():
+        raise ValueError(f"band id raster not found: {spec['pixel_band_ids']}")
+    return seen
+
+
 def threshold_maps(spec,l,t,r,b):
- p=spec['pixel_band_ids']
- if p not in _BAND_MAP_CACHE:_BAND_MAP_CACHE[p]=np.load(p,mmap_mode='r')
- ids=_BAND_MAP_CACHE[p][t:b,l:r]
- lo=np.full(ids.shape,float(spec['fallback'][0]),np.float64);hi=np.full(ids.shape,float(spec['fallback'][1]),np.float64)
- for z in spec['bands']:
-  m=ids==int(z['band_id']);lo[m]=z['low_dn'];hi[m]=z['high_dn']
- if np.any(lo>hi):raise ValueError('TL>TH')
- return lo,hi
+    """Expand the frozen per-band H3 table into per-pixel low/high surfaces.
+
+    Returns (low, high, per-band pixel accounting) for the requested window.
+    """
+    validate_threshold_spec(spec)
+    key=str(spec['pixel_band_ids'])
+    if key not in _BAND_MAP_CACHE:_BAND_MAP_CACHE[key]=np.load(key,mmap_mode='r')
+    raster=_BAND_MAP_CACHE[key]
+    height,width=raster.shape
+    if not (0<=l<r<=width and 0<=t<b<=height):
+        raise ValueError(f'window {(l,t,r,b)} outside band raster {(height,width)}')
+    ids=raster[t:b,l:r]
+    lo=np.full(ids.shape,float(spec['fallback'][0]),np.float64)
+    hi=np.full(ids.shape,float(spec['fallback'][1]),np.float64)
+    applied=[];covered=np.zeros(ids.shape,bool)
+    for z in spec['bands']:
+        bid=int(z['band_id']);m=ids==bid
+        lo[m]=z['low_dn'];hi[m]=z['high_dn'];covered|=m
+        applied.append(dict(band_id=bid,low_dn=float(z['low_dn']),high_dn=float(z['high_dn']),
+                            pixels=int(np.count_nonzero(m))))
+    unknown=int(np.count_nonzero((ids!=0)&~covered))
+    if unknown:
+        raise ValueError(f'{unknown} window pixels name bands absent from the frozen spec')
+    if np.any(lo>hi):raise AssertionError('threshold surface inverted')
+    applied.append(dict(band_id=0,low_dn=float(spec['fallback'][0]),high_dn=float(spec['fallback'][1]),
+                        disabled=True,pixels=int(np.count_nonzero(ids==0))))
+    return lo,hi,applied
 
 
 def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
              pcfg:tuple,grade:SizeGradeConfig,j1:AssociationConfig,
              j2:ContinuousConfig,halo:int,dest:Path,
              image_enabled:bool=True,frame_label:str="26_1",
-             threshold_mode:str="fixed_170_230",perband_spec:dict|None=None)->dict:
+             threshold_mode:str="b15_pixel",perband_spec:dict|None=None)->dict:
+    # Contract first: refuse an unusable threshold surface before touching RAW.
+    if threshold_mode!="b15_pixel":
+        raise ValueError(f"threshold_mode {threshold_mode!r} is not supported; the official chain is b15_pixel")
+    if perband_spec is None:
+        raise ValueError('b15_pixel requires an explicit per-band H3 threshold spec')
+    validate_threshold_spec(perband_spec)
     name=tile["tile_id"]
     x0,y0,x1,y1=rect=tile["core_xyxy"]
     l,t,r,b=halo_rect(rect,rawmem.shape,halo)
@@ -96,16 +183,10 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
     from fast_state import STATE
     STATE.geometry(rect,(l,t,r,b))
     enabled=cfg.CASE03J4_EXTERNAL_CONTEXT_ENABLED
-    if threshold_mode=="fixed_170_230":
-        detection=process_one(local,response,170.,230.,refine,seed,f,g,h,
-                              context_provider=context_provider if enabled else None)
-        wlo=whi=None
-    else:
-        if perband_spec is None:raise ValueError("perband threshold mode requires spec")
-        wlo,whi=threshold_maps(perband_spec,l,t,r,b)
-        if wlo.shape!=response.shape:raise AssertionError("threshold map/response mismatch")
-        detection=process_one(local,response,wlo,whi,refine,seed,f,g,h,
-                              context_provider=context_provider if enabled else None)
+    wlo,whi,band_usage=threshold_maps(perband_spec,l,t,r,b)
+    if wlo.shape!=response.shape:raise AssertionError('threshold map/response mismatch')
+    detection=process_one(local,response,wlo,whi,refine,seed,f,g,h,
+                          context_provider=context_provider if enabled else None)
     from memory_store import capture_stage
     capture_stage(dest,name,(l,t,r,b),rect,response,wlo,whi,detection)
     sy0,sy1=y0-t,y1-t
@@ -198,10 +279,10 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
         "cross_tile_merged":False,
         "precomputed_full_frame_response":True,
         "threshold_mode":threshold_mode,
-        "window_low_dn_min_median_max":([float(wlo.min()),float(np.median(wlo)),float(wlo.max())]
-                                        if wlo is not None else [170.,170.,170.]),
-        "window_high_dn_min_median_max":([float(whi.min()),float(np.median(whi)),float(whi.max())]
-                                         if whi is not None else [230.,230.,230.]),
+        "threshold_strategy":"H3_P95_P99_9_PER_BAND",
+        "threshold_bands_applied":json.dumps(band_usage,ensure_ascii=False),
+        "window_low_dn_min_median_max":[float(wlo.min()),float(np.median(wlo)),float(wlo.max())],
+        "window_high_dn_min_median_max":[float(whi.min()),float(np.median(whi)),float(whi.max())],
         "mask_file":str(tilefile.relative_to(dest)),
         "measured_area_excludes_inferred_bridge":True,
     }

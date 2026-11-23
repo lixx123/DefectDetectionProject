@@ -1,3 +1,8 @@
+"""Official B151-H3 entry. H3 per-band adaptive thresholds are the only mode.
+
+The run-folder strategy token stays 'A1' so historical outputs remain
+addressable; it now denotes exactly one contract (P95/P99.9 per band).
+"""
 import argparse, os, sys, logging
 from pathlib import Path
 from prepare_raw import prepare
@@ -5,7 +10,6 @@ from prepare_raw import prepare
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('--input', required=True, type=Path)
-    p.add_argument('--mode', choices=('adaptive_h3','fixed'), default='adaptive_h3')
     p.add_argument('--run-output', required=True, type=Path)
     p.add_argument('--edge-spots', choices=('on','off'), default=None,
                    help='Explicit A/B override; omission uses user_config')
@@ -22,8 +26,7 @@ def main():
     sys.path.insert(0,str(Path(__file__).resolve().parent/'scripts_v3'))
     import detector
     logging.basicConfig(level=logging.INFO)
-    mode='A1' if a.mode=='adaptive_h3' else 'A0'
-    detector.one(inp,mode,'MEDIUM_LARGE_FAST',plan)
+    detector.one(inp,'A1','MEDIUM_LARGE_FAST',plan)
     detector.dump('access.json',detector.guard.receipt('detector'))
 
 

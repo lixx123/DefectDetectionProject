@@ -11,7 +11,18 @@ from dataclasses import dataclass
 import cv2
 import numpy as np
 from src.detection.case03i_size_grade import GRADE_COLORS_BGR
-from scripts.run_case03g_joint_noise_refinement import gray
+
+
+def gray(raw:np.ndarray)->np.ndarray:
+    """Stretch RAW DN to BGR for display only.
+
+    Inlined so production visualization never imports the manual-review
+    script; identical percentile, floor, rounding and channel order.
+    """
+    f=raw.astype(np.float32);lo,hi=np.percentile(f,[1,99.5])
+    hi=max(float(hi),float(lo)+1.)
+    mono=np.uint8(np.rint(np.clip((f-lo)/(hi-lo),0,1)*255))
+    return cv2.cvtColor(mono,cv2.COLOR_GRAY2BGR)
 
 
 @dataclass(frozen=True)

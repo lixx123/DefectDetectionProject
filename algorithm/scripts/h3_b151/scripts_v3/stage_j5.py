@@ -1,6 +1,7 @@
 """Case03-J5 whole-frame object reconciliation from frozen Case03-J4.
 
-- No rerun of H170/230, background screens, morphological refinements, or J2.
+- No rerun of the per-band H3 hysteresis, background screens, morphological
+  refinements, or J2.
 - Every source detected pixel belongs to precisely one non-overlapping J4
   core. Merging objects never changes these pixels, merely their global ID.
 - Direct cross-tile 8-neighbor contact is guaranteed connectivity.

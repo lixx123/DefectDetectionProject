@@ -1,4 +1,9 @@
-"""Case03-E2-H: ONLY original H170/230 connected components may create targets.
+"""Case03-E2-H: only original H connected components may create targets.
+
+H here is the per-pixel H3 hysteresis surface supplied by stage_j4 (P95 low /
+P99.9 high frozen per band). The candidate source tag is band-independent on
+purpose: the exact low/high DN actually applied to each object is recorded per
+proposal as low_threshold_dn/high_threshold_dn.
 
 Gaussian22/Closing61 CANNOT produce standalone proposals. They can only
 propose a bounded extension connected to an existing H candidate. Unsafe
@@ -25,6 +30,8 @@ from src.detection.local_boundary_refinement import (
 )
 
 SOURCE_NAMES=("gaussian22","closing61")
+# Gate consumers match only SOURCE_NAMES, so this tag is provenance text.
+H_SOURCE="H3_PER_BAND"
 
 
 @dataclass(frozen=True)
@@ -61,7 +68,7 @@ def _H_component_catalog(H:np.ndarray,S:np.ndarray,fused:np.ndarray):
             "local_H_id":f"Hlocal_{label:04d}",
             "bbox_x":x,"bbox_y":y,"bbox_w":w,"bbox_h":h,
             "area_px":area,"fused_blackhat_peak_dn":peak,
-            "S230_seed_pixel_count":numseed,
+            "S_high_threshold_seed_pixel_count":numseed,
             "promoted_to_fusion_pool":True,
             "low_area_H_retained_in_original_mask":bool(area<3),
             "is_strong_peak_H_only_possible":bool(peak>=350),
@@ -173,10 +180,8 @@ def detect_window_H_seeded(
     policy:HSeedConfig=HSeedConfig(),
     residuals:dict[str,np.ndarray]|None=None,
     skip_ids:frozenset=frozenset(),
-    h_low_threshold_dn:float=170.,
-    h_high_threshold_dn:float=230.,
-    h_low_threshold_map:np.ndarray|None=None,
-    h_high_threshold_map:np.ndarray|None=None,
+    h_low_threshold_map:np.ndarray,
+    h_high_threshold_map:np.ndarray,
 )->dict:
     """Detect ALL H components, refine each independently where safely possible.
 
@@ -190,22 +195,12 @@ def detect_window_H_seeded(
         raise ValueError("at least 190px cropped RAW required")
     if np.any(S&~H):
         raise ValueError("strong H seed pixels must be contained by H support")
-    if h_low_threshold_map is None:
-        if np.any(H&(fused<float(h_low_threshold_dn))):
-            raise ValueError("H support below its BlackHat low threshold")
-    else:
-        if h_low_threshold_map.shape!=H.shape:
-            raise ValueError("H low threshold map shape mismatch")
-        if np.any(H&(fused<h_low_threshold_map)):
-            raise ValueError("H support below local low threshold surface")
-    if h_high_threshold_map is None:
-        if np.any(S&(fused<float(h_high_threshold_dn))):
-            raise ValueError("H seeds below its BlackHat high threshold")
-    else:
-        if h_high_threshold_map.shape!=H.shape:
-            raise ValueError("H high threshold map shape mismatch")
-        if np.any(S&(fused<h_high_threshold_map)):
-            raise ValueError("H seeds below local high threshold surface")
+    if h_low_threshold_map.shape!=H.shape or h_high_threshold_map.shape!=H.shape:
+        raise ValueError("H threshold map shape mismatch")
+    if np.any(H&(fused<h_low_threshold_map)):
+        raise ValueError("H support below local low threshold surface")
+    if np.any(S&(fused<h_high_threshold_map)):
+        raise ValueError("H seeds below local high threshold surface")
     labels,Hstats,centroids,Haudit=_H_component_catalog(H,S,fused)
     count=len(Haudit)
     if count>policy.max_output_regions_per_window:
@@ -247,16 +242,14 @@ def detect_window_H_seeded(
         peak=float(a["fused_blackhat_peak_dn"])
         Huid=a["local_H_id"]
         hprop=Proposal(
-            source="H170_230",mask=Hmask,
+            source=H_SOURCE,mask=Hmask,
             center_x=float(centroids[j,0]),center_y=float(centroids[j,1]),
             bbox=(x,y,w,h),area_px=area,
             response_peak_dn=peak,edge=edge,
             overgrown=bool(area>=cfg.max_mask_area_fraction*H.size),
             raw_h_overlap_px=area,
-            low_threshold_dn=(float(h_low_threshold_dn) if h_low_threshold_map is None
-                              else float(np.median(h_low_threshold_map[Hmask]))),
-            high_threshold_dn=(float(h_high_threshold_dn) if h_high_threshold_map is None
-                               else float(np.median(h_high_threshold_map[Hmask]))),
+            low_threshold_dn=float(np.median(h_low_threshold_map[Hmask])),
+            high_threshold_dn=float(np.median(h_high_threshold_map[Hmask])),
             excluded_from_safe_fusion=False,uid=Huid
         )
         hprops.append(hprop)
@@ -374,7 +367,7 @@ def detect_window_H_seeded(
             status="provisional_H_only"
         else:
             status="needs_review_H_only"
-        sources=["H170_230"]+list(accepted)
+        sources=[H_SOURCE]+list(accepted)
         output.append(ObjectRegion(
             mask=combined,
             center_x=cx,center_y=cy,area_px=region_area,bbox=box,
@@ -448,7 +441,7 @@ def detect_window_H_seeded(
         "window_incomplete_due_to_overflow":False,
         "all_proposal_masks":hprops+proposals,
         "image_shape":[int(v) for v in raw.shape],
-        "candidate_discovery_mode":"H170230_only",
+        "candidate_discovery_mode":"H3_PER_BAND_MAP_ONLY",
         "independent_gaussian_morph_candidates":0,
         "H_pixel_conservation":True
     }
