@@ -4,7 +4,7 @@ import math
 
 @dataclass(frozen=True)
 class Settings:
-    length_ratio: float = 0.25
+    length_ratio: float = 0.10
     thickness_ratio: float = 0.80
     def validate(self):
         if not (0 < self.length_ratio <= 1 and 0 < self.thickness_ratio <= 1):

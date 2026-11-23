@@ -6,8 +6,8 @@ class SizeReviewTests(unittest.TestCase):
         self.band={1:dict(core_x_min=0,core_x_max_exclusive=1000,top_line_y_at_x0=0,bottom_line_y_at_x0=100,top_line_slope_y_per_x=0,bottom_line_slope_y_per_x=0)}
     def row(self,w,h):return dict(new_id='test',band_id=1,source_bbox_width_px=w,source_bbox_height_px=h,mask_path='unchanged.npz')
     def test_threshold_boundary(self):
-        self.assertEqual(classify([self.row(249,10)],self.band)[0]['review_status'],'NORMAL_CANDIDATE')
-        self.assertEqual(classify([self.row(250,10)],self.band)[0]['review_status'],'SIZE_REVIEW')
+        self.assertEqual(classify([self.row(99,10)],self.band)[0]['review_status'],'NORMAL_CANDIDATE')
+        self.assertEqual(classify([self.row(100,10)],self.band)[0]['review_status'],'SIZE_REVIEW')
         self.assertEqual(classify([self.row(10,80)],self.band)[0]['review_status'],'SIZE_REVIEW')
     def test_unknown_is_review(self):
         self.assertEqual(classify([self.row(10,10)],{})[0]['reason'],'UNKNOWN_BAND_GEOMETRY')

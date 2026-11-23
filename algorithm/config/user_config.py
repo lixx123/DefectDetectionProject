@@ -454,7 +454,7 @@ UNIFIED_FINAL["max_labeled_overview_objects"] = 200
 
 # 尺寸分流：只标记待复核，不删除对象/Mask，不改变H3阈值。
 H3_SIZE_REVIEW_ENABLED = True
-H3_SIZE_REVIEW_LENGTH_RATIO = 0.25
+H3_SIZE_REVIEW_LENGTH_RATIO = 0.10
 H3_SIZE_REVIEW_THICKNESS_RATIO = 0.80
 
 # 超限父对象中的紧凑暗斑分离；原始Mask保留，残余显式待复核。
