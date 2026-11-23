@@ -230,12 +230,19 @@ def detect_window_H_seeded(
     source_props=[]
     output=[]
     links=[]
+    H_img,W_img=raw.shape
+    # Every refined/combined mask is contained in dilate(H, radius) which lies
+    # inside the H bbox expanded by the max extension radius. Use that as a safe
+    # bounding box so stats_mask / max_hull_distance scan the bbox instead of the
+    # full window (dominant cost for the many tiny H components).
+    r=max(policy.max_extension_radius_px,policy.bounded_fallback_radius_px)
     for j in range(1,count+1):
         if j in skip_ids:
             output.append(None)
             continue
         a=Haudit[j-1]
         x,y,w,h=(int(a[k]) for k in ("bbox_x","bbox_y","bbox_w","bbox_h"))
+        rb=(max(0,x-r),max(0,y-r),min(W_img,x+w+r),min(H_img,y+h+r))
         Hmask=(labels==j)
         area=int(a["area_px"])
         edge=bool(x==0 or y==0 or x+w==raw.shape[1] or y+h==raw.shape[0])
@@ -291,7 +298,7 @@ def detect_window_H_seeded(
             if mask is not None:
                 accepted[source]=mask
                 candidates.append(mask)
-                box,cx,cy,ar,areaedge=stats_mask(mask)
+                box,cx,cy,ar,areaedge=stats_mask(mask,rb)
                 proposal=Proposal(
                     source=source,mask=mask,center_x=cx,center_y=cy,
                     bbox=box,area_px=ar,
@@ -328,7 +335,7 @@ def detect_window_H_seeded(
         # regardless of how noisy local background methods may be.
         if not np.all(combined[Hmask]):
             raise AssertionError("H component lost during fusion")
-        box,cx,cy,region_area,cropedge=stats_mask(combined)
+        box,cx,cy,region_area,cropedge=stats_mask(combined,rb)
         flags=list(dict.fromkeys(rejected))
         if bounded_methods:
             flags.append("bounded_H_extension_requires_independent_review")
@@ -376,7 +383,7 @@ def detect_window_H_seeded(
             source_count=len(sources),
             H_only=len(accepted)==0,
             status=status,flags=flags,
-            max_span_px=max_hull_distance(combined),
+            max_span_px=max_hull_distance(combined,rb),
             eq_diameter_px=float(2*np.sqrt(region_area/np.pi)),
             source_H_candidate_areas_px=[area],
             excluded_bridge_proposal_count=len(rejected),
@@ -389,6 +396,9 @@ def detect_window_H_seeded(
     owner=np.zeros_like(labels,dtype=np.int32)
     for j,obj in enumerate(output,1):
         if obj is None:continue
+        a=Haudit[j-1]
+        x,y,w,h=(int(a[k]) for k in ("bbox_x","bbox_y","bbox_w","bbox_h"))
+        rb=(max(0,x-r),max(0,y-r),min(W_img,x+w+r),min(H_img,y+h+r))
         own_h=(labels==j)
         if not np.all(obj.mask[own_h]):
             raise AssertionError("own H pixels disappeared")
@@ -399,6 +409,9 @@ def detect_window_H_seeded(
                start=np.zeros_like(H,dtype=np.uint16))
     for j,obj in enumerate(output,1):
         if obj is None:continue
+        a=Haudit[j-1]
+        x,y,w,h=(int(a[k]) for k in ("bbox_x","bbox_y","bbox_w","bbox_h"))
+        rb=(max(0,x-r),max(0,y-r),min(W_img,x+w+r),min(H_img,y+h+r))
         if np.any(extras[obj.mask & ~H]>1):
             obj.flags.append("overlapping_refined_extensions")
             obj.status="needs_review_overlap"
@@ -408,9 +421,9 @@ def detect_window_H_seeded(
         assert np.all(obj.mask[labels==j])
         if not obj.mask.any():
             raise AssertionError("each H seed must preserve nonempty output")
-        box,cx,cy,area,_=stats_mask(obj.mask)
+        box,cx,cy,area,_=stats_mask(obj.mask,rb)
         obj.bbox=box;obj.center_x=cx;obj.center_y=cy;obj.area_px=area
-        obj.max_span_px=max_hull_distance(obj.mask)
+        obj.max_span_px=max_hull_distance(obj.mask,rb)
         obj.eq_diameter_px=float(2*np.sqrt(area/np.pi))
 
     kept_H=H & ~np.isin(labels,list(skip_ids))
