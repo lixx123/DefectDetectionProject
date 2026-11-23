@@ -39,9 +39,21 @@ class Refinement:
     touches_crop_edge: bool
 
 
-def max_hull_distance(mask:np.ndarray)->float:
-    """Maximum distance among convex-hull vertices (Feret proxy, pixel units)."""
-    yy,xx=np.nonzero(mask)
+def max_hull_distance(mask:np.ndarray, bbox=None)->float:
+    """Maximum distance among convex-hull vertices (Feret proxy, pixel units).
+
+    ``bbox`` optionally restricts the nonzero scan to ``mask[y0:y1, x0:x1]``
+    (exclusive x0,y0,x1,y1). It is valid only when every True pixel of ``mask``
+    already lies inside that rectangle; coordinates are then offset back to the
+    full-mask frame so the returned value is unchanged. Without ``bbox`` the
+    full mask is scanned (legacy behavior).
+    """
+    if bbox is not None:
+        x0,y0,x1,y1=bbox
+        yy,xx=np.nonzero(mask[y0:y1,x0:x1])
+        xx=xx+x0;yy=yy+y0
+    else:
+        yy,xx=np.nonzero(mask)
     if len(xx)<2:
         return 0.0
     contour=np.column_stack((xx,yy)).astype(np.float32)

@@ -85,14 +85,26 @@ class ObjectRegion:
     object_id: str=""
 
 
-def stats_mask(mask:np.ndarray)->tuple[tuple[int,int,int,int],float,float,int,bool]:
-    ys,xs=np.nonzero(mask)
-    if len(xs)==0:raise ValueError("empty component")
+def stats_mask(mask:np.ndarray, bbox=None)->tuple[tuple[int,int,int,int],float,float,int,bool]:
+    """Bounding box, centroid, area and crop-edge flag of a non-empty mask.
+
+    ``bbox`` optionally restricts the nonzero scan to ``mask[y0:y1, x0:x1]``
+    (exclusive x0,y0,x1,y1); it must contain every True pixel of ``mask``.
+    Coordinates are offset back to the full-mask frame, so results are unchanged.
+    """
+    if bbox is not None:
+        x0,y0,x1,y1=bbox
+        ys,xs=np.nonzero(mask[y0:y1,x0:x1])
+        if len(xs)==0:raise ValueError("empty component")
+        xs=xs+x0;ys=ys+y0
+    else:
+        ys,xs=np.nonzero(mask)
+        if len(xs)==0:raise ValueError("empty component")
     H,W=mask.shape
     bx=int(xs.min());by=int(ys.min())
-    bbox=(bx,by,int(xs.max()-bx+1),int(ys.max()-by+1))
-    edge=bool(bx==0 or by==0 or bx+bbox[2]>=W or by+bbox[3]>=H)
-    return bbox,float(xs.mean()),float(ys.mean()),int(len(xs)),edge
+    bbox_=(bx,by,int(xs.max()-bx+1),int(ys.max()-by+1))
+    edge=bool(bx==0 or by==0 or bx+bbox_[2]>=W or by+bbox_[3]>=H)
+    return bbox_,float(xs.mean()),float(ys.mean()),int(len(xs)),edge
 
 
 def _robust_thresholds(response:np.ndarray,cfg:FusionConfig)->tuple[float,float,dict]:
