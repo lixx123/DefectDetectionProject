@@ -157,7 +157,8 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
              pcfg:tuple,grade:SizeGradeConfig,j1:AssociationConfig,
              j2:ContinuousConfig,halo:int,dest:Path,
              image_enabled:bool=True,frame_label:str="26_1",
-             threshold_mode:str="b15_pixel",perband_spec:dict|None=None)->dict:
+             threshold_mode:str="b15_pixel",perband_spec:dict|None=None,
+             residual_layers:tuple|None=None)->dict:
     # Contract first: refuse an unusable threshold surface before touching RAW.
     if threshold_mode!="b15_pixel":
         raise ValueError(f"threshold_mode {threshold_mode!r} is not supported; the official chain is b15_pixel")
@@ -176,9 +177,20 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
     refine,seed,f,g,h=pcfg
     context_cache={}
     def context_provider():
-        from src.detection.j4_filter_context import filter_context
         if not context_cache:
-            context_cache.update(filter_context(rawmem,(l,t,r,b),cfg.CASE03J4_FILTER_CONTEXT_PX,h))
+            if residual_layers is not None:
+                # Precomputed full-frame float32 layers: crop the decision window.
+                # Equivalent to filter_context's guarded-window compute because the
+                # 96px prepare halo covers every large-kernel support (~66px max).
+                g22,c61,dog=residual_layers
+                context_cache.update(
+                    residuals={'gaussian22':np.asarray(g22[t:b,l:r],dtype=np.float32).copy(),
+                               'closing61':np.asarray(c61[t:b,l:r],dtype=np.float32).copy()},
+                    dog=np.asarray(dog[t:b,l:r],dtype=np.float32).copy(),
+                    read_xyxy=[l,t,r,b],raw_pixels=(r-l)*(b-t))
+            else:
+                from src.detection.j4_filter_context import filter_context
+                context_cache.update(filter_context(rawmem,(l,t,r,b),cfg.CASE03J4_FILTER_CONTEXT_PX,h))
         return context_cache
     from fast_state import STATE
     STATE.geometry(rect,(l,t,r,b))

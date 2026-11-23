@@ -78,13 +78,13 @@ def _feret(m):
  pts=cv2.convexHull(np.c_[x,y].astype(np.float32).reshape(-1,1,2)).reshape(-1,2).astype(float);return max(1.,max(float(((pts[i:i+128,None]-pts[None])**2).sum(2).max()) for i in range(0,len(pts),128)))**.5
 def one(inp,a,mode,plan,qa=False):
  pp,policies,grade,j1,j2=init(inp,mode);s=inp['sample_id'];folder=OUT/(f'qa_full_reference/RULE_V3/{s}/{a}/{mode}' if qa else f'runs/FAST_V3/{s}/{a}');folder.mkdir(parents=True,exist_ok=False);store.reset('QA' if qa else 'FAST',folder);timings.clear();J4.clear_band_map_cache()
- raw=np.memmap(inp['raw'],dtype='>u2',mode='r',shape=(9200,11276));response=np.load(inp['response'],mmap_mode='r');spec={'bands':inp['specs'][a],'fallback':[65536.,65536.],'pixel_band_ids':inp['ids']};statuses=[];allstart=time.perf_counter()
+ raw=np.memmap(inp['raw'],dtype='>u2',mode='r',shape=(9200,11276));response=np.load(inp['response'],mmap_mode='r');spec={'bands':inp['specs'][a],'fallback':[65536.,65536.],'pixel_band_ids':inp['ids']};residual_layers=(np.load(inp['residual_gaussian22'],mmap_mode='r'),np.load(inp['residual_closing61'],mmap_mode='r'),np.load(inp['dog'],mmap_mode='r')) if 'residual_gaussian22' in inp else None;statuses=[];allstart=time.perf_counter()
  # 仪表开销在无包裹状态下实测，随后按实测次数折算本次运行成本。
  overhead_seconds_per_call=timings.measure_overhead()
  with timings.instrument():
   tic=time.perf_counter()
   for k,tile in enumerate(plan):
-   status=J4.run_tile(tile,raw,response,policies,grade,j1,j2,64,folder,image_enabled=False,frame_label=s,threshold_mode='b15_pixel',perband_spec=spec);statuses.append(status)
+   status=J4.run_tile(tile,raw,response,policies,grade,j1,j2,64,folder,image_enabled=False,frame_label=s,threshold_mode='b15_pixel',perband_spec=spec,residual_layers=residual_layers);statuses.append(status)
    if k%100==0:logging.info('%s %s %s J4 %d/%d',s,a,mode,k,len(plan))
   t4=time.perf_counter()-tic;tic=time.perf_counter();objects,mapping,loc,meta=j5(plan,raw,pp,'LEGACY_FULL' if qa else 'MEDIUM_LARGE_ONLY');t5=time.perf_counter()-tic
  # QA可存完整中间结果；正式FAST只输出中大与必要血缘。
