@@ -47,6 +47,23 @@ def reconcile_history(frame,j5,records,selected,out,types):
     base.write_json(out/'WORK_EDGE_membership_regression.json',{'required_objects':len(required),
         'missing_or_changed_membership':sorted(missing),'exact_match_count':len(mapping),
         'identity_basis':'EXACT_J4_LOCAL_MEMBER_SET_NOT_SEQUENTIAL_ID'})
+    if C.CASE03J4_EXTERNAL_CONTEXT_ENABLED:
+        # 边界修复属于新检测版本，旧局部序号不再证明像素身份。
+        # 保留旧审计，但不把新J5对象冒充历史对象；所有源采用独立命名空间。
+        base.write_json(out/'BOUNDARY_REVISION_IDENTITY.json',{
+            'contract':'fixed_decision_window_external_filters_v1',
+            'historical_aliasing':False,
+            'legacy_membership_mismatches':sorted(missing),
+            'reason':'New algorithm outputs are not historical exact replay'})
+        uidmap={}
+        for record in records:
+            uid=record['candidate_source_uid']
+            fresh=f"BOUNDARY_V1_J5:F{frame}:{record['source_local_id']}"
+            uidmap[uid]=fresh;record['candidate_source_uid']=fresh
+            record['historical_global_defect_id']=''
+            record['execution_disposition']='FRESH_BOUNDARY_REVISION_NO_HISTORICAL_ALIAS'
+        for item in selected:item['sources']={uidmap[u] for u in item['sources']}
+        return records,selected
     if missing:raise AssertionError('WORK/EDGE membership changed: '+str(sorted(missing)))
     audit=[];uidmap={}
     for r in records:
@@ -62,7 +79,7 @@ def reconcile_history(frame,j5,records,selected,out,types):
     return records,selected
 
 
-def run_raw(path,run_id=None,mode=None):
+def run_raw(path,run_id=None,mode=None,threshold_mode="fixed_170_230",perband_spec=None):
     mode=mode or C.TWO_LEVEL_ROI['default_mode']
     if mode not in ('full','roi-j4','roi-bh'):raise ValueError('invalid mode')
     path=Path(path).resolve()
@@ -103,7 +120,8 @@ def run_raw(path,run_id=None,mode=None):
         base.write_json(out/'detection_plan.json',plan)
         snapshot={'requested_mode':mode,'roi_mode':plan['roi_mode'],'fallback_reasons':plan['fallback_reasons'],
                   'two_level':C.TWO_LEVEL_ROI,'unified':C.UNIFIED_FINAL,'locator':asdict(base.BandLocatorConfig()),
-                  'B':asdict(base.PerBandTrial()),'K8C':asdict(base.K8CConfig()),'K8D':asdict(base.K8DConfig()),'RAW':asdict(base.PilotConfig())}
+                  'B':asdict(base.PerBandTrial()),'K8C':asdict(base.K8CConfig()),'K8D':asdict(base.K8DConfig()),'RAW':asdict(base.PilotConfig()),
+                  'J4_threshold_mode':threshold_mode,'J4_perband_spec':perband_spec}
         base.write_json(out/'config_snapshot.json',snapshot)
         times['K8A_plan_seconds']=time.perf_counter()-t
         print('TWO_LEVEL_PLAN',frame,mode,plan['roi_mode'],len(plan['tiles']),plan['fallback_reasons'],flush=True)
@@ -116,7 +134,8 @@ def run_raw(path,run_id=None,mode=None):
                 j4=J4.run('fresh',halo=C.CASE03J4_HALO_PX,save_images=False,input_raw_file=path,
                     input_fused_npy=out/'fused_blackhat.npy',frame_label=f'input_{frame}',
                     scheduled_tile_ids=[z['tile_id'] for z in plan['tiles']],
-                    response_coverage='SCHEDULED_CONTEXT_ONLY' if mode=='roi-bh' and trusted else 'FULL_FRAME')
+                    response_coverage='SCHEDULED_CONTEXT_ONLY' if mode=='roi-bh' and trusted else 'FULL_FRAME',
+                    threshold_mode=threshold_mode,perband_spec=perband_spec)
                 times['J4_seconds']=time.perf_counter()-t;t=time.perf_counter()
                 j5=J5.run('fresh',review_limit=0,input_J4_run=j4,input_raw_file=path,frame_label=f'input_{frame}')
                 times['J5_seconds']=time.perf_counter()-t
@@ -162,13 +181,17 @@ def run_raw(path,run_id=None,mode=None):
         times['K8_final_export_seconds']=time.perf_counter()-t
         assert base.sha(path)==input_hash
         status=json.loads((j4/'run_status.json').read_text(encoding='utf8'))
+        filter_pixels=sum(json.loads(p.read_text(encoding='utf8')).get('additional_filter_RAW_pixels',0)
+                          for p in (j4/'tile_status').glob('*.json'))
         result={'status':'ENGINEERING_OUTPUT_PENDING_INDEPENDENT_QA' if trusted else 'FULL_FRAME_FALLBACK_MANUAL_GEOMETRY_REVIEW_REQUIRED',
             'requested_mode':mode,'roi_mode':plan['roi_mode'],'fallback_reasons':plan['fallback_reasons'],
             'full_tiles':plan['full_tiles'],'planned_tiles':len(plan['tiles']),'actual_fresh_J4_tiles':status['completed_tiles'],
             'skipped_tiles':plan['skipped_tiles'],'legal_source_pixels':plan['legal_source_pixels'],
             'J4_RAW_window_pixels_with_repeats':plan['J4_RAW_window_pixels_with_repeats'],
+            'J4_additional_filter_RAW_pixels':filter_pixels,
+            'J4_total_RAW_logical_pixels':plan['J4_RAW_window_pixels_with_repeats']+filter_pixels,
             'RAW_frame_pixels':int(raw.size),
-            'high_cost_RAW_pixel_visits_BH_plus_J4':bhm['blackhat_input_pixels_with_repeats']+plan['J4_RAW_window_pixels_with_repeats'],
+            'high_cost_RAW_pixel_visits_BH_plus_J4':bhm['blackhat_input_pixels_with_repeats']+plan['J4_RAW_window_pixels_with_repeats']+filter_pixels,
             'peak_working_set_bytes':peak_memory_bytes(),'RAW_unchanged':True,
             'elapsed_seconds':time.perf_counter()-start,'K8B_executed':trusted,**bhm,**times,**summary}
         base.write_json(out/'acceptance.json',result);print('TWO_LEVEL_COMPLETE',str(out),result,flush=True)

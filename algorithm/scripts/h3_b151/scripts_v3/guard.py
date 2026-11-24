@@ -34,3 +34,4 @@ def activate(role):
   elif event in ['os.rename','os.replace']:mutation(args[0]);mutation(args[1])
  sys.addaudithook(hook)
 def receipt(role):return {'role':role,'argv':sys.argv,'reads':READS,'writes':WRITES,'denied':DENIED,'outside_write_attempts':sum(r['reason']=='OUTSIDE_STAGE_WRITE' for r in DENIED),'GT_violation_attempts':sum('GT' in r['reason'] or 'HISTORY' in r['reason'] for r in DENIED),'system_global_and_native_uninstrumented':'NOT_VERIFIABLE'}
+

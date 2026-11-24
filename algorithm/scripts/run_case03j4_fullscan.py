@@ -134,10 +134,36 @@ def config_j2()->ContinuousConfig:
         ambiguous_gap_margin_px=cfg.CASE03J2_AMBIGUOUS_GAP_MARGIN_PX)
 
 
+def threshold_maps(spec:dict,l:int,t:int,r:int,b:int)->tuple[np.ndarray,np.ndarray]:
+    """Render per-band constant thresholds to global-coordinate pixel maps (WS1_D1).
+
+    Identical global pixel always receives the identical threshold regardless of
+    which tile/halo covers it. Pixels outside every approved work band keep the
+    fixed 170/230 fallback, preserving existing out-of-band semantics.
+    """
+    lo=np.full((b-t,r-l),float(spec["fallback"][0]),np.float32)
+    hi=np.full((b-t,r-l),float(spec["fallback"][1]),np.float32)
+    xs=np.arange(l,r,dtype=np.float64)
+    ys=np.arange(t,b,dtype=np.float64)
+    for band in spec["bands"]:
+        inx=(xs>=band["x_min"])&(xs<band["x_max_exclusive"])
+        if not inx.any():continue
+        top=band["top_y0"]+band["top_slope"]*xs
+        bot=band["bottom_y0"]+band["bottom_slope"]*xs
+        m=((ys[:,None]>=top[None,:])&(ys[:,None]<=bot[None,:])&inx[None,:])
+        lo[m]=float(band["low_dn"]);hi[m]=float(band["high_dn"])
+    if lo.shape!=(b-t,r-l) or hi.shape!=(b-t,r-l):
+        raise AssertionError("threshold map shape mismatch")
+    if np.any(hi<lo):
+        raise ValueError("per-pixel high threshold below low threshold")
+    return lo,hi
+
+
 def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
              pcfg:tuple,grade:SizeGradeConfig,j1:AssociationConfig,
              j2:ContinuousConfig,halo:int,dest:Path,
-             image_enabled:bool=True,frame_label:str="26_1")->dict:
+             image_enabled:bool=True,frame_label:str="26_1",
+             threshold_mode:str="fixed_170_230",perband_spec:dict|None=None)->dict:
     name=tile["tile_id"]
     x0,y0,x1,y1=rect=tile["core_xyxy"]
     l,t,r,b=halo_rect(rect,rawmem.shape,halo)
@@ -148,7 +174,23 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
     # is sparse outside the scheduled region, but every consumed pixel must be
     # exactly equivalent to the corresponding full-frame Black-Hat response.
     refine,seed,f,g,h=pcfg
-    detection=process_one(local,response,170.,230.,refine,seed,f,g,h)
+    context_cache={}
+    def context_provider():
+        from src.detection.j4_filter_context import filter_context
+        if not context_cache:
+            context_cache.update(filter_context(rawmem,(l,t,r,b),cfg.CASE03J4_FILTER_CONTEXT_PX,h))
+        return context_cache
+    enabled=cfg.CASE03J4_EXTERNAL_CONTEXT_ENABLED
+    if threshold_mode=="fixed_170_230":
+        detection=process_one(local,response,170.,230.,refine,seed,f,g,h,
+                              context_provider=context_provider if enabled else None)
+        wlo=whi=None
+    else:
+        if perband_spec is None:raise ValueError("perband threshold mode requires spec")
+        wlo,whi=threshold_maps(perband_spec,l,t,r,b)
+        if wlo.shape!=response.shape:raise AssertionError("threshold map/response mismatch")
+        detection=process_one(local,response,wlo,whi,refine,seed,f,g,h,
+                              context_provider=context_provider if enabled else None)
     sy0,sy1=y0-t,y1-t
     sx0,sx1=x0-l,x1-l
     local_mask=detection["maps"]["fused_joint_display"][sy0:sy1,sx0:sx1].copy()
@@ -158,11 +200,20 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
     regions,labels=extract_regions(local_mask,grade,name,(x0,y0,x1,y1))
     for a in regions:
         a.update(_global_x0=x0,_global_y0=y0,frame=frame_label)
+    core_dog=(context_provider()["dog"][sy0:sy1,sx0:sx1].copy()
+              if enabled and regions else None)
     objects_j1,edges,_,checkmap=associate_fragments(
-        labels,regions,core_raw,j1,grade)
+        labels,regions,core_raw,j1,grade,dog_map=core_dog)
     objects,orig_ids,bridge_ids,display_ids,all_edges,bridge_log=(
         reconstruct_continuous_visual(labels,core_raw,regions,
-                                      edges,grade,j1,j2))
+                                      edges,grade,j1,j2,dog_map=core_dog))
+    repair_events=[event for event in bridge_log if event.get('action')=='removed_unanchored_inferred_bridge']
+    rejected_links=[edge for edge in all_edges if edge.get('reason')=='rejected_bridge_conflict_preserve_independent_sources']
+    if repair_events or rejected_links:
+        json_save(dest/'tile_objects'/(name+'_bridge_repair.json'),{
+            'policy':'anchored_inference_reject_unsafe_links_v1',
+            'tile_id':name,'source_pixels_preserved':True,
+            'removed_unanchored_inference':repair_events,'rejected_links':rejected_links})
     if not np.array_equal(checkmap>0,local_mask):
         raise AssertionError("J1 ownership lost original candidate pixels")
     if not np.array_equal(orig_ids>0,local_mask):
@@ -210,7 +261,13 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
         **tile,
         "work_xyxy":[l,t,r,b],
         "stage":"J4_TILE_COMPLETE",
+        "boundary_contract":"fixed_decision_window_external_filters_v1" if enabled else "legacy",
+        "filter_context_px":cfg.CASE03J4_FILTER_CONTEXT_PX if enabled else 0,
+        "filter_read_xyxy":context_cache.get("read_xyxy"),
+        "additional_filter_RAW_pixels":context_cache.get("raw_pixels",0),
         "candidate_pre_gate_H_in_work_area":detection["candidate_count"],
+        "early_exit_empty_H":bool(detection.get("empty_tile_early_exit",False)),
+        "dog_mode":detection.get("dog_mode","full_window"),
         "final_source_core_pixels":int(local_mask.sum()),
         "source_core_connected_regions":len(regions),
         "tile_objects":len(objects),
@@ -220,6 +277,11 @@ def run_tile(tile:dict,rawmem:np.memmap,fused:np.memmap,
                                               for b in boxrows),
         "cross_tile_merged":False,
         "precomputed_full_frame_response":True,
+        "threshold_mode":threshold_mode,
+        "window_low_dn_min_median_max":([float(wlo.min()),float(np.median(wlo)),float(wlo.max())]
+                                        if wlo is not None else [170.,170.,170.]),
+        "window_high_dn_min_median_max":([float(whi.min()),float(np.median(whi)),float(whi.max())]
+                                         if whi is not None else [230.,230.,230.]),
         "mask_file":str(tilefile.relative_to(dest)),
         "measured_area_excludes_inferred_bridge":True,
     }
@@ -290,7 +352,7 @@ def finalize(dest:Path,rawmem:np.memmap,total:int,frame_label:str="26_1")->dict:
         render_full_preview(rawmem,objects,dest,frame_label=frame_label)
     result={
         "stage":"J4_COMPLETE" if complete else "J4_PARTIAL",
-        "source":f"26 ({frame_label.split('_')[-1]}).raw",
+        "source":Path(getattr(rawmem,"filename",None) or f"frame_{frame_label}").name,
         "width":rawmem.shape[1],"height":rawmem.shape[0],
         "planned_tiles":total,"completed_tiles":len(succeeded),
         "candidate_j4_local_objects":len(objects),
@@ -309,8 +371,11 @@ def finalize(dest:Path,rawmem:np.memmap,total:int,frame_label:str="26_1")->dict:
 def run(run_id:str,max_tiles:int=0,halo:int=64,
         resume:bool=False,save_images:bool=True,
         input_raw_file:Path|None=None,input_fused_npy:Path|None=None,
-        frame_label:str="26_1",scheduled_tile_ids=None,response_coverage="FULL_FRAME")->Path:
-    if halo<48:raise ValueError("halo below certified safe trial minimum 48px")
+        frame_label:str="26_1",scheduled_tile_ids=None,response_coverage="FULL_FRAME",
+        threshold_mode:str="fixed_170_230",perband_spec:dict|None=None)->Path:
+    if halo<48:raise ValueError("decision window halo below legacy supported minimum 48px")
+    if cfg.CASE03J4_EXTERNAL_CONTEXT_ENABLED and cfg.CASE03J4_FILTER_CONTEXT_PX<93:
+        raise ValueError("external filter context below derived 93px support")
     if input_fused_npy is None and not CASE02.is_file():raise FileNotFoundError(CASE02)
     raw_path=Path(input_raw_file) if input_raw_file is not None else cfg.DATA_ROOT/"26 (1).raw"
     if input_fused_npy is not None and not Path(input_fused_npy).is_file():
@@ -326,6 +391,10 @@ def run(run_id:str,max_tiles:int=0,halo:int=64,
             (dest/sub).mkdir(parents=True)
     rawmem=np.memmap(raw_path,dtype=">u2",mode="r",
                      shape=(cfg.RAW_HEIGHT,cfg.RAW_WIDTH))
+    if threshold_mode!="fixed_170_230":
+        if perband_spec is None:raise ValueError("perband threshold mode requires perband_spec")
+        if [b["band_id"] for b in perband_spec["bands"]]!=[1,2,3,4]:
+            raise ValueError("WS1_D1 requires exactly the four approved work bands")
     response=(np.load(Path(input_fused_npy),mmap_mode="r",allow_pickle=False)
               if input_fused_npy is not None else fused_mmap())
     if response.shape!=rawmem.shape:raise ValueError("fused/RAW mismatch")
@@ -362,7 +431,18 @@ def run(run_id:str,max_tiles:int=0,halo:int=64,
         "full_global_blackhat":str(input_fused_npy if input_fused_npy is not None else CASE02),
         "core_px":cfg.CASE03J4_CORE_SIZE_PX,
         "overlap_for_internal_context":halo,
-        "hysteresis_low_high":[170,230],
+        "external_filter_context_enabled":cfg.CASE03J4_EXTERNAL_CONTEXT_ENABLED,
+        "filter_context_px":cfg.CASE03J4_FILTER_CONTEXT_PX,
+        "boundary_contract":"fixed_decision_window_external_filters_v1",
+        "j2_bridge_conflict_policy":"anchored_inference_reject_unsafe_links_v1",
+        "hysteresis_low_high":([170,230] if threshold_mode=="fixed_170_230" else
+                               {str(b["band_id"]):[round(b["low_dn"],3),round(b["high_dn"],3)]
+                                for b in perband_spec["bands"]}),
+        "threshold_mode":threshold_mode,
+        "threshold_source":("fixed absolute DN" if threshold_mode=="fixed_170_230" else
+                            "per-band constant: max(floor, median+k*MAD_sigma) from fused BH"),
+        "threshold_fallback_outside_bands":([170,230] if perband_spec is None
+                                            else [float(v) for v in perband_spec["fallback"]]),
         "gate_config_frozen":True,
         "H_Gaussian_Closing_bounded_seeded":True,
         "original_mask_pixels_not_deleted":True,
@@ -392,7 +472,8 @@ def run(run_id:str,max_tiles:int=0,halo:int=64,
         try:
             t0=time.perf_counter()
             row=run_tile(tile,rawmem,response,pcfg,grade,j1,j2,halo,dest,
-                         image_enabled=save_images,frame_label=frame_label)
+                         image_enabled=save_images,frame_label=frame_label,
+                         threshold_mode=threshold_mode,perband_spec=perband_spec)
             row["elapsed_seconds"]=round(time.perf_counter()-t0,3)
             row['precomputed_full_frame_response']=response_coverage=='FULL_FRAME'
             row['response_coverage']=response_coverage

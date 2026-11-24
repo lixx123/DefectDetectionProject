@@ -144,6 +144,10 @@ def export(out,raw,objects,records,frame,negative):
             'confirmed_areas':sorted(r['final_area_detector_px2'] for r in table if r['human_confirmed_darkspot'])}
 
 def run_raw(path,run_id=None):
+    if C.CASE03J4_EXTERNAL_CONTEXT_ENABLED:
+        # 完整扫描仍保留full调度，仅共用修订后的历史身份/归档安全处理。
+        from scripts.run_two_level_unified import run_raw as run_boundary_revision
+        return run_boundary_revision(path,run_id,mode='full')
     from scripts import run_case03j4_fullscan as j4script,run_case03j5_global_merge as j5script
     path=Path(path).resolve()
     if not path.is_file() or path.stat().st_size!=C.RAW_HEIGHT*C.RAW_WIDTH*2:

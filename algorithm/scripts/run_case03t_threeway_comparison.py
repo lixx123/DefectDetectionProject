@@ -116,15 +116,36 @@ def windows(full_shape:tuple[int,int])->tuple[list[dict],list[dict]]:
 def process_one(raw:np.ndarray,response:np.ndarray,
                 low:np.ndarray|float,high:np.ndarray|float,
                 refine:FusionConfig,seed:HSeedConfig,
-                f:NoiseTrialConfig,g:JointGateConfig,h:TextureTrialConfig
+                f:NoiseTrialConfig,g:JointGateConfig,h:TextureTrialConfig,
+                *,context_provider=None
                 )->dict:
     H,S,original_seeds=hysteresis_window(response,low,high)
     n,labels,stats,_=cv2.connectedComponentsWithStats(H.astype(np.uint8),8)
     if n-1>seed.max_output_regions_per_window:
         raise RuntimeError("candidate overflow; do not truncate")
+    if n==1:
+        # Zero H candidate: refinement/gating/DoG cannot produce any output;
+        # preserve the exact empty-result contract of the full path.
+        fused_labels=np.zeros_like(labels,dtype=np.int32)
+        maps=build_joint_maps(labels,fused_labels,[])
+        return {
+            "candidate_count":0,
+            "H_pixel_count":0,
+            "seed_count":0,
+            "suggest_hidden":0,
+            "protected_review":0,
+            "display_H_pixels":0,
+            "display_refined_pixels":0,
+            "refined_objects":0,
+            "maps":maps,
+            "empty_tile_early_exit":True,
+            "dog_mode":"skipped_empty_H",
+        }
     # Historical Case03-E2 bounded Gaussian22/Closing61 refinement is reused
     # here and recomputed on the current core+halo RAW window from its own H seeds.
+    external=None if context_provider is None else context_provider()
     kw={"cfg":refine,"policy":seed}
+    if external is not None:kw["residuals"]=external["residuals"]
     if isinstance(low,np.ndarray):
         kw.update(h_low_threshold_map=low,h_high_threshold_map=high)
     else:
@@ -161,7 +182,9 @@ def process_one(raw:np.ndarray,response:np.ndarray,
     gstatus,greasons=decide_gate(labels,stats,old_status,sources,g)
     afloat=raw.astype(np.float32)
     dog=(cv2.GaussianBlur(afloat,(0,0),h.dog_large_sigma_px)-
-         cv2.GaussianBlur(afloat,(0,0),h.dog_small_sigma_px))
+         cv2.GaussianBlur(afloat,(0,0),h.dog_small_sigma_px)) if external is None else external["dog"]
+    if dog.shape!=raw.shape or dog.dtype!=np.float32 or not np.isfinite(dog).all():
+        raise ValueError("invalid external DoG")
     for j in range(1,n):
         features[j-1]["dog_median_dn"]=float(np.median(dog[labels==j]))
     hstatus,hreasons=extend_gate(labels,stats,gstatus,greasons,features,h)
@@ -179,6 +202,8 @@ def process_one(raw:np.ndarray,response:np.ndarray,
         "display_refined_pixels":int(maps["fused_joint_display"].sum()),
         "refined_objects":sum(not o.H_only for o in objects),
         "maps":maps,
+        "empty_tile_early_exit":False,
+        "dog_mode":"full_window",
     }
 
 

@@ -33,3 +33,4 @@ def second_gate(mask):
  for k,v in reasons.items():STATE.count('J4_'+k,v)
  STATE.count('J4_SECOND_GATE_components',len(safe));STATE.count('J4_SECOND_GATE_pixels',sum(int(stats[j,4]) for j in safe))
  return mask&~np.isin(labels,list(safe)) if safe else mask
+
